@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140920180724) do
   create_table "schedules", force: true do |t|
     t.datetime "in"
     t.datetime "out"
-    t.integer  "medics_id"
+    t.integer  "medic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
