@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913125322) do
+ActiveRecord::Schema.define(version: 20140920180724) do
 
   create_table "feedbacks", force: true do |t|
     t.integer  "grade"
@@ -26,13 +26,21 @@ ActiveRecord::Schema.define(version: 20140913125322) do
     t.integer  "registry"
     t.string   "speciality"
     t.string   "department"
+    t.integer  "work_units_id"
+    t.integer  "schedules_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "parsers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "schedules", force: true do |t|
-    t.date     "in"
-    t.date     "out"
+    t.datetime "in"
+    t.datetime "out"
+    t.integer  "medics_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,6 +59,7 @@ ActiveRecord::Schema.define(version: 20140913125322) do
     t.string   "name"
     t.string   "address"
     t.string   "city"
+    t.integer  "medics_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
