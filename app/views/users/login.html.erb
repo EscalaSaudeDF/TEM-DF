@@ -1,0 +1,18 @@
+<h1>Login</h1>
+
+<%= form_tag :action => 'login' do |f| %>
+	<div class="field">
+		<%= label :user, :username %><br>
+		<%= text_field :user, :username %>
+	</div>
+
+	<div class="field">
+    	<%= label :user, :password %><br>
+    	<%= text_field :user, :password %>
+  	</div>
+
+  	  <div class="actions">
+    <%= submit_tag 'Entrar' %>
+  </div>
+<% end %>
+
