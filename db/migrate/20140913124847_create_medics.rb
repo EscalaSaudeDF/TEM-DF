@@ -5,7 +5,7 @@ class CreateMedics < ActiveRecord::Migration
       t.integer :registry
       t.string :speciality
       t.string :department
-      t.references :work_units
+      t.references :work_units, :schedules
       t.timestamps
     end
   end

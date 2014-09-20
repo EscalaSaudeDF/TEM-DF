@@ -3,7 +3,7 @@ class CreateSchedules < ActiveRecord::Migration
     create_table :schedules do |t|
       t.date :in
       t.date :out
-
+      t.references :medics
       t.timestamps
     end
   end
