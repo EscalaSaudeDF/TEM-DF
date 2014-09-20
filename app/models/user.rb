@@ -1,24 +1,30 @@
 class User < ActiveRecord::Base
 	# Attributes
-	def username= (word)
-		@username = word
+	#user name or login
+	def username= (username)
+		@username = username
 	end
 	
-	def email= (word)
-		@email = word
+	#user e-mail
+	def email= (email)
+		@email = email
 	end
 
-	def password= (word)
-		@password = word
+	#user password
+	def password= (password)
+		@password = password
 	
 	end	
 
+=begin
 	def documentation= (word)
 		@documentation = word
 	end
+=end
 
-	def account_status= (word)
-		@account_status = word
+	#user account status: false = blocked, true = active
+	def account_status= (account_status)
+		@account_status = account_status
 	end
 
 end
