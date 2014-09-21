@@ -41,8 +41,7 @@ ActiveRecord::Schema.define(version: 20140913125322) do
     t.string   "username"
     t.string   "email"
     t.string   "password"
-    t.string   "documentation"
-    t.boolean  "status"
+    t.boolean  "account_status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
