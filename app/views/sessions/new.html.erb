@@ -1,0 +1,20 @@
+<h1>Sessions#new</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+
+<h2>Login</h2>
+
+<%= form_tag sessions_path do %>
+	<div class="field">
+		<%= label_tag :username %><br>
+		<%= text_field_tag :username, params[:username] %>
+	</div>
+
+	<div class="field">
+    	<%= label_tag :password %><br>
+    	<%= password_field_tag :password %>
+  	</div>
+
+  	  <div class="actions">
+    <%= submit_tag 'Entrar' %>
+  </div>
+<% end %>
