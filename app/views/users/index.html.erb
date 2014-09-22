@@ -1,7 +1,20 @@
 <h1>User#index</h1>
 <p>Find me in app/views/user/index.html.erb</p>
 
-<form action='/user'>
+<h2>Login</h2>
 
+<%= form_tag :action => 'login' do |f| %>
+	<div class="field">
+		<%= label :user, :username %><br>
+		<%= text_field :user, :username %>
+	</div>
 
-</form>
+	<div class="field">
+    	<%= label :user, :password %><br>
+    	<%= text_field :user, :password %>
+  	</div>
+
+  	  <div class="actions">
+    <%= submit_tag 'Entrar' %>
+  </div>
+<% end %>
