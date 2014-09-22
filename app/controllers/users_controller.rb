@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 class UsersController < ApplicationController
   	def index
   		render "index"
@@ -7,7 +9,8 @@ class UsersController < ApplicationController
   		@user = User.new(user_params)
         @user.account_status = true
         if @user.password == @user.password_confirmation
-  		    @user.save
+  		    @user.password = BCrypt::Password.create(@user.password)
+          @user.save
             redirect_to(action: "index", id: @user)
         else
             render "new" 
