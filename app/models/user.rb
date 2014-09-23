@@ -1,6 +1,12 @@
+require 'valid_email'
 class User < ActiveRecord::Base
 
 	attr_accessor :password_confirmation
+
+	validates :username, uniqueness: true, presence: true
+	validates :email, uniqueness: true, presence: true, email: true
+	validates :password, presence: true
+	validates :password_confirmation, presence: true
 
 	def self.autenticate (username, password)
 
