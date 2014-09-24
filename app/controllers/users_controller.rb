@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   		render "index"
   	end
 
-  	def create
+  	def create_common_user
   		@user = User.new(user_params)
         @user.account_status = true
         if @user.save

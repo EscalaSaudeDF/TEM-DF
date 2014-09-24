@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/new'
 
+  post 'user', to: 'users#create_common_user'
+ 
+
   #get "log_out" => "sessions#destroy", :as => ""
   #get "log_in" =>
 
