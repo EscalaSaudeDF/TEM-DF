@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20140920180724) do
     t.string   "speciality"
     t.string   "department"
     t.integer  "work_unit_id"
-    t.integer  "schedule_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 20140920180724) do
     t.datetime "in"
     t.datetime "out"
     t.integer  "medic_id"
-    t.integer  "work_unit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,8 +58,6 @@ ActiveRecord::Schema.define(version: 20140920180724) do
     t.string   "name_work_unit"
     t.string   "address"
     t.string   "city"
-    t.integer  "medic_id"
-    t.integer  "schedule_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

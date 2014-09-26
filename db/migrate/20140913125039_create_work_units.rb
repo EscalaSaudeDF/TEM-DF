@@ -4,7 +4,6 @@ class CreateWorkUnits < ActiveRecord::Migration
       t.string :name_work_unit
       t.string :address
       t.string :city
-      t.references  :medic, :schedule
       t.timestamps
     end
   end

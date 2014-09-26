@@ -1,4 +1,4 @@
 class Medic < ActiveRecord::Base
-	has_many :work_units
+	belongs_to :work_unit
 	has_many :schedules
 end
