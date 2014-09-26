@@ -28,6 +28,7 @@ class Parser < ActiveRecord::Base
         	medic_record.schedules.create(:in => formatted_start_date, 
         		:out => formatted_end_date)
 
+
 		end
 	end
 end
