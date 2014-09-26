@@ -1,3 +1,4 @@
 class WorkUnit < ActiveRecord::Base
-	has_many :medics
+	belongs_to :medic
+	
 end
