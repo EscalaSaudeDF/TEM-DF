@@ -1,4 +1,4 @@
-<%= form_for @user, url: {action: "create_common_user"} do |f| %>
+<%= form_for @user, url: {action: "create"} do |f| %>
 <h1> Novo usuário </h1>
 	<% if @user.errors.any? %>
     <div id="error_explanation">
@@ -12,6 +12,16 @@
     </div>
   <% end %>
 
+  <div>
+    <%= f.label :account_status, "Sou usuário do sistema público de saúde" %>
+    <%= f.radio_button :account_status, true, :checked => true, :value => true %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :account_status, "Sou médico do sistema público de saúde" %>
+    <%= f.radio_button :account_status, false, :value => false %>
+  </div>
+  <br>
   <div class="field">    
     <%= f.label :username %><br>
     <%= f.text_field :username %>

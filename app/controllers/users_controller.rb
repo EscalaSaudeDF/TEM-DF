@@ -5,9 +5,10 @@ class UsersController < ApplicationController
   		render "index"
   	end
 
-  	def create_common_user
+  	def create
   		@user = User.new(user_params)
-        @user.account_status = true
+        puts params[:user]
+        #@user.account_status = true
         if @user.save
             if @user.password == @user.password_confirmation
   		        @user.password = BCrypt::Password.create(@user.password)
@@ -22,20 +23,13 @@ class UsersController < ApplicationController
         end
   	end
 
-    def create_medic_user
-      @user = User.new(user_params)
-      @user.account_status = false
-      @user.save
-      redirect_to(action: "index", id: @user)
-    end
-
   	def new
   		@user = User.new
   	end
 
     private
         def user_params
-            params.require(:user).permit(:username, :email, :password, :password_confirmation)
+            params.require(:user).permit(:username, :email, :password, :password_confirmation, :account_status)
         end
 
 end
