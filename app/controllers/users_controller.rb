@@ -11,7 +11,8 @@ class UsersController < ApplicationController
         #@user.account_status = true
         if @user.save
             if @user.password == @user.password_confirmation
-  		        @user.password = BCrypt::Password.create(@user.password)
+  		          @user.password = BCrypt::Password.create(@user.password)
+                @user.document = params [:user][:document]
                 @user.save
                 redirect_to(action: "index", id: @user)
             else

@@ -1,6 +1,8 @@
 require 'valid_email'
 class User < ActiveRecord::Base
 
+	has_attached_file :document, styles: {thumbnail: "60x60#"}
+
 	attr_accessor :password_confirmation
 
 	validates :username, uniqueness: true, presence: true
