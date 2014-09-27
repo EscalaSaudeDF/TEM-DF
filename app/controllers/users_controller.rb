@@ -2,27 +2,30 @@ require 'bcrypt'
 
 class UsersController < ApplicationController
   	def index
+      @users = User.all
   		render "index"
   	end
 
   	def create
   		@user = User.new(user_params)
-        puts params[:user]
-        #@user.account_status = true
         if @user.save
             if @user.password == @user.password_confirmation
   		          @user.password = BCrypt::Password.create(@user.password)
-                @user.document = params [:user][:document]
+                #@user.document = params [:user][:document]
                 @user.save
                 redirect_to(action: "index", id: @user)
             else
-                render "new" 
+               render "new" 
             end
 
         else
             render "new"
         end
   	end
+
+    def show
+      @user = User.find(params[:id])
+    end
 
   	def new
   		@user = User.new
