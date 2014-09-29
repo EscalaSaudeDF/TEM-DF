@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   		@user = User.new(user_params)
       if @user.save
           if @user.password == @user.password_confirmation
-  		        @user.password = BCrypt::Password.create(@user.password)
               #@user.document = params [:user][:document]
               @user.save
               redirect_to(action: "index", id: @user)

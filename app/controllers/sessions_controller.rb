@@ -4,16 +4,21 @@ class SessionsController < ApplicationController
 
   def create
 
-  	user = User.autenticate(params[:username], params[:password])
+  	user = User.authenticate(params[:username], params[:password])
 
   	if user
   		session[:user_id] = user.id
-  		redirect_to root_url :notice => "Logged in !!"
+  		redirect_to root_url, :notice => "Welcome... we miss you! :D"
 
   	else
-  		flash.now.alert = "Usuario ou senha invalidos"
-  		render "new"
+   		flash.now.alert = "Usuario ou senha invalidos"
+   		render "new"
   	end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url, :notice => "Bye! Come back soon! :)"
   end
 
 end
