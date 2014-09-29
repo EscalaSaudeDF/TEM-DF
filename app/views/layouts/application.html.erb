@@ -46,6 +46,10 @@
                 </button>
                 <a class="navbar-brand" href="home#index"><%= image_tag "logo_navbar.png" %></a>
             </div>
+
+            <ul class="title">
+                Transparência em Escalas Médicas do DF
+            </ul>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
@@ -261,20 +265,28 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a class="active" href="home#index"><i class="fa fa-dashboard fa-fw"></i> Exemplo link</a>
-                        </li>
+                        <form role="form">    
+                            <li class="sidebar-search">
+                                <div class="input-group custom-search-form">
+                                    <label>Medico</label>
+                                    <input class="form-control">
+                                </div>
+                                <div class="input-group custom-search-form">
+                                    <label>Região</label>
+                                    <input class="form-control">
+                                </div>
+                                <div class="input-group custom-search-form">
+                                    <label>Horario</label>
+                                    <input class="form-control">
+                                </div>
+                                <div>
+                                    <br>
+                                    <button type="submit" class="btn btn-default">Confirmar</button>
+                                    <button type="reset" class="btn btn-default">Reset</button>
+                                </div>
+                  
+                            </li>
+                        </form>    
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
