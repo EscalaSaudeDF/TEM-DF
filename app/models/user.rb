@@ -3,9 +3,7 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 
-	has_attached_file :document, styles: {thumbnail: "60x60#"}
-
-	attr_accessor :password, :password_confirmation
+	attr_accessor :password, :password_confirmation, :document
 	before_save :encrypt_password
 
 	validates :username, uniqueness: true, presence: true
