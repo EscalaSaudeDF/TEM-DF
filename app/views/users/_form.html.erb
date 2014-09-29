@@ -1,6 +1,6 @@
 <!-- user's register form-->
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
+<% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -12,6 +12,22 @@
     </div>
   <% end %>
 
+  <div>
+    <%= f.label :account_status, "Sou usuário do sistema público de saúde" %>
+    <%= f.radio_button :account_status, true, :checked => true, :value => true %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :account_status, "Sou médico do sistema público de saúde" %>
+    <%= f.radio_button :account_status, false, :value => false %>
+  </div>
+  <br>
+
+  <div>
+    <%= f.file_field :document %>
+  </div>
+  <br>
+  
   <div class="field">    
     <%= f.label :username %><br>
     <%= f.text_field :username %>
@@ -32,4 +48,3 @@
     <%= f.submit %>
   </div>
 <% end %>
-
