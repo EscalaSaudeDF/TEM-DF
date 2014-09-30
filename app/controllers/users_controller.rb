@@ -8,20 +8,24 @@ class UsersController < ApplicationController
 
   	def create
   		@user = User.new(user_params)
-      if @user.save
-          if @user.password == @user.password_confirmation
-              #@user.document = params [:user][:document]
-              upload params[:user][:document]
-              @user.save
-              TemdfMailer.welcome_email.deliver
-              redirect_to(action: "index")
-          else
-            render "new" 
-      end
+        if @user.save
+            if @user.password == @user.password_confirmation
+                if @user.account_status == false
+                    upload params[:user][:document]
+                    @user.save
+                    TemdfMailer.welcome_email.deliver
+                    redirect_to(action: "index")
+                else
+                    @user.save
+                    redirect_to(action: "index")
+                end
+            else
+                render "new" 
+            end
 
-      else
-        render "new"
-      end
+        else
+            render "new"
+        end
   	end
 
     def show
