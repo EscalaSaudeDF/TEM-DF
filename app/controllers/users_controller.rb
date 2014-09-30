@@ -48,7 +48,6 @@ class UsersController < ApplicationController
       
       else
         @user = User.find(params[:id])
-        params[:user][:password]= BCrypt::Password.create(params[:user][:password])
         @user.update (user_params)
         redirect_to(action: "index", id: @user)
       end
