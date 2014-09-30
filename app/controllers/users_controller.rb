@@ -1,35 +1,24 @@
 require 'bcrypt'
 
 class UsersController < ApplicationController
-  	def index
-      @users = User.all
-  		render "index"
+    def index
+        @users = User.all
   	end
 
   	def create
   		@user = User.new(user_params)
-        if @user.save
-            if @user.password == @user.password_confirmation
-                if @user.account_status == false
-                    upload params[:user][:document]
-                    @user.save
-                    TemdfMailer.welcome_email.deliver
-                    redirect_to(action: "index")
-                else
-                    @user.save
-                    redirect_to(action: "index")
-                end
-            else
-                render "new" 
-            end
-
+        if @user.password == @user.password_confirmation
+            @user.save
+            upload params[:user][:document]
+            
+            redirect_to root_path
         else
             render "new"
         end
   	end
 
     def show
-      @user = User.find(params[:id])
+        @user = User.find(params[:id])
     end
 
   	def new
@@ -37,21 +26,19 @@ class UsersController < ApplicationController
   	end
 
     def edit
-      @user = User.find(params[:id])
+        @user = User.find(params[:id])
     end
 
     def update
-      @user = User.new(user_params)
-      if @user.password != @user.password_confirmation
-        #@user.document = params [:user][:document]
-        render "edit"
-      
-      else
-        @user = User.find(params[:id])
-        params[:user][:password]= BCrypt::Password.create(params[:user][:password])
-        @user.update (user_params)
-        redirect_to(action: "index", id: @user)
-      end
+        @user = User.new(user_params)
+        if @user.password == @user.password_confirmation
+            @user = User.find(params[:id])
+            @user.update (user_params)
+
+            redirect_to root_path
+        else
+            render "edit"
+        end
     end
 
     private
@@ -60,13 +47,12 @@ class UsersController < ApplicationController
         end
 
         def upload(uploaded_io)
-          if uploaded_io
-            File.open(Rails.root.join('public', 'uploads', 'arquivo_medico'), 'wb') do |file|
-              file.write(uploaded_io.read)
+            if uploaded_io
+                File.open(Rails.root.join('public', 'uploads', 'arquivo_medico'), 'wb') do |file| 
+                    file.write(uploaded_io.read)
+                end
+                # send file to temdf email
+                TemdfMailer.welcome_email.deliver
             end
-          end
         end
-
-
-
 end

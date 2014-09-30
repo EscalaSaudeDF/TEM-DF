@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
+  get 'sessions/index'
   get "log_out" => "sessions#destroy", :as => "log_out"
 
   get 'users/index'
