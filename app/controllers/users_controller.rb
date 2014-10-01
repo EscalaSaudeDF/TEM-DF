@@ -8,11 +8,14 @@ class UsersController < ApplicationController
   	def create
   		@user = User.new(user_params)
         if @user.password == @user.password_confirmation
-            @user.save
-            upload params[:user][:document]
-            
-            redirect_to root_path
+            if @user.save
+                upload params[:user][:document]
+                redirect_to root_path
+            else
+                render "new"
+            end
         else
+            flash.now.alert = "Senhas não conferem!"
             render "new"
         end
   	end
@@ -33,12 +36,16 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.password == @user.password_confirmation
             @user = User.find(params[:id])
-            @user.update (user_params)
-
-            redirect_to root_path
+            
+            if @user.update_attribute(:username, params[:user][:username]) and 
+                @user.update_attribute(:email, params[:user][:email])
+                redirect_to root_path
+            else
+                render "edit"
+            end
         else
-            redirect_to action: "edit"
-
+            flash.now.alert = "Senhas não conferem!"
+            render "edit"
         end
     end
 
