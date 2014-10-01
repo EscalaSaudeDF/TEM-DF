@@ -1,14 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>TEMDf</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Trânsparencia em Escalas Médicas</title>
+
+    <%= favicon_link_tag(source='logo.ico', options={}) %>
+
+    <%= stylesheet_link_tag "css/bootstrap.min", "css/plugins/metisMenu/metisMenu.min" %>
+    <%= stylesheet_link_tag  "css/sb-admin-2", "font-awesome-4.1.0/css/font-awesome.min" %>
+    <%= stylesheet_link_tag "css/plugins/layout" %>
+
+
 </head>
+
 <body>
 
-<%= yield %>
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="home#index"><%= image_tag "logo_navbar.png" %></a>
+            </div>
+            <!-- /.navbar-header -->
+            
+            <ul class="title">
+                Transparência em Escalas Médicas do DF
+            </ul>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <div class="input-group custom-search-form">
+                                    <label>Medico</label>
+                                    <input class="form-control">
+                                </div>
+                                <div class="input-group custom-search-form">
+                                    <label>Região</label>
+                                    <input class="form-control">
+                                </div>
+                                <div class="input-group custom-search-form">
+                                    <label>Horario</label>
+                                    <input class="form-control">
+                                </div>
+                                <div>
+                                    <br>
+                                    <button type="submit" class="btn btn-default">Confirmar</button>
+                                    <button type="reset" class="btn btn-default">Reset</button>
+                                </div>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                   <%= yield %>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <%= javascript_include_tag "js/jquery-1.11.0", "js/bootstrap.min" %>
+    <%= javascript_include_tag "js/plugins/metisMenu/metisMenu.min", "js/sb-admin-2" %>
+    <%= javascript_include_tag "js/plugins/morris/raphael.min", "js/plugins/morris/morris.min", "js/plugins/morris/morris-data" %>
 
 </body>
+
 </html>
+
