@@ -37,7 +37,8 @@ class UsersController < ApplicationController
 
             redirect_to root_path
         else
-            render "edit"
+            redirect_to action: "edit"
+
         end
     end
 

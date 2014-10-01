@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/new'
 
-  post '/user/:id', to: 'users#show'
-  post '/user/:id', to: 'users#edit'
+  post '/users/:id', to: 'users#show'
+  get '/users/:id/edit', to: 'users#edit'
 
-  patch '/user/:id', to: 'users#update'
+  patch '/users/:id', to: 'users#update'
 
   root 'index#index'
 
