@@ -1,0 +1,24 @@
+{
+  "MiniTest": {
+    "coverage": {
+      "/home/wesley/TEM-DF/app/models/medic.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/home/wesley/TEM-DF/app/models/work_unit.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/wesley/TEM-DF/app/models/schedule.rb": [
+        1,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1412167998
+  }
+}

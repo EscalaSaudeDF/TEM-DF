@@ -1,7 +1,8 @@
 require 'test_helper'
+require 'schedule'
+require 'date'
 
 class ParserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+	fixtures :schedules
+
 end

@@ -5,9 +5,9 @@ require 'schedule'
 require 'work_unit'
 
 class Parser < ActiveRecord::Base
-	
-	def save_parse()
-		CSV.foreach('csv/escalas.csv', :col_sep => ';', :headers =>true ) do |row|
+	file = 'csv/escalas.csv'
+	def save_parse(file)
+		CSV.foreach(file, :col_sep => ';', :headers =>true ) do |row|
 
 			start_date = DateTime.parse(row["	Data de Inicio da Escala"] + " " + row["	Horario de Entrada"])
 

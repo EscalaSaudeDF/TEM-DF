@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  in: 2014-09-13
-  out: 2014-09-13
+  in: 2014-09-13 00:00:00
+  out: 2014-09-13 00:00:00
 
 two:
   in: 2014-09-13
