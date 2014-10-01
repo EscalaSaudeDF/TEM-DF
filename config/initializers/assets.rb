@@ -15,6 +15,7 @@ Rails.application.config.assets.precompile += %w( js/plugins/metisMenu/metisMenu
 Rails.application.config.assets.precompile += %w( js/plugins/morris/raphael.min.js )
 Rails.application.config.assets.precompile += %w( js/plugins/morris/morris.min.js )
 Rails.application.config.assets.precompile += %w( js/plugins/morris/morris-data.js )
+Rails.application.config.assets.precompile += %w( js/sb-admin-2.js )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
