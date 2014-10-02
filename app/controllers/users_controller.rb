@@ -37,8 +37,7 @@ class UsersController < ApplicationController
         if @user.password == @user.password_confirmation
             @user = User.find(params[:id])
             
-            if @user.update_attribute(:username, params[:user][:username]) and 
-                @user.update_attribute(:email, params[:user][:email])
+            if @user.update_attribute(:username, params[:user][:username]) and @user.update_attribute(:email, params[:user][:email])
                 redirect_to root_path
             else
                 render "edit"
