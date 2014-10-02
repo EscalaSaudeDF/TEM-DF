@@ -15,7 +15,6 @@ class UsersController < ApplicationController
                 render "new"
             end
         else
-            flash.now.alert = "Senhas não conferem!"
             render "new"
         end
   	end
@@ -43,8 +42,18 @@ class UsersController < ApplicationController
                 render "edit"
             end
         else
-            flash.now.alert = "Senhas não conferem!"
             render "edit"
+        end
+    end
+
+    def desactivate
+        @user = User.find_by_id(session[:remember_token])
+
+         if @user
+            @user.update_attribute(:account_status, false)
+            redirect_to log_out_path
+        else
+            redirect_to root_path
         end
     end
 

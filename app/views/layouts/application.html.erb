@@ -8,10 +8,13 @@
 </head>
 <body>
 
+<%= link_to "Home", root_path %>
+
 <div id="user_nav">
 	<% if current_user %>
 	    Logged in as <%= current_user.username %>
 	    <%= link_to "Sair", log_out_path %>
+	    <%= link_to "Desativar conta", desactivate_account_path %>
 	    
 	<% else %>
 		<%= link_to "Entrar", login_path %>

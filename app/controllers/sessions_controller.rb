@@ -1,23 +1,23 @@
 class SessionsController < ApplicationController
-    def index
+    def new
     end
 
     def create
         user = User.authenticate(params[:username], params[:password])
 
-        if user
+        if user && user.account_status == true
             session[:remember_token] = user.id
             session[:user_id] = user.id
-            redirect_to root_path, :notice => "Welcome... we miss you! :D"
+            redirect_to root_path, :notice => "Bemvindo ao TEM-DF! :D"
         else
             flash.now.alert = "Usuario ou senha invalidos"
-            render "index"
+            render "new"
         end
     end
 
     def destroy
         session[:remember_token] = nil
         session[:user_id] = nil
-        redirect_to root_path, :notice => "Bye! Come back soon! :)"
+        redirect_to root_path, :notice => "Tchau! Volte sempre!:)"
     end
 end

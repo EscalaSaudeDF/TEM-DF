@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  get "login" => "sessions#index", :as => "login"
+  get "login" => "sessions#new", :as => "login"
   get "log_out" => "sessions#destroy", :as => "log_out"
+  get "desactivate_account" => "users#desactivate", :as => "desactivate_account"
 
   get 'users/index'
   get 'users/new'
