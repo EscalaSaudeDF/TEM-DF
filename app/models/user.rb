@@ -3,13 +3,14 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 
-	attr_accessor :password, :password_confirmation, :document
+	attr_accessor :password, :password_confirmation, :new_password, :document
 	before_save :encrypt_password
 
 	validates :username, uniqueness: true, presence: true
 	validates :email, uniqueness: true, presence: true, email: true
 	validates :password, presence: true
 	validates :password_confirmation, presence: true
+	validates :new_password, presence: true
 
 	def self.authenticate(username, password)
 		user = find_by_username(username)

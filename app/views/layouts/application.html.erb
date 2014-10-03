@@ -14,7 +14,7 @@
 	<% if current_user %>
 	    Logged in as <%= current_user.username %>
 	    <%= link_to "Sair", log_out_path %>
-	    <%= link_to "Desativar conta", desactivate_account_path %>
+	    <%= link_to "Editar", edit_user_path(session[:remember_token]) %>
 	    
 	<% else %>
 		<%= link_to "Entrar", login_path %>

@@ -28,13 +28,13 @@ class UsersController < ApplicationController
   	end
 
     def edit
-        @user = User.find(params[:id])
+        @user = User.find_by_id(session[:remember_token])
     end
 
     def update
         @user = User.new(user_params)
         if @user.password == @user.password_confirmation
-            @user = User.find(params[:id])
+            @user = User.find_by_id(session[:remember_token])
             
             if @user.update_attribute(:username, params[:user][:username]) and @user.update_attribute(:email, params[:user][:email])
                 redirect_to root_path
