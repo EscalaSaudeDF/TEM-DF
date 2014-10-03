@@ -70,23 +70,33 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <div class="input-group custom-search-form">
-                                    <label>Medico</label>
-                                    <input class="form-control">
-                                </div>
-                                <div class="input-group custom-search-form">
-                                    <label>Região</label>
-                                    <input class="form-control">
-                                </div>
-                                <div class="input-group custom-search-form">
-                                    <label>Horario</label>
-                                    <input class="form-control">
-                                </div>
-                                <div>
-                                    <br>
-                                    <button type="submit" class="btn btn-default">Confirmar</button>
-                                    <button type="reset" class="btn btn-default">Reset</button>
-                                </div>
+                                <%= form_tag do %> 
+                                    <div class="input-group custom-search-form">
+                                    <label>Especialidade</label>
+                                    <input list="speciality" name="list_specility" class="form-control">
+                                        <datalist id="speciality">
+                                            <% @speciality.each do |speciality| %>
+                                                <option value="<%= speciality %>">
+                                            <% end %>
+                                        </datalist>
+                                    </div>
+
+                                    <div class="input-group custom-search-form">
+                                    <label> Região </label>
+                                    <input list="work_unit_name" name="list_work_unit_name" class="form-control">
+                                        <datalist id="work_unit_name">
+                                            <% @work_unit_name.each do |work_unit_name| %>
+                                                <option value="<%= work_unit_name %>">
+                                            <% end %>
+                                        </datalist>
+                                    </div>
+
+                                    <div>
+                                        <br>
+                                        <button type="submit" class="btn btn-default">Confirmar</button>
+                                        <button type="reset" class="btn btn-default">Reset</button>
+                                    </div>
+                                <%end%>
                             </div>
                             <!-- /input-group -->
                         </li>
