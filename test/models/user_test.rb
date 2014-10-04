@@ -1,6 +1,4 @@
 require 'test_helper'
-require 'simplecov'
-SimpleCov.start 'rails'
 
 class UserTest < ActiveSupport::TestCase
 	test "should not save user without username" do
