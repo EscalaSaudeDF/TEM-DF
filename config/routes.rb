@@ -20,9 +20,6 @@ Rails.application.routes.draw do
   patch '/users/:id', to: 'users#update'
 
   resources :home
-
-  root 'index#index'
-
   resources :users
   resources :sessions
 
