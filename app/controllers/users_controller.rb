@@ -31,18 +31,30 @@ class UsersController < ApplicationController
         @user = User.find_by_id(session[:remember_token])
     end
 
+    def edit_password
+        @user = User.find_by_id(session[:remember_token]) 
+    end
+
     def update
-        @user = User.new(user_params)
-        if @user.password == @user.password_confirmation
-            @user = User.find_by_id(session[:remember_token])
-            
-            if @user.update_attribute(:username, params[:user][:username]) and @user.update_attribute(:email, params[:user][:email])
-                redirect_to root_path
-            else
-                render "edit"
-            end
+        @user = User.find_by_id(session[:remember_token])
+        
+        if @user
+            @user.update_attribute(:username, params[:user][:username]) 
+            @user.update_attribute(:email, params[:user][:email])
+            redirect_to root_path
         else
             render "edit"
+        end
+    end
+
+    def updatePassword
+        @user = User.find_by_id(session[:remember_token])
+
+        if @user
+            @user.update_attribute(:password, params[:user][:password])
+            redirect_to login_path
+        else
+            redirect_to edit_password_path
         end
     end
 

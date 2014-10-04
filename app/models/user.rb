@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 	validates :email, uniqueness: true, presence: true, email: true
 	validates :password, presence: true
 	validates :password_confirmation, presence: true
-	validates :new_password, presence: true
+	validates :new_password, presence: true, :on => [:updatePassword]
 
 	def self.authenticate(username, password)
 		user = find_by_username(username)
