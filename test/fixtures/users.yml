@@ -3,11 +3,9 @@
 one:
   username: MyString
   email: MyString
-  password: MyString
-  documentation: MyString
+  password_hash: MyString
 
 two:
   username: MyString
   email: MyString
-  password: MyString
-  documentation: MyString
+  password_hash: MyString
