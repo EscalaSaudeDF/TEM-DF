@@ -1,7 +1,12 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  	test "should get index" do
+  	
+    def setup
+      @user = users(:one)
+    end
+
+    test "should get index" do
   		get :index
     	assert_response :success
     	assert_not_nil assigns(:users)
@@ -23,6 +28,13 @@ class UsersControllerTest < ActionController::TestCase
 
     	assert_redirected_to root_path(assigns(:user))
   	end
+
+    test "should destroy user" do
+      assert_difference('User.count', -1) do
+        delete :destroy, id: @user.id
+      end
+      assert_redirected_to(:controller => "users", :action => "index")
+    end 
 
  	#test "should show user" do
   	#	get :show, id: @user
