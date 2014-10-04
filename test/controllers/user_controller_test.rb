@@ -12,10 +12,6 @@ class UsersControllerTest < ActionController::TestCase
     	assert_not_nil assigns(:users)
   	end
 
-  	#tem algo errado
-  	#test "should password is equals password_confirmation" do
-  	#end
-
   	test "should get new" do
   		get :new
   		assert_response :success
@@ -29,6 +25,19 @@ class UsersControllerTest < ActionController::TestCase
     	assert_redirected_to root_path(assigns(:user))
   	end
 
+      #linha 15
+    test "shouldn't create user" do
+
+    end
+
+    test "shouldn't create user if passwords are different" do
+        assert_no_difference('User.count') do
+            post :create, user: {username: "test", email: "test@test.com", password: "test1", password_confirmation: "test" }
+        end
+
+        assert_template :new
+    end
+
     test "should destroy user" do
       assert_difference('User.count', -1) do
         delete :destroy, id: @user.id
@@ -40,4 +49,9 @@ class UsersControllerTest < ActionController::TestCase
   	#	get :show, id: @user
   	#	assert_response :success
   	#end
+
+    #test "should upload a pdf" do
+     #   @user = fixture_file_upload('files/arquivo_medico.pdf', 'application/pdf')
+      #  assert_response :success
+    #end
 end
