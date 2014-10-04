@@ -1,10 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
-  name_work_unit: DRS - GAMA
+  name: DRS - GAMA
   address: 
 
 two:
-  name_work_unit: MyString
+  name: MyString
   address: 

@@ -17,7 +17,7 @@ class Parser < ActiveRecord::Base
 			
 			formatted_end_date = end_date.strftime('%a %b %d %H:%M')
                 	
-        	work_unit_record = WorkUnit.find_or_create_by(:name_work_unit => row[0])
+        	work_unit_record = WorkUnit.find_or_create_by(:name => row[0])
 
 	    	medic_record = work_unit_record.medics.find_or_create_by(:name => row["	Nome do Servidor"],
 				:registry => row["	Matricula Funcional"],

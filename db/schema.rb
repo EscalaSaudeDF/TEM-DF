@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140920180724) do
   end
 
   create_table "work_units", force: true do |t|
-    t.string   "name_work_unit"
+    t.string   "name"
     t.string   "address"
     t.string   "city"
     t.datetime "created_at"
