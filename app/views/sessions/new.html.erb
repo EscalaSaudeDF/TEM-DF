@@ -1,17 +1,31 @@
-<h1>Log in</h1>
-
-<%= form_tag sessions_path do %>
-	<div class="field">
-		<%= label_tag :username %><br>
-		<%= text_field_tag :username, params[:username] %>
-	</div>
-
-	<div class="field">
-    	<%= label_tag :password %><br>
-    	<%= password_field_tag :password %>
-  	</div>
-
-  	  <div class="actions">
-    <%= submit_tag 'Entrar' %>
-  </div>
-<% end %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 login-grid">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+                        <%= form_tag sessions_path do %>
+                            <fieldset>
+                                <div class="form-group">
+                                  <%= text_field_tag :username, params[:username], placeholder: 'Nome do Usuário', class: 'form-control'%>
+                                </div>
+                                <div class="form-group">
+                                  <%= password_field_tag :password, params[:password], placeholder: 'Senha', class: 'form-control' %>
+                                   <!-- <input class="form-control" placeholder="Password" name="password" type="password" value=""> -->
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                    </label>
+                                </div>
+                                <!-- Change this to a button or input when using this as a form -->
+                                <%= submit_tag 'Entrar' , class: 'btn btn-lg btn-success btn-block' %>
+                            </fieldset>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
