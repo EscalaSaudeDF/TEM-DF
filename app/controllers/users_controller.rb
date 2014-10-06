@@ -65,7 +65,7 @@ class UsersController < ApplicationController
             redirect_to edit_password_path
         end
     end
-
+    
     def desactivate
         @user = User.find_by_id(session[:remember_token])
 
