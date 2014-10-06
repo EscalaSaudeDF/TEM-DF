@@ -48,11 +48,19 @@ class UsersController < ApplicationController
     end
 
     def updatePassword
-        @user = User.find_by_id(session[:remember_token])
+        @userSession = User.find_by_id(session[:remember_token])
+        @user = User.authenticate(@userSession.username, params[:user][:password])
 
         if @user
-            @user.update_attribute(:password, params[:user][:password])
-            redirect_to login_path
+            if params[:user][:password_confirmation] == params[:user][:new_password]
+                if @user.update_attribute(:password, params[:user][:new_password])
+                    redirect_to root_path
+                else
+                    redirect_to edit_password_path
+                end
+            else
+                redirect_to edit_password_path
+            end
         else
             redirect_to edit_password_path
         end
