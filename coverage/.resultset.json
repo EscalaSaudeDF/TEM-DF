@@ -17,19 +17,19 @@
         1,
         null,
         1,
-        0,
+        2,
         null,
-        0,
-        0,
+        2,
+        1,
         null,
         null,
         null,
         null,
         null,
         1,
-        4,
-        4,
-        4,
+        5,
+        5,
+        5,
         null,
         null,
         null
@@ -73,6 +73,28 @@
         1,
         2,
         2,
+        null,
+        null,
+        null
+      ],
+      "/home/karine/TEM-DF/app/controllers/index_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/karine/TEM-DF/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        6,
         null,
         null,
         null
@@ -175,28 +197,6 @@
         null,
         null
       ],
-      "/home/karine/TEM-DF/app/controllers/application_controller.rb": [
-        1,
-        null,
-        null,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null,
-        1,
-        6,
-        null,
-        null,
-        null
-      ],
-      "/home/karine/TEM-DF/app/controllers/index_controller.rb": [
-        1,
-        1,
-        null,
-        null
-      ],
       "/home/karine/TEM-DF/app/controllers/sessions_controller.rb": [
         1,
         1,
@@ -223,6 +223,6 @@
         null
       ]
     },
-    "timestamp": 1412618267
+    "timestamp": 1412618902
   }
 }

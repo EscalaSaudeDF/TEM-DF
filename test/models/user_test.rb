@@ -30,4 +30,11 @@ class UserTest < ActiveSupport::TestCase
 		assert_not @user2.save
 	end
 
+	test "should authenticate user" do
+		@user = User.create(username: "test", email: "test@test.com", password: "test", password_confirmation: "test")
+		assert User.authenticate("test", "test")
+		assert_not User.authenticate("test1", "test")
+	end
+
+
 end
