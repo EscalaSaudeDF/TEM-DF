@@ -19,10 +19,6 @@ class UsersController < ApplicationController
         end
   	end
 
-    def show
-        @user = User.find(params[:id])
-    end
-
   	def new
   		@user = User.new
   	end
@@ -94,7 +90,7 @@ class UsersController < ApplicationController
                     file.write(uploaded_io.read)
                 end
                 # send file to temdf email
-                TemdfMailer.welcome_email.deliver
+                TemdfMailer.request_account.deliver
             end
         end
 end

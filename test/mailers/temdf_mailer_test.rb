@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class TemdfMailerTest < ActionMailer::TestCase
-	test "welcome mail" do
-		email = TemdfMailer.welcome_email.deliver
+	test "request_account" do
+		email = TemdfMailer.request_account.deliver
     	assert_not ActionMailer::Base.deliveries.empty?
 		assert_equal ['temdf.unb@gmail.com'], email.from
 		assert_equal ['temdf.unb@gmail.com'], email.to
