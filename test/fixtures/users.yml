@@ -1,5 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-Roberto:
+roberto:
   username: Roberto	
   email: Roberto@gmail.com
   #password: 1234
@@ -7,7 +7,7 @@ Roberto:
   password_salt: $2a$10$mgeAtbsT6u/9hrcGhhipOe
   account_status: 1
 
-Lorena:
+lorena:
   username: Lorena
   email: Lorena12@gmail.com
   #password: 9090

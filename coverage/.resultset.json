@@ -17,10 +17,10 @@
         1,
         null,
         1,
-        2,
+        4,
         null,
+        4,
         2,
-        1,
         null,
         null,
         null,
@@ -64,17 +64,6 @@
       ],
       "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/helpers/user_helper.rb": [
         1,
-        null
-      ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/mailers/temdf_mailer.rb": [
-        1,
-        1,
-        null,
-        1,
-        2,
-        2,
-        null,
-        null,
         null
       ],
       "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/controllers/users_controller.rb": [
@@ -186,7 +175,18 @@
         1,
         null,
         1,
-        6,
+        7,
+        null,
+        null,
+        null
+      ],
+      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/mailers/temdf_mailer.rb": [
+        1,
+        1,
+        null,
+        1,
+        2,
+        2,
         null,
         null,
         null
@@ -197,22 +197,22 @@
         null,
         null,
         1,
-        0,
+        2,
         null,
-        0,
-        0,
-        0,
-        0,
+        2,
+        1,
+        1,
+        1,
         null,
-        0,
-        0,
+        1,
+        1,
         null,
         null,
         null,
         1,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
         null,
         null
       ],
@@ -223,6 +223,6 @@
         null
       ]
     },
-    "timestamp": 1412637373
+    "timestamp": 1412719058
   }
 }
