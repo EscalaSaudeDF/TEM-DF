@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
+	fixtures :users
+	
 	def setup
 		@user = users(:roberto)
 	end

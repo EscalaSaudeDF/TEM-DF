@@ -26,13 +26,15 @@ ActiveRecord::Schema.define(version: 20140913125322) do
     t.integer  "registry"
     t.string   "speciality"
     t.string   "department"
+    t.integer  "work_unit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "schedules", force: true do |t|
-    t.date     "in"
-    t.date     "out"
+    t.datetime "in"
+    t.datetime "out"
+    t.integer  "medic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

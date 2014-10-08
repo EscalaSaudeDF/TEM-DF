@@ -4,7 +4,6 @@ class CreateWorkUnits < ActiveRecord::Migration
       t.string :name
       t.string :address
       t.string :city
-
       t.timestamps
     end
   end

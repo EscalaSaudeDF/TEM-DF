@@ -15,4 +15,7 @@
 /log/*.log
 /tmp
 *~
+*.lock
 /coverage/
+.~*
+Gemfile.lock

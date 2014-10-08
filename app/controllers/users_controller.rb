@@ -67,7 +67,7 @@ class UsersController < ApplicationController
 
          if @user
             @user.update_attribute(:account_status, false)
-            redirect_to log_out_path
+            redirect_to logout_path
         else
             redirect_to root_path
         end
