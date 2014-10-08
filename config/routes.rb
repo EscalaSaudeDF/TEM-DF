@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get "/users/:id/edit_password" => "users#edit_password", :as => "edit_password"
-  patch "/users/:id/edit_password/updatePassword", to: "users#updatePassword"
+  patch "/users/:id/edit_password/update_password", to: "users#update_password"
   
   get "login" => "sessions#new", :as => "login"
   get "log_out" => "sessions#destroy", :as => "log_out"

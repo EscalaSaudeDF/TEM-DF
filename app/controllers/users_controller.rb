@@ -35,30 +35,26 @@ class UsersController < ApplicationController
         @user = User.find_by_id(session[:remember_token])
         
         if @user
-            @user.update_attribute(:username, params[:user][:username]) 
-            @user.update_attribute(:email, params[:user][:email])
+            @user.update_attributes(username: params[:user][:username], email: params[:user][:email])
             redirect_to root_path
         else
             render "edit"
         end
     end
 
-    def updatePassword
-        @userSession = User.find_by_id(session[:remember_token])
-        @user = User.authenticate(@userSession.username, params[:user][:password])
+    def update_password
+      @userSession = User.find_by_id(session[:remember_token])
+      @user = User.authenticate(@userSession.username, params[:user][:password])
 
         if @user
-            if params[:user][:password_confirmation] == params[:user][:new_password]
-                if @user.update_attribute(:password, params[:user][:new_password])
-                    redirect_to root_path
-                else
-                    redirect_to edit_password_path
-                end
+            if params[:user][:password_confirmation] == params[:user][:new_password] && !params[:user][:new_password].blank?
+              @user.update_attributes(password: params[:user][:new_password])
+              redirect_to root_path, notice: 'Alteracao feita com sucesso'
             else
-                redirect_to edit_password_path
+              redirect_to edit_password_path, notice: 'Confirmacao nao confere ou campo vazio'
             end
         else
-            redirect_to edit_password_path
+          redirect_to edit_password_path
         end
     end
     
