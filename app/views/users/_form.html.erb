@@ -13,15 +13,14 @@
   <% end %>
 
   <div>
-    <%= f.label :account_status, "Sou usuário do sistema público de saúde" %>
+    <%= f.label :account_status, "Sou usuário do sistema público de saúde"%>
     <%= f.radio_button :account_status, true, :checked => true, :value => true %>
-  </div>
-  <br>
-  <div>
+    <br>
     <%= f.label :account_status, "Sou médico do sistema público de saúde" %>
-    <%= f.radio_button :account_status, false, :value => false %>
+    <%= f.radio_button :account_status, false, :checked => false, :value => false %>
   </div>
   <br>
+  
 
   <div>
     <%= f.file_field :document, accept: 'application/pdf'%>

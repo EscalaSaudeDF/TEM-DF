@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   
   root 'home#index'
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  get "/users/:id/edit_password" => "users#edit_password", :as => "edit_password"
-  patch "/users/:id/edit_password/updatePassword", to: "users#updatePassword"
+  
+  get "edit_password" => "users#edit_password", :as => "edit_password"
+  get "users/updatePassword" => "users#updatePassword"
   
   get "login" => "sessions#new", :as => "login"
   get "logout" => "sessions#destroy", :as => "logout"

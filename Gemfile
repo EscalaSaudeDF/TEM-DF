@@ -32,6 +32,8 @@ gem 'bootstrap-sass', '~> 3.2.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'simplecov', :require => false, :group => :test
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'metric_fu', '~> 4.11.1'
 
 # Use unicorn as the app server
 # gem 'unicorn'
