@@ -8,6 +8,26 @@
 </head>
 <body>
 
+<%= link_to "Home", root_path %>
+
+<div id="user_nav">
+	<% if current_user %>
+	    Logado como <%= current_user.username %>
+	    <%= link_to "Sair", log_out_path %>
+	    <%= link_to "Editar", edit_user_path(session[:remember_token]) %>
+	    
+	<% else %>
+		<%= link_to "Entrar", login_path %>
+		<%= link_to "Cadastrar", new_user_path %>
+
+	<% end %>
+
+</div>
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+
 <%= yield %>
 
 </body>
