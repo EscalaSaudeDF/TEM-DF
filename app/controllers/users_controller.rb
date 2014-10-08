@@ -69,7 +69,14 @@ class UsersController < ApplicationController
             @user.update_attribute(:account_status, false)
             redirect_to log_out_path
         else
+          @user = User.find_by_id(params[:id])
+
+          if @user
+            @user.update_attribute(:account_status, false)
+            redirect_to(action: "index")    
+          else
             redirect_to root_path
+          end
         end
     end
 

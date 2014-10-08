@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "desactivate_account" => "users#desactivate", :as => "desactivate_account"
   get "/users/:id/reactivate_account" => "users#reactivate", :as => "reactivate_account"
+  get "/users/:id/desactivate_account" => "users#desactivate", :as => "desactivate_account_admin"
   
   root 'index#index'
 

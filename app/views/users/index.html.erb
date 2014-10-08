@@ -17,6 +17,8 @@
 			
 			<% if user.account_status == false %>
 			<td> <%= link_to 'Reativar' , reactivate_account_path(user) %> </td>
+			<% else %>
+			<td> <%= link_to 'Desativar' , desactivate_account_admin_path(user) %> </td>
 			<% end %>
 
 		</tr>
