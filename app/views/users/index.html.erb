@@ -13,8 +13,12 @@
 			<td><%= user.username %></td>
 			<td><%= user.email %></td>
 			<td><%= user.account_status %></td>
-			<td> <%= link_to 'Editar' , edit_user_path(user) %> </td>
 			<td><%= link_to 'Excluir', user, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+			
+			<% if user.account_status == false %>
+			<td> <%= link_to 'Reativar' , reactivate_account_path(user) %> </td>
+			<% end %>
+
 		</tr>
 
 	<% end %>

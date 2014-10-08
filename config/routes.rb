@@ -6,16 +6,8 @@ Rails.application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "desactivate_account" => "users#desactivate", :as => "desactivate_account"
+  get "/users/:id/reactivate_account" => "users#reactivate", :as => "reactivate_account"
   
-  get 'users/index'
-  get 'users/new'
-
-  post '/users/:id', to: 'users#show'
-  get '/users/:id/edit', to: 'users#edit'
-
-  patch '/users/:id', to: 'users#update'
-
-
   root 'index#index'
 
   resources :users do

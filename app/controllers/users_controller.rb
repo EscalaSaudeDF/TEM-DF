@@ -73,6 +73,16 @@ class UsersController < ApplicationController
         end
     end
 
+     def reactivate
+      @user = User.find_by_id(params[:id])
+      if @user
+        @user.update_attribute(:account_status, true)
+        redirect_to(action: "index")
+      else
+        redirect_to root_path
+      end
+    end
+
     def destroy
          @user = User.find(params[:id])
          @user.destroy
