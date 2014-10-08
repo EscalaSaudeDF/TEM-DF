@@ -29,8 +29,8 @@ class ApplicationController < ActionController::Base
 		@work_unit_name = Array.new
 
 		@work_unit.each do |work_unit|
-			unless @work_unit_name.include?(work_unit.name_work_unit)
-				@work_unit_name.push(work_unit.name_work_unit)
+			unless @work_unit_name.include?(work_unit.name)
+				@work_unit_name.push(work_unit.name)
 			end
 		end
 	end
