@@ -43,7 +43,7 @@
         null,
         null,
         1,
-        5,
+        7,
         5,
         5,
         null,
@@ -107,23 +107,6 @@
         null,
         null
       ],
-      "/home/murilo/TEM-DF/app/mailers/temdf_mailer.rb": [
-        1,
-        1,
-        null,
-        1,
-        2,
-        2,
-        null,
-        null,
-        null
-      ],
-      "/home/murilo/TEM-DF/app/controllers/index_controller.rb": [
-        1,
-        1,
-        null,
-        null
-      ],
       "/home/murilo/TEM-DF/app/controllers/users_controller.rb": [
         1,
         null,
@@ -159,12 +142,12 @@
         null,
         null,
         1,
-        0,
+        1,
         null,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
         null,
         0,
         null,
@@ -221,8 +204,25 @@
         null,
         null,
         null
+      ],
+      "/home/murilo/TEM-DF/app/mailers/temdf_mailer.rb": [
+        1,
+        1,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null,
+        null
+      ],
+      "/home/murilo/TEM-DF/app/controllers/index_controller.rb": [
+        1,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1412776866
+    "timestamp": 1412779421
   }
 }

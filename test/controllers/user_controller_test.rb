@@ -63,5 +63,15 @@ class UsersControllerTest < ActionController::TestCase
         get :edit , id: session[:remember_token]
         assert_response :success
     end 
+
+   test "should update user" do
+        
+        session[:remember_token] = @user.id
+        put :update, id: session[:remember_token], :user => {:username => "Joao" , :email => "joao@gmail.com"}
+        assert_equal "Joao", assigns(:user).username  
+
+    end 
+
+
 end
 
