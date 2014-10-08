@@ -51,6 +51,13 @@ class UsersControllerTest < ActionController::TestCase
         assert_redirected_to root_path(assigns(:user))
     end
 
+    test "should edit user's password" do
+        session[:remember_token] = @user.id
+
+        get :edit_password, id: session[:remember_token]
+        assert_response :success
+    end
+
     test "should destroy user" do
         assert_difference('User.count', -1) do
             delete :destroy, id: @user.id
