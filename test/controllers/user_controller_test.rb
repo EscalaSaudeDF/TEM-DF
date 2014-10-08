@@ -57,4 +57,11 @@ class UsersControllerTest < ActionController::TestCase
         end
         assert_redirected_to(:controller => "users", :action => "index")
     end 
+
+    test "should edit user" do
+        session[:remember_token] = @user.id
+        get :edit , id: session[:remember_token]
+        assert_response :success
+    end 
 end
+

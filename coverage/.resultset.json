@@ -1,7 +1,23 @@
 {
   "MiniTest": {
     "coverage": {
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/models/user.rb": [
+      "/home/murilo/TEM-DF/app/models/work_unit.rb": [
+        1,
+        null
+      ],
+      "/home/murilo/TEM-DF/app/models/feedback.rb": [
+        1,
+        null
+      ],
+      "/home/murilo/TEM-DF/app/models/medic.rb": [
+        1,
+        null
+      ],
+      "/home/murilo/TEM-DF/app/models/schedule.rb": [
+        1,
+        null
+      ],
+      "/home/murilo/TEM-DF/app/models/user.rb": [
         1,
         1,
         null,
@@ -34,39 +50,81 @@
         null,
         null
       ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/models/feedback.rb": [
+      "/home/murilo/TEM-DF/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/models/schedule.rb": [
+      "/home/murilo/TEM-DF/app/helpers/index_helper.rb": [
         1,
         null
       ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/models/work_unit.rb": [
+      "/home/murilo/TEM-DF/app/helpers/sessions_helper.rb": [
         1,
         null
       ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/models/medic.rb": [
+      "/home/murilo/TEM-DF/app/helpers/user_helper.rb": [
         1,
         null
       ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/helpers/application_helper.rb": [
+      "/home/murilo/TEM-DF/app/controllers/sessions_controller.rb": [
         1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        null,
+        2,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
         null
       ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/helpers/index_helper.rb": [
+      "/home/murilo/TEM-DF/app/controllers/application_controller.rb": [
         1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        8,
+        null,
+        null,
         null
       ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/helpers/sessions_helper.rb": [
+      "/home/murilo/TEM-DF/app/mailers/temdf_mailer.rb": [
         1,
+        1,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null,
         null
       ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/helpers/user_helper.rb": [
+      "/home/murilo/TEM-DF/app/controllers/index_controller.rb": [
         1,
+        1,
+        null,
         null
       ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/controllers/users_controller.rb": [
+      "/home/murilo/TEM-DF/app/controllers/users_controller.rb": [
         1,
         null,
         1,
@@ -93,7 +151,7 @@
         null,
         null,
         1,
-        0,
+        1,
         null,
         null,
         1,
@@ -163,66 +221,8 @@
         null,
         null,
         null
-      ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/controllers/application_controller.rb": [
-        1,
-        null,
-        null,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null,
-        1,
-        7,
-        null,
-        null,
-        null
-      ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/mailers/temdf_mailer.rb": [
-        1,
-        1,
-        null,
-        1,
-        2,
-        2,
-        null,
-        null,
-        null
-      ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/controllers/sessions_controller.rb": [
-        1,
-        1,
-        null,
-        null,
-        1,
-        2,
-        null,
-        2,
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        null,
-        null,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        null
-      ],
-      "/home/lucas/Dropbox/Pessoal/UNB/4º Semestre/TEM-DF/MainDir/TEM-DF/app/controllers/index_controller.rb": [
-        1,
-        1,
-        null,
-        null
       ]
     },
-    "timestamp": 1412719058
+    "timestamp": 1412776866
   }
 }
