@@ -53,9 +53,9 @@ class UsersController < ApplicationController
 
     def update_password
       @userSession = User.find_by_id(session[:remember_token])
-      @user = User.authenticate(@userSession.username, params[:user][:password])
-
-        if @user
+      
+        if @userSession
+            @user = User.authenticate(@userSession.username, params[:user][:password])
             if params[:user][:password_confirmation] == params[:user][:new_password] && !params[:user][:new_password].blank?
               @user.update_attribute(:password, params[:user][:new_password])
               redirect_to root_path, notice: 'Alteracao feita com sucesso'

@@ -16,6 +16,6 @@
 /tmp
 *~
 *.lock
-/coverage/
+/coverage/*
 .~*
 Gemfile.lock
