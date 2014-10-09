@@ -33,12 +33,17 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find_by_id(session[:remember_token])
-        
+
         if @user
-            @user.update_attributes(username: params[:user][:username], email: params[:user][:email])
-            redirect_to root_path
+            if User.find_by_username(params[:user][:username])
+                flash[:warning] = "Erro ao atualizar!"
+                render "edit" 
+            else 
+                @user.update_attribute(:username , params[:user][:username])
+                redirect_to root_path, notice: 'Usuario alterado!'
+            end
         else
-            render "edit"
+            redirect_to root_path
         end
     end
 
