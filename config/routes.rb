@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   get "desactivate_account" => "users#desactivate", :as => "desactivate_account"
   get "/users/:id/reactivate_account" => "users#reactivate", :as => "reactivate_account"
   get "/users/:id/desactivate_account" => "users#desactivate", :as => "desactivate_account_admin"
-  post "/parsers/upload", controller: 'parsers', action: 'upload'
+  post "/upload", controller: 'parsers', action: 'upload'
+
+  post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
+  #post "/users/:id/index", to: 'parsers#index'
   
   get 'users/index'
   get 'users/new'
