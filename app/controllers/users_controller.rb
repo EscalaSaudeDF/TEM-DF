@@ -35,16 +35,18 @@ class UsersController < ApplicationController
       @user = User.find_by_id(session[:remember_token])
 
         if @user
-            if User.find_by_username(params[:user][:username]) && @user != User.find_by_username(params[:user][:username])
-                flash[:warning] = "Nome ja existente"
+            user_name = User.find_by_username(params[:user][:username])
+            user_email = User.find_by_email(params[:user][:email])
+            if user_name && @user != user_name
+                flash[:warning] = "Nome já existente"
                 render "edit"
-            elsif User.find_by_email(params[:user][:email]) && @user != User.find_by_email(params[:user][:email])
-                flash[:warning] = "Email ja existente"
+            elsif user_email && @user != user_email
+                flash[:warning] = "Email já existente"
                 render "edit" 
             else 
                 @user.update_attribute(:username , params[:user][:username])
                 @user.update_attribute(:email , params[:user][:email])
-                redirect_to root_path, notice: 'Usuario alterado!'
+                redirect_to root_path, notice: 'Usuário alterado!'
             end
         else
             redirect_to root_path
@@ -56,11 +58,13 @@ class UsersController < ApplicationController
       
         if @userSession
             @user = User.authenticate(@userSession.username, params[:user][:password])
-            if params[:user][:password_confirmation] == params[:user][:new_password] && !params[:user][:new_password].blank?
-              @user.update_attribute(:password, params[:user][:new_password])
-              redirect_to root_path, notice: 'Alteracao feita com sucesso'
+            new_password = params[:user][:new_password]
+            
+            if params[:user][:password_confirmation] == new_password && !new_password.blank?
+              @user.update_attribute(:password, new_password)
+              redirect_to root_path, notice: 'Alteração feita com sucesso'
             else
-              redirect_to edit_password_path, notice: 'Confirmacao nao confere ou campo vazio'
+              redirect_to edit_password_path, notice: 'Confirmação nao confere ou campo vazio'
             end
         else
           redirect_to edit_password_path
