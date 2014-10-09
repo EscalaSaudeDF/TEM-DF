@@ -26,10 +26,10 @@ class UsersControllerTest < ActionController::TestCase
     	assert_redirected_to root_path(assigns(:user))
   	end
 
-      #linha 15
     test "shouldn't create user" do
         assert_no_difference('User.count') do
-            post :create, user: {username: "test", email: "test", password: "test", password_confirmation: "test"}
+            post :create, user: {username: "test", email: "test", 
+                password: "test", password_confirmation: "test"}
         end
 
         assert_template :new
@@ -130,7 +130,7 @@ class UsersControllerTest < ActionController::TestCase
     test "should desactivate user" do
         get :desactivate, id: @user.id
         assert_equal false, assigns(:user).account_status
-        assert_redirected_to(:controller => "users", :action => "index")
+        assert_redirected_to root_path
     end
 
     test "should desactivate user in the current session" do

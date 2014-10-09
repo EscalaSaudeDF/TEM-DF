@@ -35,17 +35,21 @@ class UsersController < ApplicationController
       @user = User.find_by_id(session[:remember_token])
 
         if @user
-            user_name = User.find_by_username(params[:user][:username])
-            user_email = User.find_by_email(params[:user][:email])
-            if user_name && @user != user_name
+            username = params[:user][:username]
+            email = params[:user][:email]
+
+            user_from_username = User.find_by_username(username)
+            user_from_email = User.find_by_email(email)
+
+            if user_from_username && @user != user_from_username
                 flash[:warning] = "Nome já existente"
                 render "edit"
-            elsif user_email && @user != user_email
+            elsif user_from_email && @user != user_from_email
                 flash[:warning] = "Email já existente"
                 render "edit" 
             else 
-                @user.update_attribute(:username , params[:user][:username])
-                @user.update_attribute(:email , params[:user][:email])
+                @user.update_attribute(:username , username)
+                @user.update_attribute(:email , email)
                 redirect_to root_path, notice: 'Usuário alterado!'
             end
         else
@@ -54,10 +58,10 @@ class UsersController < ApplicationController
     end
 
     def update_password
-      @userSession = User.find_by_id(session[:remember_token])
+      @user_session = User.find_by_id(session[:remember_token])
       
-        if @userSession
-            @user = User.authenticate(@userSession.username, params[:user][:password])
+        if @user_session
+            @user = User.authenticate(@user_session.username, params[:user][:password])
             new_password = params[:user][:new_password]
             
             if params[:user][:password_confirmation] == new_password && !new_password.blank?
@@ -74,7 +78,7 @@ class UsersController < ApplicationController
     def desactivate
         @user = User.find_by_id(session[:remember_token])
 
-         if @user
+        if @user
             @user.update_attribute(:account_status, false)
             redirect_to logout_path
         else
@@ -82,7 +86,7 @@ class UsersController < ApplicationController
 
           if @user
             @user.update_attribute(:account_status, false)
-            redirect_to(action: "index")    
+            redirect_to root_path
           else
             redirect_to root_path
           end

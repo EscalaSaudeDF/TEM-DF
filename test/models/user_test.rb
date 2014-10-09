@@ -31,7 +31,7 @@ class UserTest < ActiveSupport::TestCase
 	end
 
 	test "should authenticate user" do
-		@user = User.create(username: "test", email: "test@test.com", password: "test", password_confirmation: "test")
+		@user = User.create(account_status: true, username: "test", email: "test@test.com", password: "test", password_confirmation: "test")
 		assert User.authenticate("test", "test")
 		assert_not User.authenticate("test1", "test")
 	end
