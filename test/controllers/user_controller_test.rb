@@ -72,12 +72,21 @@ class UsersControllerTest < ActionController::TestCase
     end 
 
    test "should update user" do
-        
         session[:remember_token] = @user.id
-        put :update, id: session[:remember_token], :user => {:username => "Joao" , :email => "joao@gmail.com"}
+        put :update, id: session[:remember_token], :user => {:username => "Joao"}
         assert_equal "Joao", assigns(:user).username  
-
     end 
+
+    test "shouldn't update user" do
+        session[:remember_token] = @user.id
+        put :update, id: session[:remember_token], :user => {:username => "Roberto"}
+        assert_template :edit
+    end
+    
+    test "shouldn't update user without session" do
+        put :update, id: 0
+        assert_redirected_to root_path
+    end
 
     test "should reactivate user" do
         @user = users(:lorena) #uses lorena because her account_status is false
