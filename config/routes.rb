@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   
   root 'home#index'
+  match 'home', controller: 'home', action: 'index', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  match 'medics/index', controller: 'medics', action: 'index', via: 'get'
   
   get "edit_password" => "users#edit_password", :as => "edit_password"
   get "users/updatePassword" => "users#updatePassword"
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
 
   patch '/users/:id', to: 'users#update'
 
-  resources :home
+  #resources :home
   resources :users
   resources :sessions
 
