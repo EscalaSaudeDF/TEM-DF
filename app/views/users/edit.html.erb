@@ -3,6 +3,15 @@
 <%= link_to "Desativar conta", desactivate_account_path %>
 <%= link_to "Alterar Senha", edit_password_path, class: 'button' %>
 
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    </div>
+  <% end %>
+<% end %>
+
 <%= form_for @user do |f| %>
 
   <div class="field">    
