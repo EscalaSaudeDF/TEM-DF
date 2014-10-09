@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: 	HUDSON DE OLIVEIRA VIRGINI
+  name: 	test
   registry: 	01713914
-  speciality: 	MED. DA FAMILIA E COMUNIDADE
-  department: 	GERENCIA DO CENTRO DE SAUDE N 03
+  speciality: 	test
+  department: 	test
   work_unit_id: 1
-two:
-  name: MyString
-  registry: 1
-  speciality: MyString
-  department: MyString
+#two:
+#  name: MyString
+#  registry: 1
+#  speciality: MyString
+#  department: MyString
