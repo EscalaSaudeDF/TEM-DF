@@ -22,7 +22,7 @@
   </div>
   <div class="field">    
     <%= f.label :Email %><br>
-    <%= f.text_field :email, :required => true %>
+    <%= f.text_field :email, :required => true, :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}' %>
   </div>
   <div class="actions">
     <%= f.submit 'Salvar alteração' %>
