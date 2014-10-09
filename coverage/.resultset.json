@@ -1,23 +1,11 @@
 {
   "MiniTest": {
     "coverage": {
-      "/home/murilo/TEM-DF/app/models/work_unit.rb": [
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/models/feedback.rb": [
         1,
         null
       ],
-      "/home/murilo/TEM-DF/app/models/feedback.rb": [
-        1,
-        null
-      ],
-      "/home/murilo/TEM-DF/app/models/medic.rb": [
-        1,
-        null
-      ],
-      "/home/murilo/TEM-DF/app/models/schedule.rb": [
-        1,
-        null
-      ],
-      "/home/murilo/TEM-DF/app/models/user.rb": [
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/models/user.rb": [
         1,
         1,
         null,
@@ -33,65 +21,58 @@
         1,
         null,
         1,
+        6,
+        null,
+        6,
         4,
         null,
-        4,
-        2,
-        null,
         null,
         null,
         null,
         null,
         1,
-        10,
-        5,
-        5,
+        11,
+        6,
+        6,
         null,
         null,
         null
       ],
-      "/home/murilo/TEM-DF/app/helpers/application_helper.rb": [
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/models/work_unit.rb": [
         1,
         null
       ],
-      "/home/murilo/TEM-DF/app/helpers/index_helper.rb": [
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/models/medic.rb": [
         1,
         null
       ],
-      "/home/murilo/TEM-DF/app/helpers/sessions_helper.rb": [
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/models/schedule.rb": [
         1,
         null
       ],
-      "/home/murilo/TEM-DF/app/helpers/user_helper.rb": [
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/murilo/TEM-DF/app/controllers/sessions_controller.rb": [
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/helpers/index_helper.rb": [
         1,
+        null
+      ],
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/helpers/sessions_helper.rb": [
         1,
-        null,
-        null,
+        null
+      ],
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/helpers/user_helper.rb": [
         1,
-        2,
-        null,
-        2,
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        null,
-        null,
-        null,
-        1,
-        1,
+        null
+      ],
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/controllers/index_controller.rb": [
         1,
         1,
         null,
         null
       ],
-      "/home/murilo/TEM-DF/app/controllers/application_controller.rb": [
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -102,18 +83,12 @@
         1,
         null,
         1,
-        10,
+        11,
         null,
         null,
         null
       ],
-      "/home/murilo/TEM-DF/app/controllers/index_controller.rb": [
-        1,
-        1,
-        null,
-        null
-      ],
-      "/home/murilo/TEM-DF/app/controllers/users_controller.rb": [
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/controllers/users_controller.rb": [
         1,
         null,
         1,
@@ -168,18 +143,18 @@
         null,
         null,
         1,
-        0,
-        0,
+        3,
         null,
-        0,
-        0,
-        0,
-        0,
+        3,
+        2,
+        2,
+        1,
+        1,
         null,
-        0,
+        1,
         null,
         null,
-        0,
+        1,
         null,
         null,
         null,
@@ -233,7 +208,7 @@
         null,
         null
       ],
-      "/home/murilo/TEM-DF/app/mailers/temdf_mailer.rb": [
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/mailers/temdf_mailer.rb": [
         1,
         1,
         null,
@@ -241,10 +216,35 @@
         2,
         2,
         null,
+        null,
+        null
+      ],
+      "/home/lucas/Documentos/Projetos/TEM-DF/app/controllers/sessions_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        null,
+        2,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
         null,
         null
       ]
     },
-    "timestamp": 1412878848
+    "timestamp": 1412879265
   }
 }
