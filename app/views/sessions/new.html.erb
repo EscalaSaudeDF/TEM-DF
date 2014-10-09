@@ -3,8 +3,16 @@
             <div class="col-md-4 login-grid">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title">Entre na sua conta!</h3>
                     </div>
+                    <% flash.each do |name, msg| %>
+                      <% if msg.is_a?(String) %>
+                        <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
+                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+                        </div>
+                      <% end %>
+                    <% end %>
                     <div class="panel-body">
                         <%= form_tag sessions_path do %>
                             <fieldset>
@@ -14,11 +22,6 @@
                                 <div class="form-group">
                                   <%= password_field_tag :password, params[:password], placeholder: 'Senha', class: 'form-control' %>
                                    <!-- <input class="form-control" placeholder="Password" name="password" type="password" value=""> -->
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <%= submit_tag 'Entrar' , class: 'btn btn-lg btn-success btn-block' %>
