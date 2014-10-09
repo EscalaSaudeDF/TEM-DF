@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   match 'home', controller: 'home', action: 'index', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  match 'medics/index', controller: 'medics', action: 'index', via: 'get'
+  match 'medics/results', controller: 'medics', action: 'results', via: 'get'
   
   get "edit_password" => "users#edit_password", :as => "edit_password"
   get "users/updatePassword" => "users#updatePassword"
