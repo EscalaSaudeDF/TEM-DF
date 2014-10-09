@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 	validates :new_password, presence: true, :on => [:updatePassword]
 
 	def self.authenticate(username, password)
-		user = find_by_username(username)
+		user = find_by_username_and_account_status(username,true)
 
 		if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
 			user

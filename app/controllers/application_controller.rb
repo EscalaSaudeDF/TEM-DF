@@ -17,44 +17,37 @@ class ApplicationController < ActionController::Base
   private
 	def list_speciality
 		@medic= Medic.all
-		@speciality = Array.new
-
-		@medic.each do |medic|
-			unless @speciality.include?(medic.speciality)
-				@speciality.push(medic.speciality)
-			end
-		end
-		return @speciality
+		return get(@medic)
 	end
 
 	def list_work_unit_name
 		@work_unit = WorkUnit.all
-		@work_unit_name = Array.new
-
-		@work_unit.each do |work_unit|
-			unless @work_unit_name.include?(work_unit.name)
-				@work_unit_name.push(work_unit.name)
-			end
-		end
-		return @work_unit_name
+		return get(@work_unit)
 	end
 
-	#def list_speciality
-	#	@speciality = Array.new
+	def get(object1)
+		@speciality = Array.new
+		@work_unit_name = Array.new
 
-	#	@medic.each do |medic|
-	#		unless @speciality.include?(medic.speciality)
-	#			@speciality.push(medic.speciality)
-	#		end
-	#	end
-	#end
-	#def list_work_unit_name
-	#	@work_unit_name = Array.new
+		medic = true
 
-	#	@work_unit.each do |work_unit|
-	#		unless @work_unit_name.include?(work_unit.name)
-	#			@work_unit_name.push(work_unit.name)
-	#		end
-	#	end
-	#end
+		object1.each do |it|
+			if it.kind_of?(Medic)
+				unless @speciality.include?(it.speciality)
+					@speciality.push(it.speciality)
+				end
+			else
+				unless @work_unit_name.include?(it.name)
+					@work_unit_name.push(it.name)
+				end
+				medic = false
+			end
+		end
+
+		if medic
+			return @speciality
+		else
+			return @work_unit_name
+		end
+	end
 end
