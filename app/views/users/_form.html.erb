@@ -1,49 +1,70 @@
 <!-- user's register form-->
-<%= form_for(@user) do |f| %>
-<% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Basic Form Elements
+                        </div>
+                        <div class="panel-body">
+                          <%= form_for(@user) do |f| %>
+                          <% if @user.errors.any? %>
+                              <div id="error_explanation">
+                                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+                                <ul>
+                                <% @user.errors.full_messages.each do |message| %>
+                                  <li><%= message %></li>
+                                <% end %>
+                                </ul>
+                              </div>
+                            <% end %>
 
-  <div>
-    <%= f.label :account_status, "Sou usuário do sistema público de saúde"%>
-    <%= f.radio_button :account_status, true, :checked => true, :value => true %>
-    <br>
-    <%= f.label :account_status, "Sou médico do sistema público de saúde" %>
-    <%= f.radio_button :account_status, false, :checked => false, :value => false %>
-  </div>
-  <br>
-  
+                            <div class="form-group">
+                              <label>Tipo de usuário</label>
+                              <div class="radio">
+                                <label>
+                                  <%= f.radio_button :account_status, true, :checked => true, :value => true%>
+                                  Sou usuário do sistema público de saúde
+                                </label>
+                              </div>
+                              <div class="radio">
+                                <label>
+                                  <%= f.radio_button :account_status, false, :checked => false, :value => false %>
+                                  Sou médico do sistema público de saúde
+                                </label>
+                              </div>
+                            </div>
 
-  <div>
-    <%= f.file_field :document, accept: 'application/pdf'%>
-  </div>
-  <br>
-  
-  <div class="field">    
-    <%= f.label :username %><br>
-    <%= f.text_field :username, :required => true %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email, :required => true, :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}' %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password, :required => true %>
-  </div>
-  <div class ="field">
-      <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation, :required => true %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+                            <div class="form-group">
+                              <%= f.file_field :document, accept: 'application/pdf'%>
+                            </div>
+                            
+                            <div class="form-group">    
+                              <%= f.label :username %><br>
+                              <%= f.text_field :username , class: "form-control"%>
+                            </div>
+                            <div class="form-group">
+                              <%= f.label :email %><br>
+                              <%= f.text_field :email , class: "form-control", placeholder: "exemplo@exemplo.com"%>
+                            </div>
+                            <div class="form-group">
+                              <%= f.label :password %><br>
+                              <%= f.password_field :password , class: "form-control"%>
+                            </div>
+                            <div class="form-group">
+                                <%= f.label :password_confirmation %><br>
+                              <%= f.password_field :password_confirmation , class: "form-control"%>
+                            </div>
+                            
+                            <%= f.submit "Criar Usuario", class: "btn btn-primary" %>
+                            
+                          <% end %>
+                        </div>
+                      <!-- /.panel-body -->
+                  </div>
+                  <!-- /.panel -->
+              </div>
+              <!-- /.col-lg-12 -->
+          </div>
+          <!-- /.row -->
+      </div>
