@@ -1,0 +1,16 @@
+<body>
+  <table>
+    <tr>
+      <th>Nome</th>
+      <th>Endereço</th>
+      <th>Especialidade</th>
+    </tr>
+  <% @medics.each do |medic| %>
+    <tr>
+      <td><%= medic.name          %></td>
+      <td><%= medic.speciality      %></td>
+      <td><%= medic.registry %></td>
+    </tr>
+  <% end %>
+  </table>
+</body>
