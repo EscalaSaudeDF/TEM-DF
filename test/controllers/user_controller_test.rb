@@ -82,7 +82,7 @@ class UsersControllerTest < ActionController::TestCase
         put :update, id: session[:remember_token], :user => {:username => "Roberto"}
         assert_template :edit
     end
-    
+
     test "shouldn't update user without session" do
         put :update, id: 0
         assert_redirected_to root_path
@@ -93,6 +93,11 @@ class UsersControllerTest < ActionController::TestCase
         get :reactivate, id: @user.id
         assert_equal true, assigns(:user).account_status
         assert_redirected_to(:controller => "users", :action => "index")
+    end
+
+    test "shouldn't reactivate user without session" do
+        get :reactivate, id: 0
+        assert_redirected_to root_path
     end
 
     test "should desactivate user" do
@@ -107,5 +112,12 @@ class UsersControllerTest < ActionController::TestCase
         assert_equal false, assigns(:user).account_status
         assert_redirected_to log_out_path
     end
+
+    test "shouldn't desactivate user without session" do
+        get :desactivate, id: 0
+        assert_redirected_to root_path
+    end
+
+
 end
 
