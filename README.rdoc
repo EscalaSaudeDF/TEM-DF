@@ -22,7 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+{<img src="https://codeclimate.com/github/EscalaSaudeDF/TEM-DF/badges/gpa.svg" />}[https://codeclimate.com/github/EscalaSaudeDF/TEM-DF]
 
+{<img src="https://codeclimate.com/github/EscalaSaudeDF/TEM-DF/badges/coverage.svg" />}[https://codeclimate.com/github/EscalaSaudeDF/TEM-DF]
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
