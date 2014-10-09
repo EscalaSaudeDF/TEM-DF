@@ -1,6 +1,6 @@
 class MedicsController < ApplicationController
 	
-	def index
+	def results
   		@medics = Medic.search(params[:list_specility])
 	end
 end
