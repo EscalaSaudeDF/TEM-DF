@@ -1,0 +1,7 @@
+<%= form_tag 'upload', multipart: true do  %>
+	<div class="field"> 
+    <%= file_field_tag 'document', accept: '.csv'%>
+  </div>
+  <%= submit_tag 'Enviar' , class: 'btn btn-lg btn-success btn-block' %>
+
+<% end %>
