@@ -37,6 +37,8 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 gem 'metric_fu', '~> 4.11.1'
 
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
