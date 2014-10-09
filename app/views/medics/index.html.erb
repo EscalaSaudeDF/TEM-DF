@@ -2,14 +2,22 @@
   <table>
     <tr>
       <th>Nome</th>
-      <th>Endereço</th>
+      <th>Registro</th>
       <th>Especialidade</th>
+      <th>Unidade de trabalho</th>
+      <th>Entrada</th>
+      <th>Saída</th>
     </tr>
   <% @medics.each do |medic| %>
     <tr>
-      <td><%= medic.name          %></td>
-      <td><%= medic.speciality      %></td>
-      <td><%= medic.registry %></td>
+      <%medic.schedules.each do |schedule|%>
+        <td><%= medic.name          %></td>
+        <td><%= medic.registry      %></td>
+        <td><%= medic.speciality %></td>
+        <td><%= medic.work_unit.name %></td>
+        <td><%=schedule.in%></td>
+        <td><%=schedule.out%></td>
+      <%end%>
     </tr>
   <% end %>
   </table>
