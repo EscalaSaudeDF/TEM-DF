@@ -6,12 +6,14 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   match 'medics/results', controller: 'medics', action: 'results', via: 'get'
   
-  get "edit_password" => "users#edit_password", :as => "edit_password"
-  get "users/updatePassword" => "users#updatePassword"
+  get "/users/:id/edit_password" => "users#edit_password", :as => "edit_password"
+  patch "/users/:id/edit_password/update_password", to: "users#update_password"
   
   get "login" => "sessions#new", :as => "login"
   get "logout" => "sessions#destroy", :as => "logout"
   get "desactivate_account" => "users#desactivate", :as => "desactivate_account"
+  get "/users/:id/reactivate_account" => "users#reactivate", :as => "reactivate_account"
+  get "/users/:id/desactivate_account" => "users#desactivate", :as => "desactivate_account_admin"
   
   get 'users/index'
   get 'users/new'
