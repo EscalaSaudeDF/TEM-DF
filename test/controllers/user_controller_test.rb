@@ -79,6 +79,11 @@ class UsersControllerTest < ActionController::TestCase
 
     end 
 
-
+    test "should reactivate user" do
+        @user = users(:lorena) #uses lorena because her account_status is false
+        get :reactivate, id: @user.id
+        assert_equal true, assigns(:user).account_status
+        assert_redirected_to(:controller => "users", :action => "index")
+    end
 end
 
