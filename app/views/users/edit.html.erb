@@ -17,8 +17,12 @@
   <% end %>
     
   <div class="field">    
-    <%= f.label :username %><br>
+    <%= f.label :Nome %><br>
     <%= f.text_field :username, :required => true %>
+  </div>
+  <div class="field">    
+    <%= f.label :Email %><br>
+    <%= f.text_field :email, :required => true %>
   </div>
   <div class="actions">
     <%= f.submit 'Salvar alteração' %>

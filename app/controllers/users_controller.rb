@@ -32,14 +32,18 @@ class UsersController < ApplicationController
     end
 
     def update
-        @user = User.find_by_id(session[:remember_token])
+      @user = User.find_by_id(session[:remember_token])
 
         if @user
-            if User.find_by_username(params[:user][:username])
-                flash[:warning] = "Erro ao atualizar!"
+            if User.find_by_username(params[:user][:username]) && @user != User.find_by_username(params[:user][:username])
+                flash[:warning] = "Nome ja existente"
+                render "edit"
+            elsif User.find_by_email(params[:user][:email]) && @user != User.find_by_email(params[:user][:email])
+                flash[:warning] = "Email ja existente"
                 render "edit" 
             else 
                 @user.update_attribute(:username , params[:user][:username])
+                @user.update_attribute(:email , params[:user][:email])
                 redirect_to root_path, notice: 'Usuario alterado!'
             end
         else
@@ -53,7 +57,7 @@ class UsersController < ApplicationController
 
         if @user
             if params[:user][:password_confirmation] == params[:user][:new_password] && !params[:user][:new_password].blank?
-              @user.update_attributes(password: params[:user][:new_password])
+              @user.update_attribute(:password, params[:user][:new_password])
               redirect_to root_path, notice: 'Alteracao feita com sucesso'
             else
               redirect_to edit_password_path, notice: 'Confirmacao nao confere ou campo vazio'
