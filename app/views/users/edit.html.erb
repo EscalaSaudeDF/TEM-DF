@@ -4,18 +4,7 @@
 <%= link_to "Alterar Senha", edit_password_path, class: 'button' %>
 
 <%= form_for @user do |f| %>
-<% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-    
   <div class="field">    
     <%= f.label :Nome %><br>
     <%= f.text_field :username, :required => true %>
@@ -25,7 +14,7 @@
     <%= f.text_field :email, :required => true, :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}' %>
   </div>
   <div class="actions">
-    <%= f.submit 'Salvar alteração' %>
+    <%= f.submit 'Salvar alteração' %> 
   </div>
 
 

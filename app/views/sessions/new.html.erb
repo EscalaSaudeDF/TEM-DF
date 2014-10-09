@@ -3,7 +3,7 @@
 <%= form_tag sessions_path do %>
 	<div class="field">
 		<%= label_tag :username %><br>
-		<%= text_field_tag :username, params[:username] %>
+		<%= text_field_tag :username, params[:username], :required => true %>
 	</div>
 
 	<div class="field">
