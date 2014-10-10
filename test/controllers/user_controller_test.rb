@@ -52,6 +52,13 @@ class UsersControllerTest < ActionController::TestCase
         assert_redirected_to root_path(assigns(:user))
     end
 
+    test "shouldn create user without document if user == false" do
+        assert_no_difference('User.count') do
+            post :create, user: {account_status: false, username: "test", email: "test@test.com", password: "test", password_confirmation: "test" }
+        end
+        assert_template :new
+    end
+
     test "should edit user's password" do
         session[:remember_token] = @user.id
         get :edit_password, id: session[:remember_token]
