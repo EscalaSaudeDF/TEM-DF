@@ -16,6 +16,6 @@ lorena:
   account_status: 0
 
 admin:
-  username: "admin"
+  username: admin
   email: admin@gmail.com
   account_status: 1
