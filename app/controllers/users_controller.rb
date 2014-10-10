@@ -7,7 +7,10 @@ class UsersController < ApplicationController
 
   	def create
   		@user = User.new(user_params)
-        if @user.password == @user.password_confirmation
+        if @user.account_status == false && !params[:user][:document]
+            flash.now.alert = "Você precisa anexar um documento!"
+            render "new"
+        elsif  @user.password == @user.password_confirmation
             if @user.save
                 upload params[:user][:document]
                 redirect_to root_path

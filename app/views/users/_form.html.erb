@@ -5,6 +5,14 @@
                         <div class="panel-heading">
                             Novo Usuário
                         </div>
+                        <% flash.each do |name, msg| %>
+                          <% if msg.is_a?(String) %>
+                            <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
+                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                              <%= content_tag :div, msg, :id => "flash_#{name}" %>
+                            </div>
+                          <% end %>
+                        <% end %>
                         <div class="panel-body">
                           <%= form_for(@user) do |f| %>
                           <% if @user.errors.any? %>
@@ -23,19 +31,22 @@
                               <label>Tipo de usuário</label>
                               <div class="radio">
                                 <label>
-                                  <%= f.radio_button :account_status, true, :checked => true, :value => true%>
+                                  <%= f.radio_button :account_status, true, :checked => false, :value => true%>
                                   Sou usuário do sistema público de saúde
                                 </label>
                               </div>
                               <div class="radio">
                                 <label>
-                                  <%= f.radio_button :account_status, false, :checked => false, :value => false %>
+                                  <%= f.radio_button :account_status, false, :checked => true, :value => false %>
                                   Sou médico do sistema público de saúde
                                 </label>
                               </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group">  
+                              <%= f.label "Por favor, selecione seu CRM para que possamos confirmar seu cadastro" %>
+                            </div>
+                            <div class="form-group", id = "send_to_yes">
                               <%= f.file_field :document, accept: 'application/pdf'%>
                             </div>
                             
@@ -68,3 +79,15 @@
           </div>
           <!-- /.row -->
       </div>
+
+<script>
+
+$("input[type=radio]").change(function() {  
+            if($(this).prop('value') == 'false'){
+                    $("#send_to_yes").show();
+                }
+                else {
+                    $("#send_to_yes").hide();
+                }
+        });
+</script>
