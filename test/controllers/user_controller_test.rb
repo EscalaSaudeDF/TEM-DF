@@ -8,10 +8,18 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     test "should get index" do
-  		get :index
+  		@user = users(:admin)
+        session[:remember_token] = @user.id
+        get :index, id: session[:remember_token]
     	assert_response :success
     	assert_not_nil assigns(:users)
   	end
+
+    test "shouldn't get index without 'admin'" do
+        session[:remember_token] = @user.id
+        get :index, id: session[:remember_token]
+        assert_redirected_to root_path
+    end
 
   	test "should get new" do
   		get :new
