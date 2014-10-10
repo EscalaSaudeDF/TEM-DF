@@ -14,3 +14,8 @@ lorena:
   password_hash: $2a$10$ZJfyTR7czW1HrxVes8sUe.YnAqNObcuA6wBliCqe3NjbuYtqEdj1u
   password_salt: $2a$10$ZJfyTR7czW1HrxVes8sUe.
   account_status: 0
+
+admin:
+  username: "admin"
+  email: admin@gmail.com
+  account_status: 1

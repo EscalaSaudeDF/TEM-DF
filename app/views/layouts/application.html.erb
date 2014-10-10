@@ -54,10 +54,15 @@
                                 <% end %>
                             </li>
                             <li>
+                            <% if current_user.username == "admin"%>
+                                <%= link_to users_path do %>
+                                    <i class="fa fa-users"></i> Usuários
+                                <% end %>
                                 <%= link_to index_parser_path do %>
                                     <i class ="fa fa-cloud-upload"></i> Carregar Dados
-                                <% end %>
+                                <% end %>                                
                             </li>
+                            <% end %>
                             <li class="divider"></li>
                             <li>
                                 <%= link_to logout_path do %>

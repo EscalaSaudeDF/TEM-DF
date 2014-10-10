@@ -2,7 +2,15 @@ require 'bcrypt'
 
 class UsersController < ApplicationController
     def index
+        @user = User.find_by_id(session[:remember_token])
+
+      if @user && @user.username == "admin" 
         @users = User.all
+
+      else
+        redirect_to root_path
+      end
+
   	end
 
   	def create
@@ -77,7 +85,7 @@ class UsersController < ApplicationController
     def desactivate
         @user = User.find_by_id(session[:remember_token])
 
-         if @user
+        if @user && @user.username != "admin"
             @user.update_attribute(:account_status, false)
             redirect_to logout_path
         else
