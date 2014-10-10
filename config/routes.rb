@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   post "/upload", controller: 'parsers', action: 'upload'
 
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
-  #post "/users/:id/index", to: 'parsers#index'
   
   get 'users/index'
   get 'users/new'

@@ -38,23 +38,4 @@ class ApplicationController < ActionController::Base
 		end
 		return @work_unit_name
 	end
-
-	#def list_speciality
-	#	@speciality = Array.new
-
-	#	@medic.each do |medic|
-	#		unless @speciality.include?(medic.speciality)
-	#			@speciality.push(medic.speciality)
-	#		end
-	#	end
-	#end
-	#def list_work_unit_name
-	#	@work_unit_name = Array.new
-
-	#	@work_unit.each do |work_unit|
-	#		unless @work_unit_name.include?(work_unit.name)
-	#			@work_unit_name.push(work_unit.name)
-	#		end
-	#	end
-	#end
 end
