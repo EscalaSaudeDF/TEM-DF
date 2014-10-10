@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
       if @user && @user.username == "admin" 
         @users = User.all
-
       else
         redirect_to root_path
       end
