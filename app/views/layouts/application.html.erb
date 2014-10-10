@@ -53,6 +53,16 @@
                                     <i class="fa fa-user fa-fw"></i> Editar Perfil
                                 <% end %>
                             </li>
+                            <li>
+                            <% if current_user.username == "admin"%>
+                                <%= link_to users_path do %>
+                                    <i class="fa fa-users"></i> Usuários
+                                <% end %>   
+                                <%= link_to index_parser_path do %>
+                                    <i class ="fa fa-cloud-upload"></i> Carregar Dados
+                                <% end %>                                
+                            </li>
+                            <% end %>
                             <li class="divider"></li>
                             <li>
                                 <%= link_to logout_path do %>
@@ -92,7 +102,7 @@
                                     <div class="input-group custom-search-form">
                                         <label> Região </label>
                                         <select name="list_work_unit_name" class="form-control">    
-                                            <option>Informe a Região</option>                       
+                                            <option>Informe a Região</option>             
                                             <% list_work_unit_name.each do |work_unit_name| %>
                                                 <option value="<%= work_unit_name %>">
                                                     <%= work_unit_name %>
@@ -103,8 +113,8 @@
 
                                     <div>
                                         <br>
-                                        <button type="submit" class="btn btn-default">Confirmar</button>
-                                        <button type="reset" class="btn btn-default">Limpar</button>
+                                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                                        <button type="reset" class="btn btn-primary">Limpar</button>
                                     </div>
                                 <%end%>
                             </div>

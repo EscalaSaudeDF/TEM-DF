@@ -1,24 +1,82 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.3/css/jquery.dataTables.css">
+  
+</head>
 <body>
-  <table>
-    <tr>
-      <th>Nome</th>
-      <th>Registro</th>
-      <th>Especialidade</th>
-      <th>Unidade de trabalho</th>
-      <th>Entrada</th>
-      <th>Saída</th>
-    </tr>
-  <% @medics.each do |medic| %>
-    <tr>
-      <%medic.schedules.each do |schedule|%>
-        <td><%= medic.name          %></td>
-        <td><%= medic.registry      %></td>
-        <td><%= medic.speciality %></td>
-        <td><%= medic.work_unit.name %></td>
-        <td><%=schedule.in%></td>
-        <td><%=schedule.out%></td>
-      <%end%>
-    </tr>
-  <% end %>
-  </table>
+  <br>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover" id="dataTables-medic">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Especialidade</th>
+                  <th>Unidade de trabalho</th>
+                  <th>Escalas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @medics.each do |medic| %>
+                  <tr>
+                      <td><%= medic.name%></td>
+                      <td><%= medic.speciality %></td>
+                      <td><%= medic.work_unit.name %></td>
+                      <td>
+                        <button class="btn btn-primary btn-lg button-schedule" data-toggle="modal" data-target="#myModal<%= medic.id %>">
+                          <i class="fa fa-table"></i>
+                        </button>
+                        <div class="modal fade" id="myModal<%= medic.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                      <h4 class="modal-title" id="myModalLabel">
+                                        Escala - <%= medic.name%>
+                                      </h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-<%= medic.id %>">
+                                      <thead>
+                                        <tr>
+                                          <th>Entrada</th>
+                                          <th>Saída</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <%medic.schedules.each do |schedule|%>
+                                          <tr>
+                                            <td><%= schedule.in %></td>
+                                            <td><%= schedule.out %></td>
+                                          </tr>
+                                      <%end%>
+                                      </tbody>
+                                    </table>
+                                  </div>                                      
+                              </div>
+                              <!-- /.modal-content -->
+                          </div>
+                          <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                      </td>
+                  </tr>
+                  <script>
+                    $(document).ready(function() {
+                        $('#dataTables-<%= medic.id %>').dataTable();
+                    });
+                  </script>
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function() {
+        $('#dataTables-medic').dataTable();
+    });
+  </script>
 </body>

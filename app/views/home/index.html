@@ -5,8 +5,23 @@
 	   <br>
 	   <br>
 	   <div class="row">
+	   		<% flash.each do |name, msg| %>
+		      <% if msg.is_a?(String) %>
+		        <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
+		          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+		        </div>
+		      <% end %>
+		    <% end %>
             <div class="col-lg-12">
-                <center><%= image_tag "temdf_logo.png" %></center>
+                <center><%= image_tag "medic_header.png", class: "img-responsive img-rounded"%></center>
+                <div class="jumbotron">
+	                <h1>Conheça Nosso Projeto</h1>
+	                <p align="justify">O projeto TEM-DF: Transparência de Escalas Médicas do DF, tem como objetivo buscar as escalas dos médicos do Distrito Federal no portal da transparência e apresentar o horário, dia e Unidade de Trabalho de cada um dos médicos. Prevê também um ranking de médicos de acordo com avaliações feitas pelos usuários do sistema que foram atendidos na Rede Pública de saúde, busca tornar fácil a tarefa de encontrar médicos para um usuário que necessite de atendimento de determinada categoria ou local específico..</p>
+	                <p><a href="http://lappis.unb.br/redm/projects/grupo-1-tem-transparencia-das-escalas-dos-medicos-do-df/wiki" class="btn btn-primary btn-lg" role="button">
+	                	Visite nossa Wiki</a>
+	                </p>
+	            </div>
             </div>
         </div>
 	</body>

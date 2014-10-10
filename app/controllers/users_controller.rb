@@ -2,12 +2,22 @@ require 'bcrypt'
 
 class UsersController < ApplicationController
     def index
+        @user = User.find_by_id(session[:remember_token])
+
+      if @user && @user.username == "admin" 
         @users = User.all
+      else
+        redirect_to root_path
+      end
+
   	end
 
   	def create
   		@user = User.new(user_params)
-        if @user.password == @user.password_confirmation
+        if @user.account_status == false && !params[:user][:document]
+            flash.now.alert = "Você precisa anexar um documento!"
+            render "new"
+        elsif  @user.password == @user.password_confirmation
             if @user.save
                 upload params[:user][:document]
                 redirect_to root_path
@@ -78,7 +88,7 @@ class UsersController < ApplicationController
     def desactivate
         @user = User.find_by_id(session[:remember_token])
 
-        if @user
+        if @user && @user.username != "admin"
             @user.update_attribute(:account_status, false)
             redirect_to logout_path
         else

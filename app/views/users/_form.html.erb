@@ -1,70 +1,80 @@
 <!-- user's register form-->
 <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Novo Usuário
-                        </div>
-                        <div class="panel-body">
-                          <%= form_for(@user) do |f| %>
-                          <% if @user.errors.any? %>
-                              <div id="error_explanation">
-                                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-                                <ul>
-                                <% @user.errors.full_messages.each do |message| %>
-                                  <li><%= message %></li>
-                                <% end %>
-                                </ul>
-                              </div>
-                            <% end %>
-
-                            <div class="form-group">
-                              <label>Tipo de usuário</label>
-                              <div class="radio">
-                                <label>
-                                  <%= f.radio_button :account_status, true, :checked => true, :value => true%>
-                                  Sou usuário do sistema público de saúde
-                                </label>
-                              </div>
-                              <div class="radio">
-                                <label>
-                                  <%= f.radio_button :account_status, false, :checked => false, :value => false %>
-                                  Sou médico do sistema público de saúde
-                                </label>
-                              </div>
-                            </div>
-
-                            <div class="form-group">
-                              <%= f.file_field :document, accept: 'application/pdf'%>
-                            </div>
-                            
-                            <div class="form-group">    
-                              <%= f.label :username %><br>
-                              <%= f.text_field :username , class: "form-control"%>
-                            </div>
-                            <div class="form-group">
-                              <%= f.label :email %><br>
-                              <%= f.text_field :email , class: "form-control", placeholder: "exemplo@exemplo.com"%>
-                            </div>
-                            <div class="form-group">
-                              <%= f.label :password %><br>
-                              <%= f.password_field :password , class: "form-control"%>
-                            </div>
-                            <div class="form-group">
-                                <%= f.label :password_confirmation %><br>
-                              <%= f.password_field :password_confirmation , class: "form-control"%>
-                            </div>
-                            
-                            <%= f.submit "Criar Usuario", class: "btn btn-primary" %>
-                            
-                          <% end %>
-                        </div>
-                      <!-- /.panel-body -->
-                  </div>
-                  <!-- /.panel -->
-              </div>
-              <!-- /.col-lg-12 -->
+  <div class="col-lg-6 col-md-offset-2">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Novo Usuário
+    </div>
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="panel-body">
+      <%= form_for(@user) do |f| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %>
+              prohibited this user from being saved:
+            </h2>
+            <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
           </div>
-          <!-- /.row -->
-      </div>
+        <% end %>
+        <div class="form-group">
+          <label>Tipo de usuário</label>
+          <div class="radio">
+            <label>
+              <%= f.radio_button :account_status, true, :checked => false, :value => true%>
+              Sou usuário do sistema público de saúde
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <%= f.radio_button :account_status, false, :checked => true, :value => false %>
+              Sou médico do sistema público de saúde
+            </label>
+          </div>
+        </div>
+        <div class="form-group", id = "send_to_yes">
+          <%= f.label "Por favor, selecione seu CRM para que possamos confirmar seu cadastro" %>
+          <br>
+          <%= f.file_field :document, accept: 'application/pdf'%>
+        </div>        
+        <div class="form-group">    
+          <%= f.label :username %><br>
+          <%= f.text_field :username , class: "form-control", :required => true%>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %><br>
+          <%= f.text_field :email , class: "form-control", placeholder: "exemplo@exemplo.com", :required => true%>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %><br>
+          <%= f.password_field :password , class: "form-control", :required => true%>
+        </div>
+        <div class="form-group">
+            <%= f.label :password_confirmation %><br>
+          <%= f.password_field :password_confirmation , class: "form-control", :required => true%>
+        </div>
+        <%= f.submit "Criar Usuario", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script>
+$("input[type=radio]").change(function() {  
+            if($(this).prop('value') == 'false'){
+                    $("#send_to_yes").show();
+                }
+                else {
+                    $("#send_to_yes").hide();
+                }
+        });
+</script>

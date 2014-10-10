@@ -46,8 +46,8 @@ class ApplicationController < ActionController::Base
 
 		if medic
 			return @speciality
-		else
-			return @work_unit_name
 		end
+		
+		return @work_unit_name
 	end
 end

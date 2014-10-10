@@ -7,11 +7,26 @@ class UsersControllerTest < ActionController::TestCase
       @user = users(:roberto)
     end
 
-    test "should get index" do
+    test "shouldn't get index" do
   		get :index
-    	assert_response :success
-    	assert_not_nil assigns(:users)
+        assert_redirected_to root_path
   	end
+
+    test "should get index" do
+        @user = users(:admin)
+        session[:remember_token] = @user.id
+        get :index
+        
+        assert_response :success
+        assert_not_nil assigns(:users)
+    end
+
+    test "shouldn't get index without 'admin'" do
+        session[:remember_token] = @user.id
+        get :index
+        
+        assert_redirected_to root_path
+    end
 
   	test "should get new" do
   		get :new
@@ -50,6 +65,13 @@ class UsersControllerTest < ActionController::TestCase
         end
 
         assert_redirected_to root_path(assigns(:user))
+    end
+
+    test "shouldn create user without document if user == false" do
+        assert_no_difference('User.count') do
+            post :create, user: {account_status: false, username: "test", email: "test@test.com", password: "test", password_confirmation: "test" }
+        end
+        assert_template :new
     end
 
     test "should edit user's password" do

@@ -38,4 +38,28 @@ class MedicTest < ActiveSupport::TestCase
         assert_equal @medic.schedules.size, 1
         assert_equal @medic.schedules.first.in, schedule.in
     end
+
+    test "Search with both fields filled" do
+        work_unit = WorkUnit.create(:name => medics(:one).name, :id => medics(:one).id)
+        medic = Medic.create(:name => work_units(:one).name, :work_unit_id => work_units(:one).id)
+        assert Medic.search(medic.speciality, work_unit.name) 
+    end
+
+    test "Search with speciality field empty" do
+        work_unit = WorkUnit.create(:name => medics(:one).name, :id => medics(:one).id)
+        medic = Medic.create(:name => work_units(:one).name, :work_unit_id => work_units(:one).id, :speciality => "Informe a Especialidade")
+        assert Medic.search(medic.speciality, work_unit.name) 
+    end
+
+    test "Search with work unit field empty" do
+        work_unit = WorkUnit.create(:name => "Informe a Região", :id => medics(:one).id)
+        medic = Medic.create(:name => work_units(:one).name, :work_unit_id => work_units(:one).id)
+        assert Medic.search(medic.speciality, work_unit.name) 
+    end
+
+    test "Search with both fields empty" do
+        work_unit = WorkUnit.create(:name => "Informe a Região", :id => medics(:one).id)
+        medic = Medic.create(:name => work_units(:one).name, :work_unit_id => work_units(:one).id, :speciality => "Informe a Especialidade")
+        assert Medic.search(medic.speciality, work_unit.name) 
+    end
 end
