@@ -1,6 +1,6 @@
 <br>
 
-<div class="col-lg-6">
+<div class="col-lg-6 col-md-offset-2">
   <div class="panel panel-default">
     <div class="panel-heading">
         Editar Conta
@@ -26,8 +26,8 @@
         </div>
 
         <%= f.submit 'Salvar alteração' , class: "btn btn-primary"%> 
+        <%= link_to "Alterar Senha", edit_password_path, class: "btn btn-primary" %>
         <%= link_to "Desativar conta", desactivate_account_path ,class: "btn btn-danger" %>
-        <%= link_to "Alterar Senha", edit_password_path, class: "btn btn-warning" %>
       <% end %>
     </div>
   </div>
