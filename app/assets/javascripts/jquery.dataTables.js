@@ -5558,7 +5558,7 @@
 		/**
 		 * Sort the table by a particular column
 		 *  @param {int} iCol the data index to sort on. Note that this will not match the
-		 *    'display index' if you have hidden data entries
+		 *    'display index' if you have hidden data Medicos
 		 *  @dtopt API
 		 *  @deprecated Since v1.10
 		 *
@@ -9282,7 +9282,7 @@
 	
 	
 		/**
-		 * This parameter allows you to readily specify the entries in the length drop
+		 * This parameter allows you to readily specify the Medicos in the length drop
 		 * down menu that DataTables shows when pagination is enabled. It can be
 		 * either a 1D array of options which will be used for both the displayed
 		 * option and the value, or a 2D array which will use the array in the first
@@ -9567,7 +9567,7 @@
 		 * Enable or disable the display of a 'processing' indicator when the table is
 		 * being processed (e.g. a sort). This is particularly useful for tables with
 		 * large amounts of data where it can take a noticeable amount of time to sort
-		 * the entries.
+		 * the Medicos.
 		 *  @type boolean
 		 *  @default false
 		 *
@@ -9853,7 +9853,7 @@
 	
 		/**
 		 * When rendering large numbers in the information element for the table
-		 * (i.e. "Showing 1 to 10 of 57 entries") DataTables will render large numbers
+		 * (i.e. "Mostrando 1 to 10 of 57 Medicos") DataTables will render large numbers
 		 * to have a comma separator for the 'thousands' units (e.g. 1 million is
 		 * rendered as "1,000,000") to help readability for the end user. This
 		 * function will override the default method DataTables uses.
@@ -10479,7 +10479,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sFirst": "First",
+				"sFirst": "Primeiro",
 	
 	
 				/**
@@ -10502,7 +10502,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sLast": "Last",
+				"sLast": "Ultimo",
 	
 	
 				/**
@@ -10525,7 +10525,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Next",
+				"sNext": "Próximo",
 	
 	
 				/**
@@ -10548,7 +10548,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Previous"
+				"sPrevious": "Anterior"
 			},
 	
 			/**
@@ -10571,7 +10571,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sEmptyTable": "No data available in table",
+			"sEmptyTable": "Nenhum dado desponivel na tabela",
 	
 	
 			/**
@@ -10589,7 +10589,7 @@
 			 * * `\_PAGES\_` - Total number of pages of data in the table
 			 *
 			 *  @type string
-			 *  @default Showing _START_ to _END_ of _TOTAL_ entries
+			 *  @default Mostrando _START_ to _END_ of _TOTAL_ Medicos
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.info
@@ -10598,19 +10598,19 @@
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
 			 *        "language": {
-			 *          "info": "Showing page _PAGE_ of _PAGES_"
+			 *          "info": "Mostrando page _PAGE_ of _PAGES_"
 			 *        }
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "Mostrando _START_ até _END_ de _TOTAL_ Medicos",
 	
 	
 			/**
 			 * Display information string for when the table is empty. Typically the
 			 * format of this string should match `info`.
 			 *  @type string
-			 *  @default Showing 0 to 0 of 0 entries
+			 *  @default Mostrando 0 to 0 of 0 Medicos
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.infoEmpty
@@ -10619,12 +10619,12 @@
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
 			 *        "language": {
-			 *          "infoEmpty": "No entries to show"
+			 *          "infoEmpty": "No Medicos to show"
 			 *        }
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": "Mostrando 0 até 0 de 0 Medicos",
 	
 	
 			/**
@@ -10632,7 +10632,7 @@
 			 * to the information (`info`) to give an idea of how strong the filtering
 			 * is. The variable _MAX_ is dynamically updated.
 			 *  @type string
-			 *  @default (filtered from _MAX_ total entries)
+			 *  @default (filtered from _MAX_ total Medicos)
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.infoFiltered
@@ -10646,7 +10646,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "(filtered from _MAX_ total entries)",
+			"sInfoFiltered": "(filtered from _MAX_ total Medicos)",
 	
 	
 			/**
@@ -10701,7 +10701,7 @@
 			 * with a default select list of 10, 25, 50 and 100, and can be replaced
 			 * with a custom select box if required.
 			 *  @type string
-			 *  @default Show _MENU_ entries
+			 *  @default Show _MENU_ Medicos
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.lengthMenu
@@ -10733,7 +10733,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "Show _MENU_ entries",
+			"sLengthMenu": "Mostrar _MENU_ Medicos",
 	
 	
 			/**
@@ -10813,7 +10813,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Search:",
+			"sSearch": "Busca:",
 	
 	
 			/**
@@ -12047,7 +12047,7 @@
 			"bFilter": null,
 	
 			/**
-			 * Table information element (the 'Showing x of y records' div) enable
+			 * Table information element (the 'Mostrando x of y records' div) enable
 			 * flag.
 			 * Note that this parameter will be set by the initialisation routine. To
 			 * set a default use {@link DataTable.defaults}.
