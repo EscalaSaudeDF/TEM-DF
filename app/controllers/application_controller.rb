@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   	def current_user
   		@current_user ||= User.find(session[:user_id]) if session[:user_id]
   	end
-	
+
 	def index
 		list_speciality
 		list_work_unit_name
@@ -17,15 +17,15 @@ class ApplicationController < ActionController::Base
   private
 	def list_speciality
 		@medic= Medic.all
-		return get(@medic)
+		return get_by_speciality_or_work_unit(@medic)
 	end
 
 	def list_work_unit_name
 		@work_unit = WorkUnit.all
-		return get(@work_unit)
+		return get_by_speciality_or_work_unit(@work_unit)
 	end
 
-	def get(object1)
+	def get_by_speciality_or_work_unit(object1)
 		@speciality = Array.new
 		@work_unit_name = Array.new
 
@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
 		if medic
 			return @speciality
 		end
-		
+
 		return @work_unit_name
 	end
 end
