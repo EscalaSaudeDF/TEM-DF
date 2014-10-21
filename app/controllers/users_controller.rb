@@ -45,6 +45,20 @@ class UsersController < ApplicationController
       @user = User.find_by_id(session[:remember_token])
 
         if @user
+          if @user.username == "admin" #admin's update
+            email = params[:user][:email]
+
+            user_from_email = User.find_by_email(email)
+
+            if user_from_email && @user != user_from_email
+                flash[:warning] = "Email já existente"
+                render "edit" 
+            else 
+                @user.update_attribute(:email , email)
+                redirect_to root_path, notice: 'Usuário alterado!'
+            end
+
+          else #commom user's update 
             username = params[:user][:username]
             email = params[:user][:email]
 
@@ -62,6 +76,7 @@ class UsersController < ApplicationController
                 @user.update_attribute(:email , email)
                 redirect_to root_path, notice: 'Usuário alterado!'
             end
+          end
         else
             redirect_to root_path
         end
@@ -96,7 +111,7 @@ class UsersController < ApplicationController
 
           if @user
             @user.update_attribute(:account_status, false)
-            redirect_to root_path
+            redirect_to(action: "index")
           else
             redirect_to root_path
           end

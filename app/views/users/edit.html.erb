@@ -15,10 +15,12 @@
         <% end %>
       <% end %>
       <%= form_for @user do |f| %>
-        <div class="form-group">    
-          <%= f.label :Nome %><br>
-          <%= f.text_field :username, :required => true ,class: "form-control"%>
-        </div>
+        <% if @user.username != "admin" %>
+          <div class="form-group">    
+            <%= f.label :Nome %><br>
+            <%= f.text_field :username, :required => true ,class: "form-control"%>
+          </div>
+        <% end %>
 
         <div class="form-group">    
           <%= f.label :Email %><br>
@@ -27,7 +29,10 @@
 
         <%= f.submit 'Salvar alteração' , class: "btn btn-primary"%> 
         <%= link_to "Alterar Senha", edit_password_path, class: "btn btn-primary" %>
-        <%= link_to "Desativar conta", desactivate_account_path ,class: "btn btn-danger" %>
+        
+        <% if @user.username != "admin" %>
+          <%= link_to "Desativar conta", desactivate_account_path ,class: "btn btn-danger" %>
+        <% end %>  
       <% end %>
     </div>
   </div>
