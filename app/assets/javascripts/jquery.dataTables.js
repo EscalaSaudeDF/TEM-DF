@@ -5558,7 +5558,7 @@
 		/**
 		 * Sort the table by a particular column
 		 *  @param {int} iCol the data index to sort on. Note that this will not match the
-		 *    'display index' if you have hidden data Medicos
+		 *    'display index' if you have hidden data Registros
 		 *  @dtopt API
 		 *  @deprecated Since v1.10
 		 *
@@ -9282,7 +9282,7 @@
 	
 	
 		/**
-		 * This parameter allows you to readily specify the Medicos in the length drop
+		 * This parameter allows you to readily specify the Registros in the length drop
 		 * down menu that DataTables shows when pagination is enabled. It can be
 		 * either a 1D array of options which will be used for both the displayed
 		 * option and the value, or a 2D array which will use the array in the first
@@ -9567,7 +9567,7 @@
 		 * Enable or disable the display of a 'processing' indicator when the table is
 		 * being processed (e.g. a sort). This is particularly useful for tables with
 		 * large amounts of data where it can take a noticeable amount of time to sort
-		 * the Medicos.
+		 * the Registros.
 		 *  @type boolean
 		 *  @default false
 		 *
@@ -9853,7 +9853,7 @@
 	
 		/**
 		 * When rendering large numbers in the information element for the table
-		 * (i.e. "Mostrando 1 to 10 of 57 Medicos") DataTables will render large numbers
+		 * (i.e. "Mostrando 1 to 10 of 57 Registros") DataTables will render large numbers
 		 * to have a comma separator for the 'thousands' units (e.g. 1 million is
 		 * rendered as "1,000,000") to help readability for the end user. This
 		 * function will override the default method DataTables uses.
@@ -10589,7 +10589,7 @@
 			 * * `\_PAGES\_` - Total number of pages of data in the table
 			 *
 			 *  @type string
-			 *  @default Mostrando _START_ to _END_ of _TOTAL_ Medicos
+			 *  @default Mostrando _START_ to _END_ of _TOTAL_ Registros
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.info
@@ -10603,14 +10603,14 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Mostrando _START_ até _END_ de _TOTAL_ Medicos",
+			"sInfo": "Mostrando _START_ até _END_ de _TOTAL_ Registros",
 	
 	
 			/**
 			 * Display information string for when the table is empty. Typically the
 			 * format of this string should match `info`.
 			 *  @type string
-			 *  @default Mostrando 0 to 0 of 0 Medicos
+			 *  @default Mostrando 0 to 0 of 0 Registros
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.infoEmpty
@@ -10619,12 +10619,12 @@
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
 			 *        "language": {
-			 *          "infoEmpty": "No Medicos to show"
+			 *          "infoEmpty": "No Registros to show"
 			 *        }
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Mostrando 0 até 0 de 0 Medicos",
+			"sInfoEmpty": "Mostrando 0 até 0 de 0 Registros",
 	
 	
 			/**
@@ -10632,7 +10632,7 @@
 			 * to the information (`info`) to give an idea of how strong the filtering
 			 * is. The variable _MAX_ is dynamically updated.
 			 *  @type string
-			 *  @default (filtered from _MAX_ total Medicos)
+			 *  @default (filtered from _MAX_ total Registros)
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.infoFiltered
@@ -10646,7 +10646,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "(filtered from _MAX_ total Medicos)",
+			"sInfoFiltered": "(filtered from _MAX_ total Registros)",
 	
 	
 			/**
@@ -10701,7 +10701,7 @@
 			 * with a default select list of 10, 25, 50 and 100, and can be replaced
 			 * with a custom select box if required.
 			 *  @type string
-			 *  @default Show _MENU_ Medicos
+			 *  @default Show _MENU_ Registros
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.lengthMenu
@@ -10733,7 +10733,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "Mostrar _MENU_ Medicos",
+			"sLengthMenu": "Mostrar _MENU_ Registros",
 	
 	
 			/**
