@@ -152,7 +152,7 @@ class UsersControllerTest < ActionController::TestCase
     test "should desactivate user" do
         get :desactivate, id: @user.id
         assert_equal false, assigns(:user).account_status
-        assert_redirected_to root_path
+        assert_redirected_to(:controller => "users", :action => "index")
     end
 
     test "should desactivate user in the current session" do
