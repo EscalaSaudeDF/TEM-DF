@@ -137,6 +137,21 @@ class UsersControllerTest < ActionController::TestCase
         assert_redirected_to root_path
     end
 
+    test "should update admin" do
+        @user = users(:admin)
+        session[:remember_token] = @user.id
+        put :update, id: @user.id, :user => {:email => "test@gmail.com"}
+        assert_equal "test@gmail.com", assigns(:user).email
+        assert_redirected_to root_path
+    end
+
+    test "shouldn't update admin with existing email" do
+        @user = users(:admin)
+        session[:remember_token] = @user.id
+        put :update, id: @user.id, :user => {:email => "lorena@gmail.com"}
+        assert_template :edit
+    end
+
     test "should reactivate user" do
         @user = users(:lorena) #uses lorena because her account_status is false
         get :reactivate, id: @user.id
