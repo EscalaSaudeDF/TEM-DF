@@ -8,4 +8,8 @@ class MedicsController < ApplicationController
   			render "home/index"
   		end
 	end
+
+	def profile
+		@medic = Medic.find_by_id(params[:id])
+	end
 end

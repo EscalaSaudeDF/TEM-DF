@@ -20,7 +20,7 @@
               <tbody>
                 <% @medics.each do |medic| %>
                   <tr>
-                      <td><%= medic.name%></td>
+                      <td><%= link_to medic.name, profile_path(medic)%></td>
                       <td><%= medic.speciality %></td>
                       <td><%= medic.work_unit.name %></td>
                       <td>
