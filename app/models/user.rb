@@ -2,6 +2,8 @@ require 'valid_email'
 require 'bcrypt'
 
 class User < ActiveRecord::Base
+	has_many :comments
+	has_one :relevance
 
 	attr_accessor :password, :password_confirmation, :new_password, :document
 	before_save :encrypt_password
