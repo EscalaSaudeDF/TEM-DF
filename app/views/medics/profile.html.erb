@@ -23,7 +23,15 @@
 							<td><%=@work_unit.name%></td>
 						</tr>
 					</table>
-				</div>
+
+				<%= form_tag("/medics/rating", method: "post") do %> 
+					<input id="input-2a" class="rating" name="grade" data-min="0" data-max="5" data-step="1" data-stars=5 
+   					 	data-glyphicon="false">
+   					 <%= hidden_field_tag :medic_id, @medic.id %>
+					</div>
+					<%= submit_tag 'Enviar' , class: 'btn btn-lg btn-success btn-block' %>
+				<%end%>
+
 			</div>
 		</div>
 		<div class="panel panel-default">
@@ -38,3 +46,11 @@
 		</div>
 	</div>
 </div>
+
+<script>
+// initialize with defaults
+$("#input-2a").rating({
+	clearButton: '<button class="btn btn-default" type="button"> Clear</button>'
+});
+
+</script>

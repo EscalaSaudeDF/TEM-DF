@@ -3,6 +3,7 @@ require 'work_unit'
 class Medic < ActiveRecord::Base
 	belongs_to :work_unit
 	has_many :schedules
+	has_many :rating, through: :user
 
 	def self.search(speciality, work_unit)
 
