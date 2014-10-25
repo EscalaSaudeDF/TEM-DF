@@ -18,7 +18,7 @@ class Medic < ActiveRecord::Base
 		elsif speciality != "Informe a Especialidade"
 			where("speciality =  ?", speciality).all
 		else 
-		    all
+		    nil
 		end
 	end
 end
