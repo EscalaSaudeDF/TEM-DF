@@ -12,5 +12,28 @@ class MedicsController < ApplicationController
 	def profile
 		@medic = Medic.find_by_id(params[:id])
 		@work_unit = WorkUnit.find_by_id(@medic.work_unit_id)
+		@comment = Comment.new
 	end
+
+	def new_comment
+		@comment = Comment.new
+	end
+
+	def create_comment
+		@user = User.find_by_id(session[:remember_token])
+		@medic = Medic.find_by_id(params[:medic_id])
+		if @user
+			@comment = Comment.new(content: params[:content], medic: @medic, user: @user, comment_status: true, report: false)
+
+			if @comment.save
+	        	redirect_to profile_path(@medic)	
+	        else
+				flash.now.alert = "O comentario não foi salvo."
+				redirect_to root_path
+			end
+		else
+			flash.now.alert = "Acesse sua conta para comentar."
+			redirect_to login_path
+		end
+  	end
 end

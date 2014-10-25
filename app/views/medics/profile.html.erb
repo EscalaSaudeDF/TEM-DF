@@ -26,14 +26,18 @@
 				</div>
 			</div>
 		</div>
+
+
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<%= form_tag do %>
-						<p> Comentários </p>
-						<textarea class="form-control" rows="3"></textarea>
-						<br>
-						<button type="button" class="btn btn-primary">Enviar</button>
-					<%end%>
+				<%= form_tag("/medics/create_comment", method: "post") do %> 
+					<p> Comentários </p>
+					<%= text_field_tag :content, "", class: "form-control"%>
+					<%= hidden_field_tag  :medic_id, @medic.id %>
+					
+					<br>
+					<%= submit_tag 'Enviar', class: "btn btn-primary" %>
+				<%end%>
 			</div>
 		</div>
 	</div>
