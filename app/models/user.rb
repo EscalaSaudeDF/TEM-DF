@@ -3,7 +3,7 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 	has_many :comments
-	has_one :relevance
+	has_many :relevance
 
 	attr_accessor :password, :password_confirmation, :new_password, :document
 	before_save :encrypt_password

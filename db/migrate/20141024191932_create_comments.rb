@@ -1,8 +1,9 @@
 class CreateComments < ActiveRecord::Migration
   def change
     create_table :comments do |t|
-      t.datetime :date
       t.text :content
+      t.boolean :comment_status
+      t.boolean :report
       t.references :user
       t.references :medic
 
