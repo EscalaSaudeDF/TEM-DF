@@ -23,7 +23,7 @@ class MedicsController < ApplicationController
 			redirect_to login_path, :notice => "O Usuário necessita estar logado"
 		elsif @rating
             update_rating(@rating , params[:grade])
-            redirect_to root_path, notice: 'Avaliação Alterada!'
+            redirect_to action:"profile",id: params[:medic_id], notice: 'Avaliação Alterada!'
 		else
 			create_rating(@user, @medic)
 			redirect_to action:"profile",id: params[:medic_id]#,:notice => "O Usuário necessita estar logado"
@@ -37,7 +37,9 @@ class MedicsController < ApplicationController
 	  	end
 
 	  	def update_rating(rating,grade)
-			rating.update_attribute(:grade , grade)
-            rating.update_attribute(:date , Time.new)
+	  		if grade != "0"
+				rating.update_attribute(:grade , grade)
+            	rating.update_attribute(:date , Time.new)
+            end
 	  	end
 end
