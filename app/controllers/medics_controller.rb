@@ -13,4 +13,15 @@ class MedicsController < ApplicationController
 		@medic = Medic.find_by_id(params[:id])
 		@work_unit = WorkUnit.find_by_id(@medic.work_unit_id)
 	end
+
+	def create_rating 
+		@user = User.find_by_id(session[:remember_token])
+		@medic = Medic.find_by_id(params[:medic][:id])
+		if @user
+  			@rating = Rating.new(grade: params[:grade], user: @user, medic: @medic)
+  			@rating.save
+  		else
+  			redirect_to root_path  notice: 'Usuário não logado!'
+  		end	
+  	end	
 end

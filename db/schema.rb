@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20141022141120) do
   create_table "ratings", force: true do |t|
     t.integer  "grade"
     t.date     "date"
+    t.integer  "medic_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

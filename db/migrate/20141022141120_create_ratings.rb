@@ -4,6 +4,8 @@ class CreateRatings < ActiveRecord::Migration
       t.integer :grade
       t.date :date
 
+      t.references :medic, :user
+
       t.timestamps
     end
   end
