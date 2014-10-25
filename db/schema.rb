@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20141024192938) do
     t.text     "content"
     t.boolean  "comment_status"
     t.boolean  "report"
+    t.datetime "date"
     t.integer  "user_id"
     t.integer  "medic_id"
     t.datetime "created_at"
