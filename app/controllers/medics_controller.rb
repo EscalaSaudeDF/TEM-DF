@@ -1,8 +1,9 @@
 class MedicsController < ApplicationController
 	
 	def results
-		if params[:list_specility]!= "Informe a Especialidade" || params[:list_work_unit_name]!= "Informe a Região"
-  			@medics = Medic.search(params[:list_specility], params[:list_work_unit_name])
+		@medics = Medic.search(params[:list_specility], params[:list_work_unit_name])
+		if @medics
+  			@medics
   		else
   			flash.now.alert="Escolha um campo."
   			render "home/index"

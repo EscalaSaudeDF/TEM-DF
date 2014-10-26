@@ -24,14 +24,55 @@
 						</tr>
 					</table>
 
-				<%= form_tag("/medics/rating", method: "post") do %> 
-					<input id="input-2a" class="rating" name="grade" data-min="0" data-max="5" data-step="1" data-stars=5 
-   					 	data-glyphicon="false">
-   					 <%= hidden_field_tag :medic_id, @medic.id %>
+					<div class="col-lg-1">
+						<!-- Button trigger modal -->
+						<button class="btn btn-primary btn-lg button-schedule" data-toggle="modal" data-target="#myModal">
+					    <i class="fa fa-table"></i>
+					  </button>
+					    <!-- Modal -->
+					    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					      <div class="modal-dialog">
+					          <div class="modal-content">
+					              <div class="modal-header">
+					                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					                  <h4 class="modal-title" id="myModalLabel">
+					                    Escala - <%= @medic.name%>
+					                  </h4>
+					              </div>
+					              <div class="modal-body">
+					                <table class="table table-striped table-bordered table-hover" id="dataTables">
+					                  <thead>
+					                    <tr>
+					                      <th>Entrada</th>
+					                      <th>Saída</th>
+					                    </tr>
+					                  </thead>
+					                  <tbody>
+					                    <%@medic.schedules.each do |schedule|%>
+					                      <tr>
+					                        <td><%= schedule.in %></td>
+					                        <td><%= schedule.out %></td>
+					                      </tr>
+					                  <%end%>
+					                  </tbody>
+					                </table>
+					              </div>                                      
+					          </div>
+					          <!-- /.modal-content -->
+					      </div>
+					      <!-- /.modal-dialog -->
+					    </div>
+					    <!-- /.modal -->
 					</div>
-					<%= submit_tag 'Enviar' , class: 'btn btn-lg btn-success btn-block' %>
-				<%end%>
+					<br /><br />
 
+					<%= form_tag("/medics/rating", method: "post") do %> 
+						<input id="input-2a" class="rating" name="grade" data-min="0" data-max="5" data-step="1" data-stars=5 
+	   					 	data-glyphicon="false">
+	   					 <%= hidden_field_tag :medic_id, @medic.id %>
+						<%= submit_tag 'Enviar' , class: 'btn btn-lg btn-success btn-block' %>
+					<%end%>
+				</div>
 			</div>
 		</div>
 		<div class="panel panel-default">
@@ -48,9 +89,12 @@
 </div>
 
 <script>
-// initialize with defaults
-$("#input-2a").rating({
-	clearButton: '<button class="btn btn-default" type="button"> Clear</button>'
-});
+	// initialize with defaults
+	$("#input-2a").rating({
+		clearButton: '<button class="btn btn-default" type="button"> Limpar </button>'
+	});
 
+    $(document).ready(function() {
+        $('#dataTables').dataTable();
+    });
 </script>
