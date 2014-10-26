@@ -8,4 +8,41 @@ class MedicsController < ApplicationController
   			render "home/index"
   		end
 	end
+
+	def profile
+		@medic = Medic.find_by_id(params[:id])
+		@work_unit = WorkUnit.find_by_id(@medic.work_unit_id)
+	end
+
+	def rating 
+		@user = User.find_by_id(session[:remember_token])
+		@medic = Medic.find_by_id(params[:medic_id])
+		
+		if @user != nil
+			@rating = Rating.find_by_user_id_and_medic_id(@user.id, @medic.id)
+
+			if @rating != nil
+	            update_rating(@rating , params[:grade])
+	            redirect_to action:"profile",id: params[:medic_id], notice: 'Avaliação Alterada!'
+			else
+				create_rating(@user, @medic)
+				redirect_to action:"profile",id: params[:medic_id]#,:notice => "O Usuário necessita estar logado"
+			end
+		else 
+		redirect_to login_path, :notice => "O Usuário necessita estar logado"
+		end	
+  	end
+
+  	private 
+  		def create_rating(user, medic)
+			@rating = Rating.new(grade: params[:grade], user: user, medic: medic, date: Time.new)
+			@rating.save
+	  	end
+
+	  	def update_rating(rating,grade)
+	  		if grade != "0"
+				rating.update_attribute(:grade , grade)
+            	rating.update_attribute(:date , Time.new)
+            end
+	  	end
 end

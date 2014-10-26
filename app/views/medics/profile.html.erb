@@ -1,0 +1,56 @@
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class= "panel-body">
+				<div class="col-lg-2">
+					<%= image_tag "medico140x126.png", class: "img_responsive img-rounded" %>
+				</div>
+				<div class="col-lg-10">
+					<table>
+						<tr>
+							<h3><%=@medic.name%></h3>
+						</tr>
+						<tr>
+							<td> Especialidade: </td>
+							<td><%=@medic.speciality%></td>
+						</tr>
+						<tr>
+							<td> Departamento: </td>
+							<td><%=@medic.department%></td>
+						</tr>
+						<tr>
+							<td> Unidade de Trabalho: </td>
+							<td><%=@work_unit.name%></td>
+						</tr>
+					</table>
+
+				<%= form_tag("/medics/rating", method: "post") do %> 
+					<input id="input-2a" class="rating" name="grade" data-min="0" data-max="5" data-step="1" data-stars=5 
+   					 	data-glyphicon="false">
+   					 <%= hidden_field_tag :medic_id, @medic.id %>
+					</div>
+					<%= submit_tag 'Enviar' , class: 'btn btn-lg btn-success btn-block' %>
+				<%end%>
+
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<%= form_tag do %>
+						<p> Comentários </p>
+						<textarea class="form-control" rows="3"></textarea>
+						<br>
+						<button type="button" class="btn btn-primary">Enviar</button>
+					<%end%>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+// initialize with defaults
+$("#input-2a").rating({
+	clearButton: '<button class="btn btn-default" type="button"> Clear</button>'
+});
+
+</script>

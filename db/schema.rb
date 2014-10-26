@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913125322) do
+ActiveRecord::Schema.define(version: 20141022141120) do
 
   create_table "feedbacks", force: true do |t|
     t.integer  "grade"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20140913125322) do
     t.string   "speciality"
     t.string   "department"
     t.integer  "work_unit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ratings", force: true do |t|
+    t.integer  "grade"
+    t.datetime "date"
+    t.integer  "medic_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -3,6 +3,8 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 
+	has_one :rating
+
 	attr_accessor :password, :password_confirmation, :new_password, :document
 	before_save :encrypt_password
 
