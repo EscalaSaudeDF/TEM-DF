@@ -22,6 +22,14 @@
 							<td> Unidade de Trabalho: </td>
 							<td><%=@work_unit.name%></td>
 						</tr>
+						<tr>
+							<td> Avaliação Média: </td><td><%=@average%></td><td> Número de Avaliações:     </td><td><%=@ratings%></td>
+							
+						</tr>
+						<tr>
+							
+						</tr>
+
 					</table>
 
 					<div class="col-lg-1">
@@ -70,7 +78,7 @@
 						<input id="input-2a" class="rating" name="grade" data-min="0" data-max="5" data-step="1" data-stars=5 
 	   					 	data-glyphicon="false">
 	   					 <%= hidden_field_tag :medic_id, @medic.id %>
-						<%= submit_tag 'Enviar' , class: 'btn btn-lg btn-success btn-block' %>
+						<%= submit_tag 'Enviar' , class: 'btn btn-lg btn-success' %>
 					<%end%>
 				</div>
 			</div>
