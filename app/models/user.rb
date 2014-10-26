@@ -2,6 +2,8 @@ require 'valid_email'
 require 'bcrypt'
 
 class User < ActiveRecord::Base
+	has_many :comments
+	has_many :relevance
 
 	has_one :rating
 

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022141120) do
+ActiveRecord::Schema.define(version: 20141024192938) do
+
+  create_table "comments", force: true do |t|
+    t.text     "content"
+    t.boolean  "comment_status"
+    t.boolean  "report"
+    t.datetime "date"
+    t.integer  "user_id"
+    t.integer  "medic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "feedbacks", force: true do |t|
     t.integer  "grade"
@@ -36,6 +47,14 @@ ActiveRecord::Schema.define(version: 20141022141120) do
     t.datetime "date"
     t.integer  "medic_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "relevances", force: true do |t|
+    t.boolean  "value"
+    t.integer  "user_id"
+    t.integer  "comment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

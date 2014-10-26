@@ -36,6 +36,47 @@ class MedicsController < ApplicationController
 		end	
   	end
 
+  	def create_comment
+		@comment = Comment.new
+		@user = User.find_by_id(session[:remember_token])
+		@medic = Medic.find_by_id(params[:medic_id])
+		
+		if @user
+			@comment = Comment.new(content: params[:content], date: Time.now,
+				medic: @medic, user: @user, comment_status: true, report: false)
+
+			if @comment.save
+	        	redirect_to profile_path(@medic)
+	        else
+				flash.now.alert = "O comentario não foi salvo."
+				redirect_to profile_path(@medic)
+			end
+		else
+			flash.now.alert = "Acesse sua conta para comentar."
+			redirect_to login_path
+		end
+  	end
+
+  	def create_relevance
+  		@user = User.find_by_id(session[:remember_token])
+  		@comment = Comment.find_by_id(params[:id])
+
+  		if @user && @comment
+  			@relevance = Relevance.new(value: params[:value], user: @user, 
+  				comment: @comment)
+  			
+  			if @relevance.save
+	        	redirect_to profile_path(@medic)
+	        else
+				flash.now.alert = "Não foi possível avaliar."
+				redirect_to profile_path(@medic)
+			end
+  		else
+  			flash.now.alert = "Não foi possível avaliar."
+  			redirect_to profile_path(@medic)
+  		end
+  	end
+
   	private 
   		def create_rating(user, medic)
 			@rating = Rating.new(grade: params[:grade], user: user, medic: medic, date: Time.new)

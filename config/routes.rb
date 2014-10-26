@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   match 'medics/results', controller: 'medics', action: 'results', via: 'get'
   match 'medics/rating', controller: 'medics', action: 'rating', via: 'post'
+  match 'medics/create_comment', controller: 'medics', action: 'create_comment', via: 'post'
+  match 'medics/create_relevance', controller: 'medics', action: 'create_relevance', via: 'post'
   get "/medics/profile/:id" => "medics#profile", :as => "profile"
-  
+
   get "/users/:id/edit_password" => "users#edit_password", :as => "edit_password"
   patch "/users/:id/edit_password/update_password", to: "users#update_password"
   
