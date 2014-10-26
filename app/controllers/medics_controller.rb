@@ -14,6 +14,7 @@ class MedicsController < ApplicationController
 		@medic = Medic.find_by_id(params[:id])
 		@work_unit = WorkUnit.find_by_id(@medic.work_unit_id)
 		@average = calculate_average(@medic)
+		@ratings = Rating.all.where(medic_id: @medic.id).size
 	end
 
 	def rating 
