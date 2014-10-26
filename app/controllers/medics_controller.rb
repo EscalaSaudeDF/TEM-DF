@@ -13,6 +13,7 @@ class MedicsController < ApplicationController
 	def profile
 		@medic = Medic.find_by_id(params[:id])
 		@work_unit = WorkUnit.find_by_id(@medic.work_unit_id)
+		@average = calculate_average(@medic)
 	end
 
 	def rating 
@@ -46,4 +47,20 @@ class MedicsController < ApplicationController
             	rating.update_attribute(:date , Time.new)
             end
 	  	end
+
+	  	def calculate_average(medic)
+	  		@ratings = Rating.all.where(medic_id: medic.id)
+
+	  		if @ratings.size == 0 
+	  			return 0
+	  		else 
+		  		sum = 0
+		  		@ratings.each do |r|
+		  			sum += r.grade	
+	  			end
+
+				return sum/(1.0*@ratings.size)
+	  		end
+	  	end
 end
+
