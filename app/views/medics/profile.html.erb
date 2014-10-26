@@ -32,8 +32,12 @@
 			<div class="panel-body">
 				<%= form_tag("/medics/create_comment", method: "post") do %> 
 					<p> Comentários </p>
-					<%= text_field_tag :content, "", class: "form-control"%>
-					<%= hidden_field_tag  :medic_id, @medic.id %>
+					<%if current_user%>
+						<%= text_field_tag :content, "", class: "form-control", maxlength: 300, placeholder: 'Escreva seu cometário aqui'%>
+						<%= hidden_field_tag  :medic_id, @medic.id %>
+					<%else%>
+						<%= text_field_tag :content, "", class: "form-control", disabled: true, placeholder: 'Acesse sua conta para comentar.'%>
+					<%end%>
 					
 					<br>
 					<%= submit_tag 'Enviar', class: "btn btn-primary" %>

@@ -15,10 +15,6 @@ class MedicsController < ApplicationController
 		@comment = Comment.new
 	end
 
-	def new_comment
-		@comment = Comment.new
-	end
-
 	def create_comment
 		@user = User.find_by_id(session[:remember_token])
 		@medic = Medic.find_by_id(params[:medic_id])
