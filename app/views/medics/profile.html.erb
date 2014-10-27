@@ -92,15 +92,54 @@
 					<%if current_user%>
 						<%= text_field_tag :content, "", class: "form-control", maxlength: 300, placeholder: 'Escreva seu cometário aqui'%>
 						<%= hidden_field_tag  :medic_id, @medic.id %>
+						<br>
+						<%= submit_tag 'Enviar', class: "btn btn-primary" %>
 					<%else%>
 						<%= text_field_tag :content, "", class: "form-control", disabled: true, placeholder: 'Acesse sua conta para comentar.'%>
+							<br>
+						<%= submit_tag 'Enviar', class: "btn btn-primary", disabled: true %>
 					<%end%>
-					
-					<br>
-					<%= submit_tag 'Enviar', class: "btn btn-primary" %>
 				<%end%>
 			</div>
 		</div>
+
+		<div class="panel panel-default widget">
+            <div class="panel-heading">
+                
+                <h3 class="panel-title">
+                    Comentários recentes</h3>
+                <span class="label label-info">
+                    <%= @medic.comments.size %></span>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                	<% @medic.comments.each do |comment| %>
+	                    <li class="list-group-item">
+	                        <div class="row">
+	                            <div class="col-xs-10 col-md-11">
+	                                <div class="comment-text">
+	                                    <%= comment.content%>
+	                                </div>
+	                                <div>
+	                                    <div class="mic-info">
+	                                        By: <%= comment.user.username%> on <%= comment.date%>
+	                                    </div>
+	                                </div>
+	                                
+	                                <div class="action">
+	                                    Esse comentário foi útil? 
+      									<%= link_to " sim", create_relevance_path(:value => true, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-up btn btn-primary"%>
+      									<%= link_to " não", create_relevance_path(:value => false, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-down btn btn-primary "%>
+	                                    
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </li>
+                    <%end%>
+                </ul>
+            </div>
+        </div>
+
 	</div>
 </div>
 
