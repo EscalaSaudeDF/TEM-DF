@@ -3,9 +3,12 @@ require 'test_helper'
 class MedicsControllerTest < ActionController::TestCase
   fixtures :medics, :work_units
 
-  def setup 
-  	@medic = medics(:one)
-  	@work_unit = work_units(:one)
+  fixtures :users
+    
+  def setup
+      @user = users(:roberto)
+      @medic = medics(:one)
+      @work_unit = work_units(:one)
   end
 
   test "should not get results" do
@@ -33,4 +36,25 @@ class MedicsControllerTest < ActionController::TestCase
   	get :profile, id: @medic.id
   	assert_response :success
   end
+
+  test "should create comment" do
+    session[:remember_token] = @user.id
+
+    assert_difference('Comment.count') do
+      post :create_comment, medic_id: @medic.id, content: "testeee", comment: {date: Time.now, medic: @medic, user: @user, comment_status: true, report: false}
+    end 
+    assert_redirected_to profile_path(@medic)
+  end
+
+  test "shouldn't create comment without user" do
+    @user = nil
+
+    post :create_comment, medic_id: @medic.id, content: "testeee", comment: {date: Time.now, medic: @medic, user: @user, comment_status: true, report: false}
+    assert_redirected_to login_path
+  end
+
+  test "should create relevance" do
+    
+  end
+
 end

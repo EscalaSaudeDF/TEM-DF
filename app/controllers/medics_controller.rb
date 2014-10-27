@@ -42,15 +42,9 @@ class MedicsController < ApplicationController
 		@medic = Medic.find_by_id(params[:medic_id])
 		
 		if @user
-			@comment = Comment.new(content: params[:content], date: Time.now,
-				medic: @medic, user: @user, comment_status: true, report: false)
-
-			if @comment.save
-	        	redirect_to profile_path(@medic)
-	        else
-				flash.now.alert = "O comentario não foi salvo."
-				redirect_to profile_path(@medic)
-			end
+			@comment = Comment.new(content: params[:content], date: Time.now, medic: @medic, user: @user, comment_status: true, report: false)
+			@comment.save
+	    	redirect_to profile_path(@medic)
 		else
 			flash.now.alert = "Acesse sua conta para comentar."
 			redirect_to login_path
