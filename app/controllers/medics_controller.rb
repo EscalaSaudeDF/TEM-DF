@@ -59,18 +59,27 @@ class MedicsController < ApplicationController
 
   	def create_relevance
   		@user = User.find_by_id(session[:remember_token])
-  		@comment = Comment.find_by_id(params[:id])
+  		@medic = Medic.find_by_id(params[:medic_id])
+  		@comment = Comment.find_by_id(params[:comment_id])
+
 
   		if @user && @comment
-  			@relevance = Relevance.new(value: params[:value], user: @user, 
-  				comment: @comment)
-  			
-  			if @relevance.save
-	        	redirect_to profile_path(@medic)
-	        else
-				flash.now.alert = "Não foi possível avaliar."
-				redirect_to profile_path(@medic)
-			end
+  			@relevance = Relevance.find_by_user_id_and_comment_id(@user.id, @comment.id)
+
+  			if @relevance
+  				@relevance.update_attribute(:value, params[:value])
+  				redirect_to profile_path(@medic)
+  			else
+  				@relevance = Relevance.new(value: params[:value], user: @user, comment: @comment)
+	  			
+	  			if @relevance.save
+		        	redirect_to profile_path(@medic)
+		        else
+					flash.now.alert = "Não foi possível avaliar."
+					redirect_to profile_path(@medic)
+				end
+  				redirect_to profile_path(@medic)
+  			end
   		else
   			flash.now.alert = "Não foi possível avaliar."
   			redirect_to profile_path(@medic)

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   match 'medics/create_relevance', controller: 'medics', action: 'create_relevance', via: 'post'
   get "/medics/profile/:id" => "medics#profile", :as => "profile"
 
+  get "/medics/profile/:id/create_relevance" => "medics#create_relevance", :as => "create_relevance"
+
   get "/users/:id/edit_password" => "users#edit_password", :as => "edit_password"
   patch "/users/:id/edit_password/update_password", to: "users#update_password"
   
