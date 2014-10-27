@@ -58,8 +58,8 @@
 					                  <tbody>
 					                    <%@medic.schedules.each do |schedule|%>
 					                      <tr>
-					                        <td><%= schedule.in %></td>
-					                        <td><%= schedule.out %></td>
+					                        <td><%= schedule.in.strftime("%d de %B de %Y as %H:%M") %></td>
+					                        <td><%= schedule.out.strftime("%d de %B de %Y as %H:%M") %></td>
 					                      </tr>
 					                  <%end%>
 					                  </tbody>
@@ -105,9 +105,21 @@
 
 		<div class="panel panel-default widget">
             <div class="panel-heading">
-                
-                <h3 class="panel-title">
-                    Comentários recentes</h3>
+
+            		<div class = "col-lg-7 "> 
+	                    <div class = "col-lg-3 ">
+		            		<label>Ordenar por:</label>
+			        	</div>
+		                <div class = "col-lg-5 ">
+		                	<div class="form-group">
+			                    <select class="form-control col-md-off-set 2 col-md-1">
+			                        <option>Mais Relevante</option>
+			                        <option>Menos Relevante</option>
+			                    </select>
+		                	</div>
+		                </div>
+		            </div>
+                	
                 <span class="label label-info">
                     <%= @medic.comments.size %></span>
             </div>
@@ -122,14 +134,14 @@
 	                                </div>
 	                                <div>
 	                                    <div class="mic-info">
-	                                        By: <%= comment.user.username%> on <%= comment.date%>
+	                                        By: <%= comment.user.username%> on <%= comment.date.strftime("%d de %B de %Y") %>
 	                                    </div>
 	                                </div>
 	                                
 	                                <div class="action">
 	                                    Esse comentário foi útil? 
-      									<%= link_to " sim", create_relevance_path(:value => true, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-up btn btn-primary"%>
-      									<%= link_to " não", create_relevance_path(:value => false, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-down btn btn-primary "%>
+      									<%= link_to " #{get_relevances(comment.id,true)}", create_relevance_path(:value => true, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-up btn btn-primary"%>
+      									<%= link_to " #{get_relevances(comment.id,false)}", create_relevance_path(:value => false, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-down btn btn-primary "%>
 	                                    
 	                                </div>
 	                            </div>

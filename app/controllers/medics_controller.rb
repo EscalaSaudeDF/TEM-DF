@@ -1,5 +1,7 @@
 class MedicsController < ApplicationController
 	
+	helper_method :get_relevances
+
 	def results
 		@medics = Medic.search(params[:list_specility], params[:list_work_unit_name])
 		if @medics
@@ -57,6 +59,8 @@ class MedicsController < ApplicationController
 		end
   	end
 
+
+
   	def create_relevance
   		@user = User.find_by_id(session[:remember_token])
   		@medic = Medic.find_by_id(params[:medic_id])
@@ -83,6 +87,15 @@ class MedicsController < ApplicationController
   		else
   			flash.now.alert = "Não foi possível avaliar."
   			redirect_to profile_path(@medic)
+  		end
+  	end
+
+  	def get_relevances(comment_id, status)
+  		if status
+  			true_relevances = Relevance.where("comment_id =  ? AND value = ?", comment_id,true).all.size
+
+  		else
+  			false_relevances = Relevance.where("comment_id =  ? AND value = ?", comment_id,false).all.size
   		end
   	end
 
