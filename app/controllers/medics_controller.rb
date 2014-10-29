@@ -32,7 +32,7 @@ class MedicsController < ApplicationController
 				redirect_to action:"profile",id: params[:medic_id]#,:notice => "O Usuário necessita estar logado"
 			end
 		else 
-		redirect_to login_path, :notice => "O Usuário necessita estar logado"
+			redirect_to login_path, :notice => "O Usuário necessita estar logado"
 		end	
   	end
 
