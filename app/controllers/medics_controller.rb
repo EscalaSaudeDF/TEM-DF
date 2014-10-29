@@ -28,7 +28,7 @@ class MedicsController < ApplicationController
 			@rating = Rating.find_by_user_id_and_medic_id(@user.id, @medic.id)
 
 			if @rating != nil
-	            update_rating(@rating , params[:grade])
+				update_rating(@rating , params[:grade])
 				rating_status = 'Avaliação Alterada!'
 			else
 				create_rating(@user, @medic)
@@ -38,7 +38,7 @@ class MedicsController < ApplicationController
 		else
 			redirect_to login_path, :notice => "O Usuário necessita estar logado"
 		end
-  	end
+	end
 
   	def create_comment
 		@user = User.find_by_id(session[:remember_token])
