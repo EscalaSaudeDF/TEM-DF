@@ -24,7 +24,7 @@ class MedicsController < ApplicationController
 
 		if @user != nil
 			rating_status = ""
-			
+
 			@rating = Rating.find_by_user_id_and_medic_id(@user.id, @medic.id)
 
 			if @rating != nil
@@ -41,7 +41,6 @@ class MedicsController < ApplicationController
   	end
 
   	def create_comment
-		@comment = Comment.new
 		@user = User.find_by_id(session[:remember_token])
 		@medic = Medic.find_by_id(params[:medic_id])
 
@@ -49,15 +48,8 @@ class MedicsController < ApplicationController
 			@comment = Comment.new(content: params[:content], date: Time.now,
 				medic: @medic, user: @user, comment_status: true, report: false)
 
-			if @comment.save
-	        	redirect_to profile_path(@medic)
-	        else
-				flash.now.alert = "O comentario não foi salvo."
-				redirect_to profile_path(@medic)
-			end
-		else
-			flash.now.alert = "Acesse sua conta para comentar."
-			redirect_to login_path
+			@comment.save
+			redirect_to profile_path(@medic)
 		end
   	end
 
