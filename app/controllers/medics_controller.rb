@@ -18,21 +18,25 @@ class MedicsController < ApplicationController
 	end
 
 	def rating
+		medic_id = params[:medic_id]
 		@user = User.find_by_id(session[:remember_token])
-		@medic = Medic.find_by_id(params[:medic_id])
+		@medic = Medic.find_by_id(medic_id)
 
 		if @user != nil
+			rating_status = ""
+			
 			@rating = Rating.find_by_user_id_and_medic_id(@user.id, @medic.id)
 
 			if @rating != nil
 	            update_rating(@rating , params[:grade])
-	            redirect_to action:"profile",id: params[:medic_id], notice: 'Avaliação Alterada!'
+				rating_status = 'Avaliação Alterada!'
 			else
 				create_rating(@user, @medic)
-				redirect_to action:"profile",id: params[:medic_id]#,:notice => "O Usuário necessita estar logado"
+				rating_status = 'Avaliação Realizada com sucesso!'
 			end
+			redirect_to action:"profile",id: medic_id, notice: rating_status
 		else
-		redirect_to login_path, :notice => "O Usuário necessita estar logado"
+			redirect_to login_path, :notice => "O Usuário necessita estar logado"
 		end
   	end
 
