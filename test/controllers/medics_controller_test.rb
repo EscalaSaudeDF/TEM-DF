@@ -3,7 +3,7 @@ require 'test_helper'
 class MedicsControllerTest < ActionController::TestCase
     fixtures :medics, :work_units, :users
 
-    def setup 
+    def setup
   	    @medic = medics(:one)
   	    @work_unit = work_units(:one)
         @user = users(:roberto)
@@ -12,7 +12,7 @@ class MedicsControllerTest < ActionController::TestCase
 
     test "should not get results" do
         get :results, list_specility: "Informe a Especialidade", list_work_unit_name: "Informe a Região"
-        assert_nil @medics 
+        assert_nil @medics
         assert_template "home/index"
     end
 
@@ -44,7 +44,7 @@ class MedicsControllerTest < ActionController::TestCase
         assert_equal 1, assigns(:rating).grade
     end
 
-    test "shouldn't create rating" do 
+    test "shouldn't create rating" do
         assert_no_difference('Rating.count') do
             post :rating, medic_id: @medic.id, grade: 1, crate_rating:{user: @user, medic: @medic}
         end
@@ -59,7 +59,20 @@ class MedicsControllerTest < ActionController::TestCase
     end
 
     test "should calculate average" do
-        
+        get :profile, id: @medic.id
+
+        assert_equal 0, assigns(:ratings)
+        assert_equal 0, assigns(:average)
     end
-    
+
+    test "should calculate average 1" do
+        session[:remember_token] = @user.id
+        post :rating, medic_id: @medic.id, grade: 2, create_rating:{user: @user, medic: @medic}
+        session[:remember_token] = @user2.id
+        post :rating, medic_id: @medic.id, grade: 3, create_rating:{user: @user2, medic: @medic}
+        get :profile, id: @medic.id
+
+        assert_equal 2, assigns(:ratings)
+        assert_equal 2.5, assigns(:average)
+    end
 end
