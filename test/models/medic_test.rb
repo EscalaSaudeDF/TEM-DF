@@ -4,13 +4,10 @@ class MedicTest < ActiveSupport::TestCase
   fixtures :medics, :work_units, :schedules
 
     def setup
-        @medic = Medic.new(
-            :name => medics(:one).name,
-            :registry => medics(:one).registry,
-            :speciality => medics(:one).speciality,
-            :department => medics(:one).department)
+        @medic = medics(:one)
+        @work_unit = work_units(:one)
     end
-  
+
     test "Medic Saved" do
     	assert @medic.save
 
@@ -32,7 +29,7 @@ class MedicTest < ActiveSupport::TestCase
 
     test "Association between Medic and Schedule" do
         @medic.save
-        schedule = @medic.schedules.create(:in => schedules(:one).in, 
+        schedule = @medic.schedules.create(:in => schedules(:one).in,
             :out => schedules(:one).out)
 
         assert_equal @medic.schedules.size, 1
@@ -40,26 +37,24 @@ class MedicTest < ActiveSupport::TestCase
     end
 
     test "Search with both fields filled" do
-        work_unit = WorkUnit.create(:name => medics(:one).name, :id => medics(:one).id)
-        medic = Medic.create(:name => work_units(:one).name, :work_unit_id => work_units(:one).id)
-        assert Medic.search(medic.speciality, work_unit.name) 
+        assert Medic.search(@medic.speciality, @work_unit.name)
     end
 
     test "Search with speciality field empty" do
-        work_unit = WorkUnit.create(:name => medics(:one).name, :id => medics(:one).id)
-        medic = Medic.create(:name => work_units(:one).name, :work_unit_id => work_units(:one).id, :speciality => "Informe a Especialidade")
-        assert Medic.search(medic.speciality, work_unit.name) 
+        assert Medic.search("Informe a Especialidade", @work_unit.name)
     end
 
-    test "Search with work unit field empty" do
-        work_unit = WorkUnit.create(:name => "Informe a Região", :id => medics(:one).id)
-        medic = Medic.create(:name => work_units(:one).name, :work_unit_id => work_units(:one).id)
-        assert Medic.search(medic.speciality, work_unit.name) 
+    test "Search with work_unit field empty" do
+        assert Medic.search(@medic.speciality, "Informe a Região")
     end
 
     test "Search with both fields empty" do
-        work_unit = WorkUnit.create(:name => "Informe a Região", :id => medics(:one).id)
-        medic = Medic.create(:name => work_units(:one).name, :work_unit_id => work_units(:one).id, :speciality => "Informe a Especialidade")
-        assert Medic.search(medic.speciality, work_unit.name) 
+        assert_nil Medic.search("Informe a Especialidade", "Informe a Região")
+    end
+
+    test "Search with fields invalids" do
+        assert_equal 0, Medic.search("ERROR", @work_unit.name).size()
+        assert_nil Medic.search(@medic.speciality, "ERROR")
+        assert_nil Medic.search("ERROR", "ERROR")
     end
 end
