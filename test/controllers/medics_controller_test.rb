@@ -1,13 +1,14 @@
 require 'test_helper'
 
 class MedicsControllerTest < ActionController::TestCase
-    fixtures :medics, :work_units, :users
+    fixtures :medics, :work_units, :users, :comments
 
     def setup
   	    @medic = medics(:one)
   	    @work_unit = work_units(:one)
         @user = users(:roberto)
         @user2 = users(:lorena)
+        @comment = comments(:one)
     end
 
     test "should not get results" do
@@ -74,5 +75,44 @@ class MedicsControllerTest < ActionController::TestCase
 
         assert_equal 2, assigns(:ratings)
         assert_equal 2.5, assigns(:average)
+    end
+
+    test "should create a comment" do
+        session[:remember_token] = @user.id
+        post :create_comment, medic_id: @medic.id, content: "content test"
+
+        assert_equal "content test", assigns(:comment).content
+
+        assert_redirected_to profile_path(@medic)
+    end
+
+    test "shouldn't create a comment" do
+        post :create_comment, medic_id: @medic.id, content: "content test"
+
+        assert_redirected_to login_path
+    end
+
+    test "should create relevances" do
+        session[:remember_token] = @user.id
+        post :create_relevance, comment_id: @comment.id, medic_id: @medic.id, value: true
+
+        assert_equal true, assigns(:relevance).value
+
+        post :create_relevance, comment_id: @comment.id, medic_id: @medic.id, value: false
+
+        assert_equal false, assigns(:relevance).value
+    end
+
+    test "should update relevance" do
+        session[:remember_token] = @user.id
+        post :create_relevance, comment_id: @comment.id, medic_id: @medic.id, value: true
+        post :create_relevance, comment_id: @comment.id, medic_id: @medic.id, value: false
+
+        assert_equal false, assigns(:relevance).value
+    end
+
+    test "shouldn't create relevance with invalid user" do
+        post :create_relevance, comment_id: @comment.id, medic_id: @medic.id, value: true
+        assert_redirected_to login_path
     end
 end
