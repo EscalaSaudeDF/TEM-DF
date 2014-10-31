@@ -36,7 +36,7 @@
                 <% end %>
             </div>
             <!-- /.navbar-header -->
-            
+
             <ul class="title">
                 Transparência em Escalas Médicas do DF
             </ul>
@@ -57,10 +57,10 @@
                             <% if current_user.username == "admin"%>
                                 <%= link_to users_path do %>
                                     <i class="fa fa-users"></i> Usuários
-                                <% end %>   
+                                <% end %>
                                 <%= link_to index_parser_path do %>
                                     <i class ="fa fa-cloud-upload"></i> Carregar Dados
-                                <% end %>                                
+                                <% end %>
                             </li>
                             <% end %>
                             <li class="divider"></li>
@@ -72,9 +72,9 @@
                         </ul>
                         <!-- /.dropdown-user -->
                     </li>
-                <% else %> 
+                <% else %>
                     <li><%= link_to "Entrar", login_path %></li>
-                    <li><%= link_to "Cadastrar", new_user_path %></li>            
+                    <li><%= link_to "Cadastrar", new_user_path %></li>
                 <% end %>
                 <!-- /.dropdown -->
             </ul>
@@ -93,8 +93,8 @@
                                     </div>
                                   <% end %>
                                 <% end %>
-                                <%= form_tag("/medics/results", method: "get") do %> 
-                                    
+                                <%= form_tag("/medics/results", method: "get") do %>
+
                                     <div class="input-group custom-search-form">
                                         <label>Especialidade</label>
                                         <select name="list_specility" class="form-control">
@@ -104,13 +104,13 @@
                                                     <%= speciality %>
                                                 </option>
                                             <% end %>
-                                        </select>         
+                                        </select>
                                     </div>
 
                                     <div class="input-group custom-search-form">
                                         <label> Região </label>
-                                        <select name="list_work_unit_name" class="form-control">    
-                                            <option>Informe a Região</option>             
+                                        <select name="list_work_unit_name" class="form-control">
+                                            <option>Informe a Região</option>
                                             <% list_work_unit_name.each do |work_unit_name| %>
                                                 <option value="<%= work_unit_name %>">
                                                     <%= work_unit_name %>
