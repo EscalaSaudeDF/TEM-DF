@@ -39,3 +39,45 @@ Then(/^the ANA PAULA DELGADO CAVALCANTE's schedule is loaded$/) do
   	end
 end
 
+#medic_comment
+
+When(/^I click on 'Entrar' link$/) do
+	click_link ('Entrar')
+end
+
+Then(/^the login page is loaded$/) do
+	visit 'http://0.0.0.0:3000/login'
+end
+
+Then(/^I fill 'Nome de Usuário' field$/) do
+	fill_in 'username', :with => 'admin'
+end
+
+Then(/^I fill 'Senha' field$/) do
+	fill_in 'password', :with => 'admin'
+end
+
+Then(/^I click on 'Entrar' button$/) do
+	click_button ("Entrar") 
+end
+
+Then(/^the index page is loaded$/) do
+	visit 'http://0.0.0.0:3000'
+end
+
+When(/^I fill 'Comentário' field$/) do
+	fill_in 'content', :with => 'ola senhor pepino!'
+end
+
+And(/^I click on 'Enviar' button$/) do
+	click_button ("Enviar") 
+end
+
+#comment_relevance
+
+When(/^I click on 'sim' link$/) do
+	click_link ('sim')
+end
+
+
+
