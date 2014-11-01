@@ -34,7 +34,7 @@
 
 					<div class="col-lg-1">
 						<!-- Button trigger modal -->
-						<button class="btn btn-primary btn-lg button-schedule" value="medicModal" data-toggle="modal" data-target="#myModal">
+						<button class="btn btn-primary btn-lg button-schedule" data-toggle="modal" data-target="#myModal" title="Escala">
 					    <i class="fa fa-table"></i>
 					  </button>
 					    <!-- Modal -->
@@ -114,28 +114,30 @@
             <div class="panel-body">
                 <ul class="list-group">
                 	<% @medic.comments.each do |comment| %>
-	                    <li class="list-group-item">
-	                        <div class="row">
-	                            <div class="col-xs-10 col-md-11">
-	                                <div class="comment-text">
-	                                    <%= comment.content%>
-	                                </div>
-	                                <div>
-	                                    <div class="mic-info">
-	                                        By: <%= comment.user.username%> on <%= comment.date%>
-	                                    </div>
-	                                </div>
-	                                
-	                                <div class="action">
-	                                    Esse comentário foi útil? 
-      									<%= link_to " sim", create_relevance_path(:value => true, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-up btn btn-primary"%>
-      									<%= link_to " não", create_relevance_path(:value => false, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-down btn btn-primary "%>
-	                                    
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </li>
-                    <%end%>
+                		<%if comment.comment_status == true%>
+		                    <li class="list-group-item">
+		                        <div class="row">
+		                        	<%= link_to "", to_report_path(:comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-exclamation close report ",  data: { confirm: 'Você tem certeza?' }, :title=> "Denunciar"%>
+		                            <div class="col-xs-10 col-md-11">
+		                                <div class="comment-text">
+		                                    <%= comment.content%>
+		                                </div>
+		                                <div>
+		                                    <div class="mic-info">
+		                                        By: <%= comment.user.username%> on <%= comment.date%>
+		                                    </div>
+		                                </div>
+		                                
+		                                <div class="action">
+		                                    Esse comentário foi útil? 
+	      									<%= link_to " sim", create_relevance_path(:value => true, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-up btn btn-primary"%>
+	      									<%= link_to " não", create_relevance_path(:value => false, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-down btn btn-primary "%>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </li>
+		                <% end %>
+                    <% end %>
                 </ul>
             </div>
         </div>

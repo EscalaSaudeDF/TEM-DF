@@ -53,15 +53,22 @@
                                     <i class="fa fa-user fa-fw"></i> Editar Perfil
                                 <% end %>
                             </li>
-                            <li>
                             <% if current_user.username == "admin"%>
-                                <%= link_to users_path do %>
-                                    <i class="fa fa-users"></i> Usuários
-                                <% end %>
-                                <%= link_to index_parser_path do %>
-                                    <i class ="fa fa-cloud-upload"></i> Carregar Dados
-                                <% end %>
-                            </li>
+                                <li>
+                                    <%= link_to users_path do %>
+                                        <i class="fa fa-users"></i> Usuários
+                                    <% end %>
+                                </li>
+                                <li>
+                                    <%= link_to index_parser_path do %>
+                                        <i class ="fa fa-cloud-upload"></i> Carregar Dados
+                                    <% end %>
+                                </li>
+                                <li>
+                                    <%= link_to reported_comments_path do %>
+                                        <i class="fa fa-exclamation"></i> Denúncias
+                                    <% end %>
+                                </li>
                             <% end %>
                             <li class="divider"></li>
                             <li>
