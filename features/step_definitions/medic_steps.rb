@@ -73,4 +73,11 @@ And(/^I click on 'Enviar' button$/) do
 	click_button ("Enviar") 
 end
 
+#comment_relevance
+
+When(/^I click on 'sim' link$/) do
+	click_link ('sim')
+end
+
+
 
