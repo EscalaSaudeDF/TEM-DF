@@ -39,6 +39,15 @@ gem 'metric_fu', '~> 4.11.1'
 
 gem "codeclimate-test-reporter", group: :test, require: nil
 
+group :test do
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+end
+
+gem 'capybara'
+gem 'selenium-webdriver'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
