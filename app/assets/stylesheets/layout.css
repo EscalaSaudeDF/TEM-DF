@@ -22,6 +22,9 @@
   color: #FF6E6E;
   opacity: 1;
 }
+.activate{
+  float: right;
+}
 .body-comments { padding-top:30px; }
 .widget .panel-body { padding:0px; }
 .widget .list-group { margin-bottom: 0; }

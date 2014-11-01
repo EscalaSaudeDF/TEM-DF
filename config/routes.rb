@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   get "/users/:id/edit_password" => "users#edit_password", :as => "edit_password"
   patch "/users/:id/edit_password/update_password", to: "users#update_password"
   
+  get "/comments/reports", controller: 'comments', action: 'reports', :as => "reported_comments"
+  get "/comments/reactivate_comment" => "comments#reactivate", :as => "reactivate_comment"
+  get "/comments/deactivate_comment" => "comments#deactivate", :as => "deactivate_comment"
+  get "/comments/disable_report" => "comments#disable_report", :as => "disable_report"
+    
   get "login" => "sessions#new", :as => "login"
   get "logout" => "sessions#destroy", :as => "logout"
   get "desactivate_account" => "users#desactivate", :as => "desactivate_account"
