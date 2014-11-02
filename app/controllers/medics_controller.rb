@@ -55,6 +55,8 @@ class MedicsController < ApplicationController
 		end
   	end
 
+
+
   	def create_relevance
   		@user = User.find_by_id(session[:remember_token])
   		@comment = Comment.find_by_id(params[:comment_id])
@@ -85,6 +87,7 @@ class MedicsController < ApplicationController
 	  	end
 
   	private
+
   		def create_rating(user, medic)
 			@rating = Rating.new(grade: params[:grade], user: user, medic: medic, date: Time.new)
 			@rating.save

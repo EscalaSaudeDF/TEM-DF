@@ -58,8 +58,8 @@
 					                  <tbody>
 					                    <%@medic.schedules.each do |schedule|%>
 					                      <tr>
-					                        <td><%= schedule.in %></td>
-					                        <td><%= schedule.out %></td>
+					                        <td><%= schedule.in.strftime("%d de %B de %Y as %H:%M") %></td>
+					                        <td><%= schedule.out.strftime("%d de %B de %Y as %H:%M") %></td>
 					                      </tr>
 					                  <%end%>
 					                  </tbody>
@@ -104,8 +104,7 @@
 		</div>
 
 		<div class="panel panel-default widget">
-            <div class="panel-heading">
-                
+            <div class="panel-heading">            		
                 <h3 class="panel-title">
                     Comentários </h3>
                 <span class="label label-info">
@@ -124,7 +123,7 @@
 		                                </div>
 		                                <div>
 		                                    <div class="mic-info">
-		                                        By: <%= comment.user.username%> on <%= comment.date%>
+		                                        By: <%= comment.user.username%> on <%= comment.date.strftime("%d de %B de %Y")%>
 		                                    </div>
 		                                </div>
 		                                
