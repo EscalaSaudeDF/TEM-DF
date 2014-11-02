@@ -77,10 +77,9 @@ class MedicsController < ApplicationController
 	  		@comment = Comment.find_by_id(params[:comment_id])
 	  		if @comment.report == false
 	  			@comment.report = true
+	  			@comment.save
 	  		end
-	  		@comment.save
 	  		flash[:alert] = "Comentario reportado."
-			flash.keep(:alert)
 			
 	  		redirect_to action:"profile",id: params[:medic_id]
 	  	end
