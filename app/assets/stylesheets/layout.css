@@ -16,8 +16,16 @@
 .button-schedule{
   padding: 5px 8px;
 }
-
-body { padding-top:30px; }
+.report{
+  font-size: 14px;
+  padding-right: 24px;
+  color: #FF6E6E;
+  opacity: 1;
+}
+.activate{
+  float: right;
+}
+.body-comments { padding-top:30px; }
 .widget .panel-body { padding:0px; }
 .widget .list-group { margin-bottom: 0; }
 .widget .panel-title { display:inline }

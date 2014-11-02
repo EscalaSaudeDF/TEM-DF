@@ -1,6 +1,4 @@
 class MedicsController < ApplicationController
-	
-	helper_method :get_relevances
 
 	def results
 		@medics = Medic.search(params[:list_specility], params[:list_work_unit_name])
@@ -19,43 +17,41 @@ class MedicsController < ApplicationController
 		@ratings = Rating.all.where(medic_id: @medic.id).size
 	end
 
-	def rating 
+	def rating
+		medic_id = params[:medic_id]
 		@user = User.find_by_id(session[:remember_token])
-		@medic = Medic.find_by_id(params[:medic_id])
-		
+		@medic = Medic.find_by_id(medic_id)
+
 		if @user != nil
+			rating_status = ""
+
 			@rating = Rating.find_by_user_id_and_medic_id(@user.id, @medic.id)
 
 			if @rating != nil
-	            update_rating(@rating , params[:grade])
-	            redirect_to action:"profile",id: params[:medic_id], notice: 'Avaliação Alterada!'
+				update_rating(@rating , params[:grade])
+				rating_status = 'Avaliação Alterada!'
 			else
 				create_rating(@user, @medic)
-				redirect_to action:"profile",id: params[:medic_id]#,:notice => "O Usuário necessita estar logado"
+				rating_status = 'Avaliação Realizada com sucesso!'
 			end
-		else 
-		redirect_to login_path, :notice => "O Usuário necessita estar logado"
-		end	
-  	end
+			redirect_to action:"profile",id: medic_id, notice: rating_status
+		else
+			redirect_to login_path, :notice => "O Usuário necessita estar logado"
+		end
+	end
 
   	def create_comment
-		@comment = Comment.new
 		@user = User.find_by_id(session[:remember_token])
 		@medic = Medic.find_by_id(params[:medic_id])
-		
+
 		if @user
 			@comment = Comment.new(content: params[:content], date: Time.now,
 				medic: @medic, user: @user, comment_status: true, report: false)
 
-			if @comment.save
-	        	redirect_to profile_path(@medic)
-	        else
-				flash.now.alert = "O comentario não foi salvo."
-				redirect_to profile_path(@medic)
-			end
+			@comment.save
+			redirect_to profile_path(@medic)
 		else
-			flash.now.alert = "Acesse sua conta para comentar."
-			redirect_to login_path
+			redirect_to login_path, :notice => "O Usuário necessita estar logado"
 		end
   	end
 
@@ -63,43 +59,35 @@ class MedicsController < ApplicationController
 
   	def create_relevance
   		@user = User.find_by_id(session[:remember_token])
-  		@medic = Medic.find_by_id(params[:medic_id])
   		@comment = Comment.find_by_id(params[:comment_id])
 
-
-  		if @user && @comment
+		if @user == nil
+			redirect_to login_path, :notice => "O Usuário necessita estar logado"
+		elsif @comment
   			@relevance = Relevance.find_by_user_id_and_comment_id(@user.id, @comment.id)
 
   			if @relevance
   				@relevance.update_attribute(:value, params[:value])
-  				redirect_to profile_path(@medic)
   			else
-  				@relevance = Relevance.new(value: params[:value], user: @user, comment: @comment)
-	  			
-	  			if @relevance.save
-		        	redirect_to profile_path(@medic)
-		        else
-					flash.now.alert = "Não foi possível avaliar."
-					redirect_to profile_path(@medic)
-				end
-  				redirect_to profile_path(@medic)
+  				@relevance = Relevance.create(value: params[:value], user: @user, comment: @comment)
   			end
-  		else
-  			flash.now.alert = "Não foi possível avaliar."
-  			redirect_to profile_path(@medic)
+			redirect_to action:"profile",id: params[:medic_id]
   		end
   	end
 
-  	def get_relevances(comment_id, status)
-  		if status
-  			true_relevances = Relevance.where("comment_id =  ? AND value = ?", comment_id,true).all.size
+  	def to_report
+	  		@comment = Comment.find_by_id(params[:comment_id])
+	  		if @comment.report == false
+	  			@comment.report = true
+	  			@comment.save
+	  		end
+	  		flash[:alert] = "Comentario reportado."
+			
+	  		redirect_to action:"profile",id: params[:medic_id]
+	  	end
 
-  		else
-  			false_relevances = Relevance.where("comment_id =  ? AND value = ?", comment_id,false).all.size
-  		end
-  	end
+  	private
 
-  	private 
   		def create_rating(user, medic)
 			@rating = Rating.new(grade: params[:grade], user: user, medic: medic, date: Time.new)
 			@rating.save
@@ -115,16 +103,15 @@ class MedicsController < ApplicationController
 	  	def calculate_average(medic)
 	  		@ratings = Rating.all.where(medic_id: medic.id)
 
-	  		if @ratings.size == 0 
+	  		if @ratings.size == 0
 	  			return 0
-	  		else 
+	  		else
 		  		sum = 0
 		  		@ratings.each do |r|
-		  			sum += r.grade	
+		  			sum += r.grade
 	  			end
 
 				return sum/(1.0*@ratings.size)
 	  		end
 	  	end
 end
-

@@ -36,7 +36,7 @@
                 <% end %>
             </div>
             <!-- /.navbar-header -->
-            
+
             <ul class="title">
                 Transparência em Escalas Médicas do DF
             </ul>
@@ -44,7 +44,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 <% if current_user %>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <a class="dropdown-toggle" value="admin" data-toggle="dropdown" href="#">
                             <i class="fa fa-user fa-fw"></i> <%= current_user.username %><i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
@@ -53,15 +53,22 @@
                                     <i class="fa fa-user fa-fw"></i> Editar Perfil
                                 <% end %>
                             </li>
-                            <li>
                             <% if current_user.username == "admin"%>
-                                <%= link_to users_path do %>
-                                    <i class="fa fa-users"></i> Usuários
-                                <% end %>   
-                                <%= link_to index_parser_path do %>
-                                    <i class ="fa fa-cloud-upload"></i> Carregar Dados
-                                <% end %>                                
-                            </li>
+                                <li>
+                                    <%= link_to users_path do %>
+                                        <i class="fa fa-users"></i> Usuários
+                                    <% end %>
+                                </li>
+                                <li>
+                                    <%= link_to index_parser_path do %>
+                                        <i class ="fa fa-cloud-upload"></i> Carregar Dados
+                                    <% end %>
+                                </li>
+                                <li>
+                                    <%= link_to reported_comments_path do %>
+                                        <i class="fa fa-exclamation"></i> Denúncias
+                                    <% end %>
+                                </li>
                             <% end %>
                             <li class="divider"></li>
                             <li>
@@ -72,9 +79,9 @@
                         </ul>
                         <!-- /.dropdown-user -->
                     </li>
-                <% else %> 
+                <% else %>
                     <li><%= link_to "Entrar", login_path %></li>
-                    <li><%= link_to "Cadastrar", new_user_path %></li>            
+                    <li><%= link_to "Cadastrar", new_user_path %></li>
                 <% end %>
                 <!-- /.dropdown -->
             </ul>
@@ -93,8 +100,8 @@
                                     </div>
                                   <% end %>
                                 <% end %>
-                                <%= form_tag("/medics/results", method: "get") do %> 
-                                    
+                                <%= form_tag("/medics/results", method: "get") do %>
+
                                     <div class="input-group custom-search-form">
                                         <label>Especialidade</label>
                                         <select name="list_specility" class="form-control">
@@ -104,13 +111,13 @@
                                                     <%= speciality %>
                                                 </option>
                                             <% end %>
-                                        </select>         
+                                        </select>
                                     </div>
 
                                     <div class="input-group custom-search-form">
                                         <label> Região </label>
-                                        <select name="list_work_unit_name" class="form-control">    
-                                            <option>Informe a Região</option>             
+                                        <select name="list_work_unit_name" class="form-control">
+                                            <option>Informe a Região</option>
                                             <% list_work_unit_name.each do |work_unit_name| %>
                                                 <option value="<%= work_unit_name %>">
                                                     <%= work_unit_name %>
