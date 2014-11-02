@@ -79,5 +79,12 @@ When(/^I click on 'sim' link$/) do
 	click_link ('sim')
 end
 
+#comment_report
 
+When(/^I click on '!' link$/) do
+  click_link ('Denunciar')
+end
 
+And(/^I confirm popup$/) do
+  page.driver.browser.switch_to.alert.accept
+end
