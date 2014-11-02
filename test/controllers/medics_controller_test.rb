@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class MedicsControllerTest < ActionController::TestCase
+
     fixtures :medics, :work_units, :users, :comments
 
     def setup
