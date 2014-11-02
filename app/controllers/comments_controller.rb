@@ -8,9 +8,6 @@ class CommentsController < ApplicationController
 		if @comment
 			@comment.update_attribute(:comment_status, false)
 		end
-		unless @comment
-			flash.now.alert="deu merda. :'("
-		end
 		redirect_to reported_comments_path
 	end
 

@@ -79,5 +79,30 @@ When(/^I click on 'sim' link$/) do
 	click_link ('sim')
 end
 
+When(/^I click on 'admin' link$/) do
+	click_link('admin')
+end
 
+And (/^I click on 'Denúncias' link$/) do
+	click_link('Denúncias')
+end
 
+Then (/^report's page is loaded$/) do
+	visit 'localhost:3000/comments/reports'
+end
+
+When (/^I click on 'Desativar' link$/) do
+	click_link('Desativar')
+end
+
+And(/^I confirm popup$/) do
+  page.driver.browser.switch_to.alert.accept
+end
+
+When (/^I click on 'Reativar' link$/) do
+	click_link('Reativar')
+end
+
+When (/^I click on 'Tirar Dunúncia' link$/) do
+	click_link('Tirar Denúncia')
+end
