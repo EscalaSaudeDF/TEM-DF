@@ -4,7 +4,7 @@ Given( /^I am on the index page$/ )do
 	visit 'http://0.0.0.0:3000/'
 end
 
-When /^I select speciality as MED. DA FAMILIA E COMUNIDADE$/ do 
+When /^I select speciality as MED. DA FAMILIA E COMUNIDADE$/ do
 	page.select 'MED. DA FAMILIA E COMUNIDADE', :from => 'list_specility'
 end
 
@@ -23,7 +23,7 @@ end
 Then /^the profile is loaded$/ do
 	visit 'http://0.0.0.0:3000/medics/profile/77'
 end
- 
+
 #scenario 2
 Given(/^I am on the medic's profile$/) do
 	visit 'http://0.0.0.0:3000/medics/profile/77'
@@ -58,7 +58,7 @@ Then(/^I fill 'Senha' field$/) do
 end
 
 Then(/^I click on 'Entrar' button$/) do
-	click_button ("Entrar") 
+	click_button ("Entrar")
 end
 
 Then(/^the index page is loaded$/) do
@@ -70,7 +70,7 @@ When(/^I fill 'Comentário' field$/) do
 end
 
 And(/^I click on 'Enviar' button$/) do
-	click_button ("Enviar") 
+	click_button ("Enviar")
 end
 
 #comment_relevance
@@ -105,4 +105,13 @@ end
 
 When (/^I click on 'Tirar Dunúncia' link$/) do
 	click_link('Tirar Denúncia')
+end
+#comment_report
+
+When(/^I click on '!' link$/) do
+  click_link ('Denunciar')
+end
+
+And(/^I confirm popup$/) do
+  page.driver.browser.switch_to.alert.accept
 end
