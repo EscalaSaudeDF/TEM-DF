@@ -74,15 +74,14 @@ class MedicsController < ApplicationController
   	end
 
   	def to_report
-	  		@comment = Comment.find_by_id(params[:comment_id])
-	  		if @comment.report == false
-	  			@comment.report = true
-	  			@comment.save
-	  		end
-	  		flash[:alert] = "Comentario reportado."
-			
-	  		redirect_to action:"profile",id: params[:medic_id]
-	  	end
+  		@comment = Comment.find_by_id(params[:comment_id])
+  		if @comment.report == false
+  			@comment.update_attribute(:report, true)
+  		end
+  		flash[:alert] = "Comentario reportado."
+		
+  		redirect_to action:"profile",id: params[:medic_id]
+  	end
 
   	private
   		def create_rating(user, medic)

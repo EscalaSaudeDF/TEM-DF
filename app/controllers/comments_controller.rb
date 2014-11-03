@@ -1,6 +1,12 @@
 class CommentsController < ApplicationController
 	def reports
-		@reported_comments = Comment.all.where(report: true)
+		@user = User.find_by_id(session[:remember_token])
+
+      	if @user && @user.username == "admin"
+			@reported_comments = Comment.all.where(report: true)
+		else
+			redirect_to root_path
+		end
 	end
 
 	def deactivate
