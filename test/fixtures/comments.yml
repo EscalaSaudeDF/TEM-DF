@@ -3,6 +3,10 @@
 one:
   date: 2014-10-24 17:19:32
   content: MyText
+  comment_status: true
+  report: false
+  user_id: 1
+  medic_id: 1
 
 two:
   date: 2014-10-24 17:19:32

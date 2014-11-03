@@ -34,7 +34,7 @@
 
 					<div class="col-lg-1">
 						<!-- Button trigger modal -->
-						<button class="btn btn-primary btn-lg button-schedule" data-toggle="modal" data-target="#myModal">
+						<button class="btn btn-primary btn-lg button-schedule" data-toggle="modal" data-target="#myModal" title="Escala">
 					    <i class="fa fa-table"></i>
 					  </button>
 					    <!-- Modal -->
@@ -58,8 +58,8 @@
 					                  <tbody>
 					                    <%@medic.schedules.each do |schedule|%>
 					                      <tr>
-					                        <td><%= schedule.in %></td>
-					                        <td><%= schedule.out %></td>
+					                        <td><%= schedule.in.strftime("%d de %B de %Y")  %></td>
+					                        <td><%= schedule.out.strftime("%d de %B de %Y")  %></td>
 					                      </tr>
 					                  <%end%>
 					                  </tbody>
@@ -78,7 +78,7 @@
 						<input id="input-2a" class="rating" name="grade" data-min="0" data-max="5" data-step="1" data-stars=5 
 	   					 	data-glyphicon="false">
 	   					 <%= hidden_field_tag :medic_id, @medic.id %>
-						<%= submit_tag 'Enviar' , class: 'btn btn-lg btn-success' %>
+						<%= submit_tag 'Avaliar' , class: 'btn btn-lg btn-success' %>
 					<%end%>
 				</div>
 			</div>
@@ -88,7 +88,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<%= form_tag("/medics/create_comment", method: "post") do %> 
-					<p> Comentários </p>
+					<p> Realizar Comentário </p>
 					<%if current_user%>
 						<%= text_field_tag :content, "", class: "form-control", maxlength: 300, placeholder: 'Escreva seu cometário aqui'%>
 						<%= hidden_field_tag  :medic_id, @medic.id %>
@@ -107,35 +107,37 @@
             <div class="panel-heading">
                 
                 <h3 class="panel-title">
-                    Comentários recentes</h3>
+                    Comentários </h3>
                 <span class="label label-info">
                     <%= @medic.comments.size %></span>
             </div>
             <div class="panel-body">
                 <ul class="list-group">
                 	<% @medic.comments.each do |comment| %>
-	                    <li class="list-group-item">
-	                        <div class="row">
-	                            <div class="col-xs-10 col-md-11">
-	                                <div class="comment-text">
-	                                    <%= comment.content%>
-	                                </div>
-	                                <div>
-	                                    <div class="mic-info">
-	                                        By: <%= comment.user.username%> on <%= comment.date%>
-	                                    </div>
-	                                </div>
-	                                
-	                                <div class="action">
-	                                    Esse comentário foi útil? 
-      									<%= link_to " sim", create_relevance_path(:value => true, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-up btn btn-primary"%>
-      									<%= link_to " não", create_relevance_path(:value => false, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-down btn btn-primary "%>
-	                                    
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </li>
-                    <%end%>
+                		<%if comment.comment_status == true%>
+		                    <li class="list-group-item">
+		                        <div class="row">
+		                        	<%= link_to "", to_report_path(:comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-exclamation close report ",  data: { confirm: 'Você tem certeza?' }, :title=> "Denunciar"%>
+		                            <div class="col-xs-10 col-md-11">
+		                                <div class="comment-text">
+		                                    <%= comment.content%>
+		                                </div>
+		                                <div>
+		                                    <div class="mic-info">
+		                                        By: <%= comment.user.username%> on <%= comment.date.strftime("%d de %B de %Y") %>
+		                                    </div>
+		                                </div>
+		                                
+		                                <div class="action">
+		                                    Esse comentário foi útil? 
+	      									<%= link_to " sim", create_relevance_path(:value => true, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-up btn btn-primary"%>
+	      									<%= link_to " não", create_relevance_path(:value => false, :comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-thumbs-down btn btn-primary "%>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </li>
+		                <% end %>
+                    <% end %>
                 </ul>
             </div>
         </div>

@@ -50,32 +50,37 @@ class MedicsController < ApplicationController
 
 			@comment.save
 			redirect_to profile_path(@medic)
+		else
+			redirect_to login_path, :notice => "O Usuário necessita estar logado"
 		end
   	end
 
   	def create_relevance
   		@user = User.find_by_id(session[:remember_token])
-  		@medic = Medic.find_by_id(params[:medic_id])
   		@comment = Comment.find_by_id(params[:comment_id])
 
-
-  		if @user && @comment
+		if @user == nil
+			redirect_to login_path, :notice => "O Usuário necessita estar logado"
+		elsif @comment
   			@relevance = Relevance.find_by_user_id_and_comment_id(@user.id, @comment.id)
 
   			if @relevance
   				@relevance.update_attribute(:value, params[:value])
-
   			else
-  				@relevance = Relevance.new(value: params[:value], user: @user, comment: @comment)
-
-	  			unless @relevance.save
-					flash.now.alert = "Não foi possível avaliar."
-				end
+  				@relevance = Relevance.create(value: params[:value], user: @user, comment: @comment)
   			end
-  		else
-  			flash.now.alert = "Não foi possível avaliar."
+			redirect_to action:"profile",id: params[:medic_id]
   		end
-		redirect_to profile_path(@medic)
+  	end
+
+  	def to_report
+  		@comment = Comment.find_by_id(params[:comment_id])
+  		if @comment.report == false
+  			@comment.update_attribute(:report, true)
+  		end
+  		flash[:alert] = "Comentario reportado."
+		
+  		redirect_to action:"profile",id: params[:medic_id]
   	end
 
   	private
