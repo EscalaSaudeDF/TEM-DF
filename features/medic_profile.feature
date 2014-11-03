@@ -10,10 +10,10 @@ Scenario: Seeing a medic's profile
 	When I select speciality as MED. DA FAMILIA E COMUNIDADE
 	And I click on 'Confirmar' button
 	Then the list of medics is loaded
-	When I click on ANA PAULA DELGADO CAVALCANTE
+	When I click on HUDSON DE OLIVEIRA VIRGINI
 	Then the profile is loaded
 
 Scenario: Seeing a medic'c schedule
 	Given I am on the medic's profile
 	When I click on schedules's button
-	Then the ANA PAULA DELGADO CAVALCANTE's schedule is loaded
+	Then the HUDSON DE OLIVEIRA VIRGINI's schedule is loaded

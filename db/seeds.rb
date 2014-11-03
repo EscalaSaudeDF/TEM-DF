@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.create(username: "admin", password: "admin", password_confirmation: "admin",
+    account_status: true, email: "admin@admin.com")
+
+Parser.save_data('public/csv/schedules_test.csv')
