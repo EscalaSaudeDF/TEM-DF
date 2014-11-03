@@ -76,7 +76,7 @@ end
 #comment_relevance
 
 When(/^I click on 'sim' link$/) do
-	click_link ('sim')
+	first(:link, 'sim').click
 end
 
 When(/^I click on 'admin' link$/) do
@@ -109,9 +109,5 @@ end
 #comment_report
 
 When(/^I click on '!' link$/) do
-  click_link ('Denunciar')
-end
-
-And(/^I confirm popup$/) do
-  page.driver.browser.switch_to.alert.accept
+  first(:link, 'Denunciar').click
 end
