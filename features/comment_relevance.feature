@@ -2,10 +2,10 @@
 
 Feature: Comment Relevance
 	To mark a comment as relevant or irrelevant
-	As a system's user 
+	As a system's user
 	I would like to select the relevance of the respective comment
 
-Scenario: User logged in	
+Scenario: User logged in
 	Given I am on the index page
 	When I click on 'Entrar' link
 	Then the login page is loaded
@@ -17,7 +17,7 @@ Scenario: User logged in
 	When I select speciality as MED. DA FAMILIA E COMUNIDADE
 	And I click on 'Confirmar' button
 	Then the list of medics is loaded
-	When I click on ANA PAULA DELGADO CAVALCANTE
+	When I click on HUDSON DE OLIVEIRA VIRGINI
 	Then the profile is loaded
 
 	When I fill 'Comentário' field
@@ -32,9 +32,8 @@ Scenario: User not logged in
 	When I select speciality as MED. DA FAMILIA E COMUNIDADE
 	And I click on 'Confirmar' button
 	Then the list of medics is loaded
-	When I click on ANA PAULA DELGADO CAVALCANTE
+	When I click on HUDSON DE OLIVEIRA VIRGINI
 	Then the profile is loaded
 
 	When I click on 'sim' link
 	Then the login page is loaded
-

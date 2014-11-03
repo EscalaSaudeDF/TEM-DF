@@ -45,4 +45,5 @@ test: &test
 #     url: <%= ENV['DATABASE_URL'] %>
 
 cucumber:
-  <<: *test
+  <<: *default
+  database: TEMDF_cucumber

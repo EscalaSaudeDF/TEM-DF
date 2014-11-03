@@ -10,7 +10,7 @@ Scenario: Reporting a comment
 	When I select speciality as MED. DA FAMILIA E COMUNIDADE
 	And I click on 'Confirmar' button
 	Then the list of medics is loaded
-	When I click on ANA PAULA DELGADO CAVALCANTE
+	When I click on HUDSON DE OLIVEIRA VIRGINI
 	Then the profile is loaded
 
 	When I click on '!' link

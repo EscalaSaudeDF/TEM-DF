@@ -16,24 +16,24 @@ Then /^the list of medics is loaded$/ do
 	visit 'http://0.0.0.0:3000/medics/results?utf8=%E2%9C%93&list_specility=%09MED.+DA+FAMILIA+E+COMUNIDADE&list_work_unit_name=Informe+a+Regi%C3%A3o'
 end
 
-When /^I click on ANA PAULA DELGADO CAVALCANTE$/ do
-	click_link ('ANA PAULA DELGADO CAVALCANTE')
+When /^I click on HUDSON DE OLIVEIRA VIRGINI$/ do
+	click_link ('HUDSON DE OLIVEIRA VIRGINI')
 end
 
 Then /^the profile is loaded$/ do
-	visit 'http://0.0.0.0:3000/medics/profile/77'
+	visit 'http://0.0.0.0:3000/medics/profile/1'
 end
 
 #scenario 2
 Given(/^I am on the medic's profile$/) do
-	visit 'http://0.0.0.0:3000/medics/profile/77'
+	visit 'http://0.0.0.0:3000/medics/profile/1'
 end
 
 When(/^I click on schedules's button$/) do
-	click_button ("medicModal")
+	click_button ("Escala")
 end
 
-Then(/^the ANA PAULA DELGADO CAVALCANTE's schedule is loaded$/) do
+Then(/^the HUDSON DE OLIVEIRA VIRGINI's schedule is loaded$/) do
 	within('#myModal') do
   		#page.should have_content('2014-10-01 07:00:00 UTC')
   	end
