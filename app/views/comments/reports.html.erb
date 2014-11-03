@@ -27,7 +27,7 @@
 		                </div>
 		                <div>
 		                    <div class="mic-info">
-		                        Autor: <%= reported_comment.user.username%> on <%= reported_comment.date%>
+		                        Autor: <%= reported_comment.user.username%> em <%= reported_comment.date.strftime("%d de %B de %Y")%>
 		                        <br>
 		                        Médico: <%= link_to reported_comment.medic.name, profile_path(reported_comment.medic)%> 
 		                    </div>		                    

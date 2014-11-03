@@ -116,8 +116,8 @@ class MedicsControllerTest < ActionController::TestCase
         assert_redirected_to login_path
     end
 
-    # test "should report a comment" do
-    #     get :to_report , comment_id: @comment.id 
-    #     assert_equal true , assigns(:comment).report
-    # end
+    test "should report a comment" do
+        get :to_report, id: @medic.id, medic_id: @medic.id, comment_id: @comment.id 
+        assert_equal true, assigns(:comment).report
+    end
 end
