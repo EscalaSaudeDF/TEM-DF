@@ -58,8 +58,8 @@
 					                  <tbody>
 					                    <%@medic.schedules.each do |schedule|%>
 					                      <tr>
-					                        <td><%= schedule.in.strftime("%d de %B de %Y")  %></td>
-					                        <td><%= schedule.out.strftime("%d de %B de %Y")  %></td>
+					                        <td><%= schedule.in.strftime("%d de %B de %Y as %H:%M") %></td>
+					                        <td><%= schedule.out.strftime("%d de %B de %Y as %H:%M") %></td>
 					                      </tr>
 					                  <%end%>
 					                  </tbody>
@@ -105,9 +105,20 @@
 
 		<div class="panel panel-default widget">
             <div class="panel-heading">
-                
-                <h3 class="panel-title">
-                    Comentários </h3>
+            		<div class = "col-lg-7 "> 
+	                    <div class = "col-lg-3 ">
+		            		<label>Ordenar por:</label>
+			        	</div>
+		                <div class = "col-lg-5 ">
+		                	<div class="form-group">
+			                    <select class="form-control col-md-off-set 2 col-md-1">
+			                        <option>Mais Relevante</option>
+			                        <option>Menos Relevante</option>
+			                    </select>
+		                	</div>
+		                </div>
+		            </div>
+                	
                 <span class="label label-info">
                     <%= @medic.comments.size %></span>
             </div>
