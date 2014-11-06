@@ -9,5 +9,7 @@
 User.create(username: "admin", password: "admin", password_confirmation: "admin",
     account_status: true, email: "admin@admin.com")
 
+User.create(username: "Pepino", password: "pepino", password_confirmation: "pepino",
+    account_status: true, email: "pepino@capivara.com")
 
 Parser.save_data('public/csv/schedules_test.csv')
