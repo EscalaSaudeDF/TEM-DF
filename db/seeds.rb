@@ -9,4 +9,5 @@
 User.create(username: "admin", password: "admin", password_confirmation: "admin",
     account_status: true, email: "admin@admin.com")
 
+
 Parser.save_data('public/csv/schedules_test.csv')
