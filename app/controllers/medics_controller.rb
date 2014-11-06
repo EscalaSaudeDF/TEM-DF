@@ -18,8 +18,15 @@ class MedicsController < ApplicationController
 	end
 
 	def workunits_grath
-		@medic = Medic.all
+		@medics_size = Array.new
+		@unit_name = Array.new
 		@work_unit = WorkUnit.all
+
+		@work_unit.each do |work_unit|
+			quantity = Medic.all.where(work_unit_id: work_unit.id).size
+			@medics_size.push(quantity)
+			@unit_name.push(work_unit.name)
+		end
 	end
 
 	def rating

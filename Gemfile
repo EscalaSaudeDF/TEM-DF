@@ -39,6 +39,9 @@ gem 'metric_fu', '~> 4.11.1'
 
 gem "codeclimate-test-reporter", group: :test, require: nil
 
+#Gem that includes Highcharts (Interactive JavaScript charts for your web projects), in the Rails Asset Pipeline introduced in Rails 3.1
+gem 'highcharts-rails'
+
 group :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
