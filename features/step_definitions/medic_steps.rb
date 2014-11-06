@@ -103,7 +103,7 @@ When (/^I click on 'Reativar' link$/) do
 	click_link('Reativar')
 end
 
-When (/^I click on 'Tirar Dunúncia' link$/) do
+When (/^I click on 'Tirar Denúncia' link$/) do
 	click_link('Tirar Denúncia')
 end
 #comment_report
