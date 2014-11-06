@@ -6,4 +6,14 @@ class TemdfMailer < ActionMailer::Base
   	mail(to: 'temdf.unb@gmail.com', subject: 'Nova solicitacao de medico', body: 'solicitacao de cadastro de usuario')
   end
 
+  def send_mail (subject, message, email, name)
+
+   	mail(
+		to: 'temdf.unb@gmail.com',
+		subject: subject,
+		body: "From: " + email +"\nNome: "+ name + "\n\n" + message
+		)
+  end
+
 end
+

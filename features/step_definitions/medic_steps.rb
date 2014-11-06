@@ -111,3 +111,29 @@ end
 When(/^I click on '!' link$/) do
   first(:link, 'Denunciar').click
 end
+
+#contact_mail
+
+When(/^I click on 'Contato' link$/) do
+	click_link('Contato')  
+end
+
+Then(/^the contact page is loaded$/) do
+	visit 'localhost:3000/contact'
+end
+
+Then(/^I fill 'Nome' field$/) do
+	fill_in 'name', :with => 'Teste Funcional'
+end
+
+Then(/^I fill 'Email' field$/) do
+	fill_in 'email', :with => 'teste@hotmail.com'
+end
+
+Then(/^I fill 'Assunto' field$/) do
+	fill_in 'subject', :with => 'Teste Funcional'
+end
+
+Then(/^I fill 'Message' field$/) do
+	fill_in 'message', :with => 'Este assunto é um teste, dos testes funcionais'
+end

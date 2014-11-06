@@ -24,7 +24,7 @@ end
 
 
 And (/^I select a csv file$/) do
-	attach_file(:document, '/home/karine/schedules_test.csv')
+	attach_file(:document, './public/csv/schedules_test.csv')
 end
  	
 And (/^I click on 'Enviar' link$/) do

@@ -1,0 +1,25 @@
+<%= form_tag contact_path do %>
+    <h1> Envie um email ao TEM-DF ! </h1> 
+
+    <fieldset>
+        <div class="form-group">
+          <h5> Nome: </h5>
+          <%= text_field_tag :name, params[:name], placeholder: 'Ex.: Roberto Costa', class: 'form-control',:required => true%>
+        </div>
+        <div class="form-group">
+          <h5> Email: </h5>
+          <%= text_field_tag :email, params[:email], placeholder: 'email@gmail.com', class: 'form-control',:required => true,        :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}'%>
+        </div>
+         <div class="form-group">
+          <h5> Assunto: </h5>
+          <%= text_field_tag :subject, params[:subject], placeholder: 'Escreva o Título...', class: 'form-control', :required => true%>
+        </div>
+        <div class="form-group">
+          <h5> Mensagem: </h5>
+          <%= text_area_tag :message, params[:message], placeholder: 'Escreva Sua Mensagem Aqui...', class: 'form-control', :required => true%>
+        </div>
+        <!-- Change this to a button or input when using this as a form -->
+        <%= submit_tag 'Enviar' , class: 'btn btn-lg btn-success btn-block' %>
+    </fieldset>
+<% end %>
+                
