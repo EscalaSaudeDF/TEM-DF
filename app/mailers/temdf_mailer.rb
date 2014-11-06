@@ -8,12 +8,12 @@ class TemdfMailer < ActionMailer::Base
 
   def send_mail (subject, message, email, name)
 
-   	  mail(
+   	mail(
 		to: 'temdf.unb@gmail.com',
 		subject: subject,
-		body: "From: " + email +"\n Nome: "+ name + "\n\n" + message
+		body: "From: " + email +"\nNome: "+ name + "\n\n" + message
 		)
-   end
+  end
 
 end
 
