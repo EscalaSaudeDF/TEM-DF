@@ -99,13 +99,6 @@ class UsersControllerTest < ActionController::TestCase
         assert_redirected_to edit_password_path
     end
 
-    test "should destroy user" do
-        assert_difference('User.count', -1) do
-            delete :destroy, id: @user.id
-        end
-        assert_redirected_to(:controller => "users", :action => "index")
-    end 
-
     test "should edit user" do
         session[:remember_token] = @user.id
         get :edit , id: session[:remember_token]

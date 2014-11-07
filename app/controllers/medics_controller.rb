@@ -67,6 +67,8 @@ class MedicsController < ApplicationController
 		end
   	end
 
+
+
   	def create_relevance
   		@user = User.find_by_id(session[:remember_token])
   		@comment = Comment.find_by_id(params[:comment_id])
@@ -95,7 +97,17 @@ class MedicsController < ApplicationController
   		redirect_to action:"profile",id: params[:medic_id]
   	end
 
-  	private
+  	def get_relevances(comment_id, status)
+  		if status
+  			true_relevances = Relevance.where("comment_id =  ? AND value = ?", comment_id,true).all.size
+
+  		else
+  			false_relevances = Relevance.where("comment_id =  ? AND value = ?", comment_id,false).all.size
+  		end
+  	end
+
+  	private 
+
   		def create_rating(user, medic)
 			@rating = Rating.new(grade: params[:grade], user: user, medic: medic, date: Time.new)
 			@rating.save
