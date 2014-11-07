@@ -121,4 +121,10 @@ class MedicsControllerTest < ActionController::TestCase
         get :to_report, id: @medic.id, medic_id: @medic.id, comment_id: @comment.id 
         assert_equal true, assigns(:comment).report
     end
+
+    test "should calculate graph" do
+        get :workunits_graph
+        assert_equal 1, assigns(:unit_name).size
+        assert_equal 1, assigns(:medics_size).size
+    end
 end

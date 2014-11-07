@@ -17,7 +17,7 @@ class MedicsController < ApplicationController
 		@ratings = Rating.all.where(medic_id: @medic.id).size
 	end
 
-	def workunits_grath
+	def workunits_graph
 		@medics_size = Array.new
 		@unit_name = Array.new
 		@work_unit = WorkUnit.all

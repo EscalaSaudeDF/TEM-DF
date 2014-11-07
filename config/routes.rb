@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   match 'medics/create_comment', controller: 'medics', action: 'create_comment', via: 'post'
   match 'medics/create_relevance', controller: 'medics', action: 'create_relevance', via: 'post'
   get "/medics/profile/:id" => "medics#profile", :as => "profile"
-  get "/workunits_grath" => "medics#workunits_grath", :as => "workunits_grath"
+  get "/workunits_graph" => "medics#workunits_graph", :as => "workunits_graph"
 
   get "/medics/profile/:id/create_relevance" => "medics#create_relevance", :as => "create_relevance"
   get "/medics/profile/:id/to_report" => "medics#to_report", :as => "to_report"

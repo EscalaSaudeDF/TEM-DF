@@ -137,3 +137,13 @@ end
 Then(/^I fill 'Message' field$/) do
 	fill_in 'message', :with => 'Este assunto é um teste, dos testes funcionais'
 end
+
+#medic graph
+When(/^I click on 'Grafico' link$/) do
+  click_link('Grafico')
+end
+
+Then(/^the graph page is loaded$/) do
+  visit 'http://0.0.0.0:3000/workunits_graph'
+end
+
