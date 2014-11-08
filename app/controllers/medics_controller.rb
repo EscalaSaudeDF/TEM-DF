@@ -17,6 +17,18 @@ class MedicsController < ApplicationController
 		@ratings = Rating.all.where(medic_id: @medic.id).size
 	end
 
+	def workunits_graph
+		@medics_size = Array.new
+		@unit_name = Array.new
+		@work_unit = WorkUnit.all
+
+		@work_unit.each do |work_unit|
+			quantity = Medic.all.where(work_unit_id: work_unit.id).size
+			@medics_size.push(quantity)
+			@unit_name.push(work_unit.name)
+		end
+	end
+
 	def rating
 		medic_id = params[:medic_id]
 		@user = User.find_by_id(session[:remember_token])

@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class MedicsControllerTest < ActionController::TestCase
+
     fixtures :medics, :work_units, :users, :comments
 
     def setup
@@ -119,5 +120,11 @@ class MedicsControllerTest < ActionController::TestCase
     test "should report a comment" do
         get :to_report, id: @medic.id, medic_id: @medic.id, comment_id: @comment.id 
         assert_equal true, assigns(:comment).report
+    end
+
+    test "should calculate graph" do
+        get :workunits_graph
+        assert_equal 1, assigns(:unit_name).size
+        assert_equal 1, assigns(:medics_size).size
     end
 end
