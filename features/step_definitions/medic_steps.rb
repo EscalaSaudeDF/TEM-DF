@@ -109,7 +109,33 @@ end
 #comment_report
 
 When(/^I click on '!' link$/) do
-  first(:link, 'Denunciar').click
+  	first(:link, 'Denunciar').click
+end
+
+When (/^I select region as DRS - GAMA$/) do
+	page.select 'DRS - GAMA', :from => 'list_work_unit_name'
+end
+
+Then (/^a warning is loaded$/) do
+	visit 'http://0.0.0.0:3000/medics/results?utf8=%E2%9C%93&list_specility=Informe+a+Especialidade&list_work_unit_name=Informe+a+Regi%C3%A3o'
+end
+
+And (/^I click on 'Limpar' button$/) do
+	click_button 'Limpar'
+end
+
+Then (/^the field 'Especialidade' is cleared$/) do
+	page.select 'Informe a Especialidade', :from => 'list_specility'
+end
+
+And (/^the field 'Região' is cleared$/) do
+	page.select 'Informe a Região', :from => 'list_work_unit_name'
+end
+
+Then (/^HUDSON DE OLIVEIRA VIRGINI's schedule is loaded$/ ) do
+	within('#myModal1') do
+  		#page.should have_content('2014-10-01 07:00:00 UTC')
+  	end
 end
 
 #contact_mail
