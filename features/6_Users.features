@@ -1,0 +1,90 @@
+#language: en
+
+Feature: User
+	To create a new account
+	As a system's user
+	I would like to create a new account
+
+Scenario: Create new account
+	Given I am on the index page
+	When I click on 'Cadastrar' link
+	Then the register page is loaded
+	Then I select 'Tipo de usuário' field
+	And I fill 'Username' field
+	And I fill 'Email' field
+	And I fill 'Password' field
+	And I fill 'Password confirmation' field
+	And I click on 'Criar Usuario' button
+	Then the index page is loaded
+
+Scenario: Wrong email error on create new account 
+	Given I am on the index page
+	When I click on 'Cadastrar' link
+	Then the register page is loaded
+	Then I select 'Tipo de usuário' field
+	And I fill 'Username' field
+	And I fill 'Email' field with wrong email
+	And I fill 'Password' field
+	And I fill 'Password confirmation' field
+	And I click on 'Criar Usuario' button
+	Then the index page is loaded
+
+Scenario: Wrong email error on create new account 
+	Given I am on the index page
+	When I click on 'Cadastrar' link
+	Then the register page is loaded
+	Then I select 'Tipo de usuário' field
+	And I fill 'Username' field
+	And I fill 'Email' field
+	And I fill 'Password' field
+	And I fill 'Password confirmation' field with wrong password
+	And I click on 'Criar Usuario' button
+	Then the index page is loaded
+
+#Scenario: Create new medic account 
+
+Scenario: Edit account's email
+	Given I am on the index page
+	When I click on 'Entrar' link
+	Then I fill 'Nome de Usuário' field with 'roberval'
+	And I fill 'Senha' field with 'massaroca'
+	And I click on 'Entrar' button
+ 	Then the index page is loaded
+
+ 	When I click on 'Roberval' link
+ 	And I click on 'Editar Perfil' link
+
+ 	Then I fill 'Email' field with new email
+ 	And I click on 'Salvar alteração' button
+
+ Scenario: Edit account's name
+	Given I am on the index page
+	When I click on 'Entrar' link
+	Then I fill 'Nome de Usuário' field with 'roberval'
+	And I fill 'Senha' field with 'massaroca'
+	And I click on 'Entrar' button
+ 	Then the index page is loaded
+
+ 	When I click on 'Roberval' link
+ 	And I click on 'Editar Perfil' link
+	Then I click on 'Alterar Senha' link
+ 	
+ 	Then I fill 'Senha Atual' field
+ 	And I fill 'Nova Senha' field
+ 	And I fill 'Confirmação de senha' field
+ 	And I click on 'Alterar Senha' button
+
+
+ Scenario: Edit account's name
+	Given I am on the index page
+	When I click on 'Entrar' link
+	Then I fill 'Nome de Usuário' field with 'roberval'
+	And I fill 'Senha' field with 'massarocaapimentada'
+	And I click on 'Entrar' button
+ 	Then the index page is loaded
+
+ 	When I click on 'Roberval' link
+ 	And I click on 'Editar Perfil' link
+
+ 	Then I fill 'Nome' field with new name
+ 	And I click on 'Salvar alteração' button 	
