@@ -1,0 +1,38 @@
+<h3>Medicos x Unidades</h3>
+<script type="text/javascript" charset="utf-8">
+ 
+$(document).ready(function() {
+
+  var chart = new Highcharts.Chart({
+
+  chart: {
+    renderTo: 'container',
+    type: 'bar'
+  },
+  plotOptions: {
+    series: {
+      pointWidth: 30
+    }
+  },
+  title: {
+    text: null
+  },
+  xAxis: {
+    categories: <%= raw @unit_name %>
+  },
+  yAxis: {
+    title: {
+      text: 'Número de Médicos'
+    }
+  },
+  series: [
+    {
+    name: 'Quantidade de médicos',
+    data: <%= @medics_size %>
+    },
+  ],
+  });
+});
+</script>
+
+<div id="container" style="height:1080px"></div>

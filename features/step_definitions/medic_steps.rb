@@ -103,11 +103,73 @@ When (/^I click on 'Reativar' link$/) do
 	click_link('Reativar')
 end
 
-When (/^I click on 'Tirar Dunúncia' link$/) do
+When (/^I click on 'Tirar Denúncia' link$/) do
 	click_link('Tirar Denúncia')
 end
 #comment_report
 
 When(/^I click on '!' link$/) do
-  first(:link, 'Denunciar').click
+  	first(:link, 'Denunciar').click
 end
+
+When (/^I select region as DRS - GAMA$/) do
+	page.select 'DRS - GAMA', :from => 'list_work_unit_name'
+end
+
+Then (/^a warning is loaded$/) do
+	visit 'http://0.0.0.0:3000/medics/results?utf8=%E2%9C%93&list_specility=Informe+a+Especialidade&list_work_unit_name=Informe+a+Regi%C3%A3o'
+end
+
+And (/^I click on 'Limpar' button$/) do
+	click_button 'Limpar'
+end
+
+Then (/^the field 'Especialidade' is cleared$/) do
+	page.select 'Informe a Especialidade', :from => 'list_specility'
+end
+
+And (/^the field 'Região' is cleared$/) do
+	page.select 'Informe a Região', :from => 'list_work_unit_name'
+end
+
+Then (/^HUDSON DE OLIVEIRA VIRGINI's schedule is loaded$/ ) do
+	within('#myModal1') do
+  		#page.should have_content('2014-10-01 07:00:00 UTC')
+  	end
+end
+
+#contact_mail
+
+When(/^I click on 'Contato' link$/) do
+	click_link('Contato')  
+end
+
+Then(/^the contact page is loaded$/) do
+	visit 'localhost:3000/contact'
+end
+
+Then(/^I fill 'Nome' field$/) do
+	fill_in 'name', :with => 'Teste Funcional'
+end
+
+Then(/^I fill 'Email' field$/) do
+	fill_in 'email', :with => 'teste@hotmail.com'
+end
+
+Then(/^I fill 'Assunto' field$/) do
+	fill_in 'subject', :with => 'Teste Funcional'
+end
+
+Then(/^I fill 'Message' field$/) do
+	fill_in 'message', :with => 'Este assunto é um teste, dos testes funcionais'
+end
+
+#medic graph
+When(/^I click on 'Grafico' link$/) do
+  click_link('Grafico')
+end
+
+Then(/^the graph page is loaded$/) do
+  visit 'http://0.0.0.0:3000/workunits_graph'
+end
+

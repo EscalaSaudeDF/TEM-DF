@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   match 'medics/create_comment', controller: 'medics', action: 'create_comment', via: 'post'
   match 'medics/create_relevance', controller: 'medics', action: 'create_relevance', via: 'post'
   get "/medics/profile/:id" => "medics#profile", :as => "profile"
+  get "/workunits_graph" => "medics#workunits_graph", :as => "workunits_graph"
 
   get "/medics/profile/:id/create_relevance" => "medics#create_relevance", :as => "create_relevance"
   get "/medics/profile/:id/to_report" => "medics#to_report", :as => "to_report"
@@ -28,6 +29,9 @@ Rails.application.routes.draw do
   get "/users/:id/desactivate_account" => "users#desactivate", :as => "desactivate_account_admin"
   post "/upload", controller: 'parsers', action: 'upload'
 
+  get "contact" => "contact#new", :as => "contact"
+  #get'/contact', to: 'contact#send_message'
+
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
   
   get 'users/index'
@@ -44,5 +48,6 @@ Rails.application.routes.draw do
   resources :sessions
   resources :home
   resources :parsers
+  resources :contact
 
 end
