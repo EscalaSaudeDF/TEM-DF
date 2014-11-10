@@ -15,7 +15,7 @@ Then (/^I fill 'Username' field$/) do
 	fill_in 'Username', :with => 'Roberval'
 end
 
-Then (/^I fill 'Email' field$/) do
+Then (/^I fill 'Email' field  with 'roberval@hotmail.com'$/) do
 	fill_in 'Email', :with => 'roberval@hotmail.com'
 end
 

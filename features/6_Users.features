@@ -11,7 +11,7 @@ Scenario: Create new account
 	Then the register page is loaded
 	Then I select 'Tipo de usuário' field
 	And I fill 'Username' field
-	And I fill 'Email' field
+	And I fill 'Email' field  with 'roberval@hotmail.com'
 	And I fill 'Password' field
 	And I fill 'Password confirmation' field
 	And I click on 'Criar Usuario' button
