@@ -29,6 +29,20 @@ class MedicsController < ApplicationController
 		end
 	end
 
+	def quantity_medics_by_speciality
+		@medics_size = Array.new
+		@speciality = Array.new
+		@medic = Medic.all
+		#@unit_name = Array.new
+		@work_unit = WorkUnit.find_by_id(params[:id])
+
+		@medic.each do |medic|
+			quantity = Medic.all.where(work_unit_id: params[:id]).size
+			@medics_size.push(quantity)
+			@speciality.push(medic.name)
+		end
+	end
+
 	def rating
 		medic_id = params[:medic_id]
 		@user = User.find_by_id(session[:remember_token])

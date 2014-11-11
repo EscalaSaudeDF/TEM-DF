@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   match 'medics/create_relevance', controller: 'medics', action: 'create_relevance', via: 'post'
   get "/medics/profile/:id" => "medics#profile", :as => "profile"
   get "/workunits_graph" => "medics#workunits_graph", :as => "workunits_graph"
+  get "/:id/quantity_medics_by_speciality" => "medics#quantity_medics_by_speciality", :as => "quantity_medics_by_speciality"
 
   get "/medics/profile/:id/create_relevance" => "medics#create_relevance", :as => "create_relevance"
   get "/medics/profile/:id/to_report" => "medics#to_report", :as => "to_report"
