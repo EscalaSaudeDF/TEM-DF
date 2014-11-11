@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get "/medics/profile/:id" => "medics#profile", :as => "profile"
   get "/workunits_graph" => "medics#workunits_graph", :as => "workunits_graph"
   match '/confirmation/:id/:token_email', controller: 'users', action: 'confirmation_email', via: 'get'
-  #get "/confirmation/:id/:token_email" => "users#confirmation_email", as: => "confirmation_email"
 
   get "/medics/profile/:id/create_relevance" => "medics#create_relevance", :as => "create_relevance"
   get "/medics/profile/:id/to_report" => "medics#to_report", :as => "to_report"
