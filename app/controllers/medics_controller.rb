@@ -111,15 +111,6 @@ class MedicsController < ApplicationController
   		redirect_to action:"profile",id: params[:medic_id]
   	end
 
-  	def get_relevances(comment_id, status)
-  		if status
-  			true_relevances = Relevance.where("comment_id =  ? AND value = ?", comment_id,true).all.size
-
-  		else
-  			false_relevances = Relevance.where("comment_id =  ? AND value = ?", comment_id,false).all.size
-  		end
-  	end
-
   	private 
 
   		def create_rating(user, medic)
