@@ -136,23 +136,10 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#">
+                            <%= link_to workunits_graph_path do %>
                                 <i class="fa fa-bar-chart-o fa-fw"></i>
                                  Grafico
-                                 <span class="fa arrow"></span>
-                            </a>
-                            <ul class="nav nav-second-level collapse in" aria-expanded="true">
-                                <li>
-                                    <%= link_to "Médico por unidade", workunits_graph_path %>
-                                </li>
-                                <li>
-                                    <!--<a href="morris.html">Morris.js Charts</a>-->
-                                    <% work_unit_link.each do |work_unit| %>
-                                        <%= link_to work_unit.name, quantity_medics_by_speciality_path(work_unit) %>
-                                    <%end%>
-
-                                </li>
-                            </ul>
+                            <%end%>
                         </li>
                         <li>
                             <%= link_to "Contato", contact_path %>
