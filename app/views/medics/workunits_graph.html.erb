@@ -1,38 +1,32 @@
-<h3>Medicos x Unidades</h3>
-<script type="text/javascript" charset="utf-8">
- 
-$(document).ready(function() {
 
-  var chart = new Highcharts.Chart({
+  <div class="col-sm-2">
+    <nav class="nav-sidebar">
+		<ul class="nav tabs">
+          <li class="active"><a href="#tab19" data-toggle="tab">Médicos por Unidade</a></li>
+          <hr>
+          <li class="">
+            <% @work_unit.each do |work_unit| %>
+              <li class=""><a href="#tab<%= work_unit.id %>" data-toggle="tab"><%=work_unit.name%></a></li>
+              <hr>
+            <% end %>
+          </li>                            
+		</ul>
+	</nav>
+</div>
+<!-- tab content -->
+<div class="tab-content col-sm-10">
+<div class="tab-pane active text-style" id="tab19">
+  <h2>Médicos por unidade</h2>
+       <hr> 
+       <%= render partial: "workunits_graph" %>  
+</div>
+<% @work_unit.each do |work_unit|%>
+  <div class="tab-pane text-style" id="tab<%= work_unit.id %>">
+    <h2>Quantidade de médicos em <%= work_unit.name %></h2>
+    <%@name = work_unit.name%>
+     <%= render partial: "quantity_medics_by_speciality" %>  
+      <hr>
+  </div>
+<%end%>
+    
 
-  chart: {
-    renderTo: 'container',
-    type: 'bar'
-  },
-  plotOptions: {
-    series: {
-      pointWidth: 30
-    }
-  },
-  title: {
-    text: null
-  },
-  xAxis: {
-    categories: <%= raw @unit_name %>
-  },
-  yAxis: {
-    title: {
-      text: 'Número de Médicos'
-    }
-  },
-  series: [
-    {
-    name: 'Quantidade de médicos',
-    data: <%= @medics_size %>
-    },
-  ],
-  });
-});
-</script>
-
-<div id="container" style="height:1080px"></div>

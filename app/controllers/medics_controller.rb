@@ -19,26 +19,21 @@ class MedicsController < ApplicationController
 
 	def workunits_graph
 		@medics_size = Array.new
+		@medics_size_speciality = Array.new
 		@unit_name = Array.new
+		@speciality = Array.new
 		@work_unit = WorkUnit.all
+		@medic = Medic.all
 
 		@work_unit.each do |work_unit|
 			quantity = Medic.all.where(work_unit_id: work_unit.id).size
 			@medics_size.push(quantity)
 			@unit_name.push(work_unit.name)
 		end
-	end
-
-	def quantity_medics_by_speciality
-		@medics_size = Array.new
-		@speciality = Array.new
-		@medic = Medic.all
-		#@unit_name = Array.new
-		@work_unit = WorkUnit.find_by_id(params[:id])
 
 		@medic.each do |medic|
 			quantity = Medic.all.where(work_unit_id: params[:id]).size
-			@medics_size.push(quantity)
+			@medics_size_speciality.push(quantity)
 			@speciality.push(medic.name)
 		end
 	end
