@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'password_resets/new'
+
   root 'home#index'
   match 'home', controller: 'home', action: 'index', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
@@ -49,5 +51,6 @@ Rails.application.routes.draw do
   resources :home
   resources :parsers
   resources :contact
+  resources :password_resets
 
 end
