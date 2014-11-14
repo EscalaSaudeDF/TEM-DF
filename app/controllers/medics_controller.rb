@@ -1,5 +1,8 @@
 class MedicsController < ApplicationController
 
+	
+	helper_method :array_speciality, :array_medics_quantity
+
 	def results
 		@medics = Medic.search(params[:list_specility], params[:list_work_unit_name])
 		if @medics
@@ -19,23 +22,36 @@ class MedicsController < ApplicationController
 
 	def workunits_graph
 		@medics_size = Array.new
-		@medics_size_speciality = Array.new
 		@unit_name = Array.new
-		@speciality = Array.new
 		@work_unit = WorkUnit.all
-		@medic = Medic.all
+		@medics = Medic.all
 
 		@work_unit.each do |work_unit|
 			quantity = Medic.all.where(work_unit_id: work_unit.id).size
 			@medics_size.push(quantity)
 			@unit_name.push(work_unit.name)
 		end
+	end
 
+	def array_speciality (id_work_unit)
+		@medic = Medic.all.where(work_unit_id: id_work_unit)
+		@speciality = Array.new
 		@medic.each do |medic|
-			quantity = Medic.all.where(work_unit_id: params[:id]).size
-			@medics_size_speciality.push(quantity)
-			@speciality.push(medic.name)
+			unless @speciality.include?(medic.speciality)
+				@speciality.push(medic.speciality)
+			end
 		end
+		return @speciality
+	end
+
+	def array_medics_quantity (id_work_unit, speciality)
+		@medic = Medic.all.where(work_unit_id: id_work_unit)
+		@medics_size_speciality = Array.new
+		speciality.each do |speciality|
+			quantity = Medic.all.where(speciality: speciality).size
+			@medics_size_speciality.push(quantity)
+		end
+		return @medics_size_speciality
 	end
 
 	def rating

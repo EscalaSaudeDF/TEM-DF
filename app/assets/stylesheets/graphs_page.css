@@ -15,11 +15,11 @@
 }
 .nav-sidebar .active a { 
     cursor: default;
-    background-color: #0b56a8; 
+    background-color: #4D87C7; 
     color: #fff; 
 }
 .nav-sidebar .active a:hover {
-    background-color: #E50000;   
+    background-color: #ab0c14;   
 }
 .nav-sidebar .text-overflow a,
 .nav-sidebar .text-overflow .media-body {
@@ -46,7 +46,7 @@
     border-color: #0b56a8;
 }
 article h2{color:#333333;}
-h2{color:#0b56a8;}
+h2{color:#4D87C7;}
  .margin10{margin-bottom:10px; margin-right:10px;}
  
  .container .text-style

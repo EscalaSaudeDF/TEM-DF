@@ -6,7 +6,11 @@
           <hr>
           <li class="">
             <% @work_unit.each do |work_unit| %>
-              <li class=""><a href="#tab<%= work_unit.id %>" data-toggle="tab"><%=work_unit.name%></a></li>
+              <% if work_unit.name == "DRS CANDANGOL./BAND/RIAC.FUNDO"%>
+                <li class=""><a href="#tab<%= work_unit.id %>" data-toggle="tab">DRS CANDANGOL./ BAND/ RIAC.FUNDO</a></li>
+              <% else %>
+                <li class=""><a href="#tab<%= work_unit.id %>" data-toggle="tab"><%=work_unit.name%></a></li>
+              <% end %>
               <hr>
             <% end %>
           </li>                            
@@ -22,8 +26,10 @@
 </div>
 <% @work_unit.each do |work_unit|%>
   <div class="tab-pane text-style" id="tab<%= work_unit.id %>">
-    <h2>Quantidade de médicos em <%= work_unit.name %></h2>
-    <%@name = work_unit.name%>
+    <h2>Quantidade de médicos em <%= work_unit.name %></h2
+    <% @name = work_unit.name %>
+    <% @array_speciality = array_speciality(work_unit.id) %>
+      <% @array_quantity_medics = array_medics_quantity(work_unit.id, array_speciality(work_unit.id)) %>
      <%= render partial: "quantity_medics_by_speciality" %>  
       <hr>
   </div>
