@@ -18,9 +18,15 @@ class UsersController < ApplicationController
             flash.now.alert = "Você precisa anexar um documento!"
             render "new"
         elsif  @user.password == @user.password_confirmation
+            random = Random.new
+            @user.account_status = false
             if @user.save
                 upload params[:user][:document]
-                redirect_to root_path
+                @user.update_attribute(:token_email, random.seed)
+
+                TemdfMailer.confimation_email(@user.id, @user.token_email, @user.email).deliver
+
+                redirect_to root_path, notice: "Por favor confirme seu cadastro pela mensagem enviada ao seu email!"
             else
                 render "new"
             end
@@ -126,6 +132,21 @@ class UsersController < ApplicationController
       else
         redirect_to root_path
       end
+    end
+
+    def confirmation_email
+
+        @user = User.find_by_id(params[:id])
+        msg = ''
+
+        if @user && @user.token_email
+           @user.update_attribute(:account_status, true)
+           @user.update_attribute(:token_email, nil)
+           msg = "Cadastro Confirmado!"
+        else
+          msg = "Link inválido!"
+        end
+        redirect_to root_path, notice: msg
     end
 
     private
