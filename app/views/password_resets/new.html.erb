@@ -2,12 +2,17 @@
 	<div class="col-lg-6 col-md-offset-2">
 		<div class="login-panel panel panel-default">
 			<div class="panel-heading">
-	        	Diga teu email, imundiça
+	        	Redefinição de Senha
 	    	</div>
 	    	<div class="panel-body">
 				<div class="field">
 					<div class="form-group"> 
-						<%= label_tag :email %>
+						<%= label_tag :Nome %>
+						<%= text_field_tag :username, params[:username],:required => true,class: "form-control" %>
+					</div>
+
+					<div class="form-group"> 
+						<%= label_tag :Email %>
 						<%= text_field_tag :email, params[:email], :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}',class: "form-control" %>
 					</div>
 				</div>
