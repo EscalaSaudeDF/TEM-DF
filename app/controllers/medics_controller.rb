@@ -20,6 +20,7 @@ class MedicsController < ApplicationController
 		@ratings = Rating.all.where(medic_id: @medic.id).size
 	end
 
+#graphs methods and actions
 	def workunits_graph
 		@medics_size = Array.new
 		@unit_name = Array.new
@@ -44,15 +45,17 @@ class MedicsController < ApplicationController
 		return @speciality
 	end
 
-	def array_medics_quantity (id_work_unit, speciality)
+	def array_medics_quantity (id_work_unit, array_speciality)
 		@medic = Medic.all.where(work_unit_id: id_work_unit)
 		@medics_size_speciality = Array.new
-		speciality.each do |speciality|
+		array_speciality.each do |speciality|
 			quantity = Medic.all.where(speciality: speciality).size
 			@medics_size_speciality.push(quantity)
 		end
 		return @medics_size_speciality
 	end
+	
+#=====================
 
 	def rating
 		medic_id = params[:medic_id]

@@ -1,37 +1,60 @@
-
-  <div class="col-sm-2">
-    <nav class="nav-sidebar">
-  		<ul class="nav tabs">
-            <li class="active"><a href="#tab170" data-toggle="tab">Médicos por Unidade</a></li>
-            <hr>
+<div class="col-sm-2">       
+  <nav class="nav-sidebar">
+    <div style="overflow: auto; height: 650px">
+		  <ul class="nav tabs">
+        <li class="active"><a href="#tab170" data-toggle="tab">Médicos por Unidade</a></li>
+        <hr>   
+          <table>
             <li class="">
               <% @work_unit.each do |work_unit| %>
-                <% if work_unit.name == "DRS CANDANGOL./BAND/RIAC.FUNDO"%>
-                  <li class=""><a href="#tab<%= work_unit.id %>" data-toggle="tab">DRS CANDANGOL./ BAND/ RIAC.FUNDO</a></li>
-                <% else %>
-                  <li class=""><a href="#tab<%= work_unit.id %>" data-toggle="tab"><%=work_unit.name%></a></li>
-                <% end %>
+                <tr>
+                  <% if work_unit.name == "DRS CANDANGOL./BAND/RIAC.FUNDO"%>
+                    <li class="">
+                      <a href="#tab<%= work_unit.id %>" data-toggle="tab">DRS CANDANGOL./ BAND/ RIAC.FUNDO</a>
+                    </li>
+                  <% else %>
+                    <li class="">
+                      <a href="#tab<%= work_unit.id %>" data-toggle="tab"><%=work_unit.name%></a>
+                    </li>
+                  <% end %>
+                </tr>
                 <hr>
               <% end %>
-            </li>                            
-  		</ul>
-    </nav>
+            </li>
+          </table>                           
+		  </ul>
+    </div>
+  </nav>
 </div>
+
 <!-- tab content -->
 <div class="tab-content col-sm-10">
 <div class="tab-pane active text-style" id="tab170">
   <h2>Médicos por unidade</h2>
-       <hr> 
-       <%= render partial: "workunits_graph" %>  
+  <hr> 
+  <div style="overflow: auto; height: 588px">
+    <table>
+      <tr>
+        <%= render partial: "workunits_graph" %>  
+      </tr>
+    </table>  
+  </div>
 </div>
+
 <% @work_unit.each do |work_unit| %> 
   <div class="tab-pane text-style" id="tab<%= work_unit.id %>">
     <h2>Quantidade de médicos em <%= work_unit.name %></h2>
     <hr>
-    <% @algo = work_unit.id%>
+    <% @id = work_unit.id%>
     <% @array_speciality = array_speciality(work_unit.id) %>
     <% @array_quantity_medics = array_medics_quantity(work_unit.id, @array_speciality) %>
-    <%= render partial: "quantity_medics_by_speciality" %>  
+    <div style="overflow: auto; height: 588px">
+      <table>
+        <tr>
+          <%= render partial: "quantity_medics_by_speciality" %>
+        </tr>
+      </table> 
+    </div>
   </div>
 <%end%>
     
