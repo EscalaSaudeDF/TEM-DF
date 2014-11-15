@@ -6,7 +6,7 @@ $(document).ready(function() {
   var chart = new Highcharts.Chart({
 
   chart: {
-    renderTo: 'container2',
+    renderTo: 'container<%=@algo%>',
     type: 'bar'
   },
   plotOptions: {
@@ -35,4 +35,14 @@ $(document).ready(function() {
 });
 </script>
 
-<div id="container2" style="height:1080px"></div>
+<% if @array_speciality.size >= 30 && @array_speciality.size <= 45%>
+	<div id="container<%=@algo%>" style="height:1820px"></div>
+	<% elsif @array_speciality.size <= 15 && @array_speciality.size > 5%>
+	<div id="container<%=@algo%>" style="height:680px"></div>
+	<% elsif @array_speciality.size <= 5 && @array_speciality.size >=1%>
+	<div id="container<%=@algo%>" style="height:280px"></div>
+	<% elsif @array_speciality.size > 45 %>
+	<div id="container<%=@algo%>" style="height:2780px"></div>
+	<% else %>
+	<div id="container<%=@algo%>" style="height:1080px"></div>
+<% end %>

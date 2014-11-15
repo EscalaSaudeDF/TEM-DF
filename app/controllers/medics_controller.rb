@@ -24,7 +24,7 @@ class MedicsController < ApplicationController
 		@medics_size = Array.new
 		@unit_name = Array.new
 		@work_unit = WorkUnit.all
-		@medics = Medic.all
+		#@medics = Medic.all
 
 		@work_unit.each do |work_unit|
 			quantity = Medic.all.where(work_unit_id: work_unit.id).size
