@@ -33,7 +33,6 @@ Rails.application.routes.draw do
   post "/upload", controller: 'parsers', action: 'upload'
 
   get "contact" => "contact#new", :as => "contact"
-  #get'/contact', to: 'contact#send_message'
 
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
   

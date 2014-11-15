@@ -1,6 +1,6 @@
 <div class="col-sm-2">       
   <nav class="nav-sidebar">
-    <div style="overflow: auto; height: 650px">
+    <div style="overflow: auto; height: 530px">
 		  <ul class="nav tabs">
         <li class="active"><a href="#tab170" data-toggle="tab">Médicos por Unidade</a></li>
         <hr>   
@@ -32,7 +32,7 @@
 <div class="tab-pane active text-style" id="tab170">
   <h2>Médicos por unidade</h2>
   <hr> 
-  <div style="overflow: auto; height: 588px">
+  <div style="overflow: auto; height: 460px">
     <table>
       <tr>
         <%= render partial: "workunits_graph" %>  
@@ -48,7 +48,7 @@
     <% @id = work_unit.id%>
     <% @array_speciality = array_speciality(work_unit.id) %>
     <% @array_quantity_medics = array_medics_quantity(work_unit.id, @array_speciality) %>
-    <div style="overflow: auto; height: 588px">
+    <div style="overflow: auto; height: 460px">
       <table>
         <tr>
           <%= render partial: "quantity_medics_by_speciality" %>
