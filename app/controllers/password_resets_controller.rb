@@ -18,12 +18,18 @@ class PasswordResetsController < ApplicationController
 
 	def update
 		@user = User.find_by_password_reset_token!(params[:id])
+	
 		if @user.password_reset_sent_at < 2.hours.ago
 			redirect_to new_password_reset_path, :alert => "Password reset has expired."
-		elsif @user.update_attributes(params[:user])
-			redirect_to root_url, :notice => "Password has been reset!"
 		else
-			render :edit
+			new_password = params[:user][:password]
+			if new_password == params[:user][:password_confirmation]
+				@user.update_attribute(:password, new_password)
+				redirect_to root_url, :notice => "Senha Redefinida!"			
+			else
+				render :edit, flash.now.alert = "Senha e Confirmação não conferem"
+			end			
 		end
 	end
+	
 end
