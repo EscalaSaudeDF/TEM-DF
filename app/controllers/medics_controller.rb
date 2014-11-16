@@ -1,5 +1,8 @@
 class MedicsController < ApplicationController
 
+	
+	helper_method :array_speciality, :array_medics_quantity
+
 	def results
 		@medics = Medic.search(params[:list_specility], params[:list_work_unit_name])
 		if @medics
@@ -17,6 +20,8 @@ class MedicsController < ApplicationController
 		@ratings = Rating.all.where(medic_id: @medic.id).size
 	end
 
+#graphs methods and actions
+	
 	def workunits_graph
 		@medics_size = Array.new
 		@unit_name = Array.new
@@ -29,6 +34,27 @@ class MedicsController < ApplicationController
 		end
 	end
 
+	def array_speciality (id_work_unit)
+		@medic = Medic.all.where(work_unit_id: id_work_unit)
+		@speciality = Array.new
+		@medic.each do |medic|
+			unless @speciality.include?(medic.speciality)
+				@speciality.push(medic.speciality)
+			end
+		end
+		return @speciality
+	end
+
+	def array_medics_quantity (id_work_unit, array_speciality)
+		@medic = Medic.all.where(work_unit_id: id_work_unit)
+		@medics_size_speciality = Array.new
+		array_speciality.each do |speciality|
+			quantity = Medic.all.where(speciality: speciality).size
+			@medics_size_speciality.push(quantity)
+		end
+		return @medics_size_speciality
+	end
+	
 	def rating
 		medic_id = params[:medic_id]
 		@user = User.find_by_id(session[:remember_token])

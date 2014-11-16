@@ -165,11 +165,23 @@ Then(/^I fill 'Message' field$/) do
 end
 
 #medic graph
-When(/^I click on 'Grafico' link$/) do
-  click_link('Grafico')
+When(/^I click on 'Gráficos' link$/) do
+  click_link('Gráficos')
 end
 
 Then(/^the graph page is loaded$/) do
   visit 'http://0.0.0.0:3000/workunits_graph'
 end
+
+And(/^I click on 'DRS - GAMA' link$/) do
+  click_link('DRS - GAMA')
+end
+
+Then (/^I wait (\d+) seconds?$/) do |seconds|
+  sleep seconds.to_i
+end
+
+
+
+
 
