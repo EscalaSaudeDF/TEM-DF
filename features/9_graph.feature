@@ -7,5 +7,9 @@ Feature: Generate medics per work unit graph
 
 Scenario: access the graph
 	Given I am on the index page
-	When I click on 'Grafico' link
+	When I click on 'Gráficos' link
 	Then the graph page is loaded
+	And I click on 'DRS - GAMA' link
+	Then I wait 5 seconds
+
+

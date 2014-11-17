@@ -1,0 +1,48 @@
+<h3><%= @name %></h3>
+<script type="text/javascript" charset="utf-8">
+ 
+$(document).ready(function() {
+
+  var chart = new Highcharts.Chart({
+
+  chart: {
+    renderTo: 'container<%=@id%>',
+    type: 'bar'
+  },
+  plotOptions: {
+    series: {
+      pointWidth: 30
+    }
+  },
+  title: {
+    text: null
+  },
+  xAxis: {
+    categories: <%= raw @array_speciality %>
+  },
+  yAxis: {
+    title: {
+      text: 'Número de Médicos'
+    }
+  },
+  series: [
+    {
+    name: 'Quantidade de médicos',
+    data: <%= @array_quantity_medics %>
+    },
+  ],
+  });
+});
+</script>
+
+<% if @array_speciality.size >= 30 && @array_speciality.size <= 45%>
+	<div class="col-sm-7" id="container<%=@id%>" style="height:1820px"></div>
+	<% elsif @array_speciality.size <= 15 && @array_speciality.size > 5%>
+	<div class="col-sm-7" id="container<%=@id%>" style="height:680px"></div>
+	<% elsif @array_speciality.size <= 5 && @array_speciality.size >=1%>
+	<div class="col-sm-7" id="container<%=@id%>" style="height:280px"></div>
+	<% elsif @array_speciality.size > 45 %>
+	<div class="col-sm-7" id="container<%=@id%>" style="height:2780px"></div>
+	<% else %>
+	<div class="col-sm-7" id="container<%=@id%>" style="height:1080px"></div>
+<% end %>

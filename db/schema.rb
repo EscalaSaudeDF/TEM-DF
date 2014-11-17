@@ -24,14 +24,6 @@ ActiveRecord::Schema.define(version: 20141114212416) do
     t.datetime "updated_at"
   end
 
-  create_table "feedbacks", force: true do |t|
-    t.integer  "grade"
-    t.date     "date"
-    t.text     "post"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "medics", force: true do |t|
     t.string   "name"
     t.integer  "registry"
