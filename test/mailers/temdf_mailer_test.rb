@@ -26,4 +26,19 @@ class TemdfMailerTest < ActionMailer::TestCase
 		assert_equal subject, email.subject
 		assert_equal "From: " + emailname +"\nNome: "+ name + "\n\n" + message, email.body.decoded
 	end
+
+	test "confimation_email" do
+
+		id = 1
+		token_email = "12345"
+		emailname = "roberto@gmail.com"
+
+		email = TemdfMailer.confimation_email(id, token_email, emailname)
+		email.deliver
+
+    	assert_not ActionMailer::Base.deliveries.empty?
+		assert_equal ['temdf.unb@gmail.com'], email.from
+		assert_equal [emailname], email.to
+		assert_equal "Confirme seu cadatro no link abaixo:\n\n"+"http://0.0.0.0:3000/confirmation/"+ id.to_s() +"/"+ token_email.to_s(), email.body.decoded
+	end
 end

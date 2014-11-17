@@ -136,7 +136,7 @@ class UsersController < ApplicationController
 
     def confirmation_email
 
-        @user = User.find_by_id(params[:id])
+        @user = User.find_by_id_and_token_email(params[:id],params[:token_email])
         msg = ''
 
         if @user && @user.token_email
