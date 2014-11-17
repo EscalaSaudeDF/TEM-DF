@@ -90,3 +90,63 @@ end
 Then(/^I fill 'Senha' field with 'massarocaapimentada'$/) do
 	fill_in 'password', :with => 'massarocaapimentada'
 end
+
+						#Reset_password 
+
+Then(/^I click on 'Esqueci minha senha' link$/) do
+	click_link('Esqueci minha senha')
+end
+
+Then(/^the reset_password\/new page is loaded$/) do
+  visit 'http://localhost:3000/password_resets/new'
+end
+
+Then(/^I fill 'Nome de Usuário' field with 'Lucicreide'$/) do
+  fill_in 'username', :with => 'Lucicreide'
+end
+
+Then(/^I fill 'Email' field with 'lucicreide\.tia(\d+)@gmail\.com'$/) do |arg1|
+  fill_in 'email', :with => 'lucicreide.tia8@gmail.com'
+end
+
+Then(/^I click on 'Requisitar' button$/) do
+  click_button('Requisitar')
+end
+
+Given(/^I am on gmail login page$/) do
+  visit 'https://accounts.google.com/ServiceLogin?sacu=1&scc=1&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&ss=1&ltmpl=default&rm=false'
+end
+
+Then(/^I fill 'E\-mail' field with 'lucicreide\.tia(\d+)@gmail\.com'$/) do |arg1|
+  fill_in 'Email', :with => 'lucicreide.tia8@gmail.com'
+end
+
+Then(/^I fill 'Senha' field with '(\d+)gatinhasafada(\d+)tao'$/) do |arg1, arg2|
+  fill_in 'Passwd', :with => '999gatinhasafada38tao'
+end
+
+Then(/^I click on 'Fazer login' button$/) do
+  click_button('signIn')
+end
+
+Then(/^I click on 'temdf\.unb' email$/) do
+  click_link('temdf.unb')
+end
+
+Then(/^I click on 'Mude sua Senha' link$/) do
+  click_link('Mude sua Senha')
+end
+
+Then(/^I fill 'Nova Senha' field with 'mudeisoucrenteagora'$/) do
+  fill_in 'user_password', :with => 'mudeisoucrenteagora'
+end
+
+Then(/^I fill 'Confirmação de Senha' field with 'mudeisoucrenteagora'$/) do
+  fill_in 'user_password_confirmation', :with => 'mudeisoucrenteagora'
+end
+
+Then(/^i click on 'Redefinir Senha' button$/) do
+  click_link('Redefinir Senha')
+end
+
+
