@@ -6,7 +6,7 @@ class PasswordResetsController < ApplicationController
 		user = User.find_by_email_and_username(params[:email],params[:username])
 		if user
 			user.send_password_reset 
-			redirect_to root_url, :notice => "Um e-mail foi enviado com as instruções para #{:email}."
+			redirect_to root_path, :notice => "Um e-mail foi enviado com as instruções para #{:email}."
 		else
 			render 'new', :notice => "Email ou nome de usuário inválidos"
 		end
@@ -17,7 +17,7 @@ class PasswordResetsController < ApplicationController
 		@user = User.find_by_password_reset_token(params[:id])
 		
 		if !@user
-			redirect_to root_path, :notice => "A senha já foi alterada."
+			redirect_to root_url, :notice => "A senha já foi alterada."
 		end
 	end
 
@@ -33,7 +33,7 @@ class PasswordResetsController < ApplicationController
 				@user.update_attribute(:password_reset_token, nil)
 				redirect_to root_url, :notice => "Senha Redefinida!"			
 			else
-				render :edit, flash.now.alert = "Senha e Confirmação não conferem"
+				redirect_to edit_password_reset_path, :notice => "Senha e Confirmação não conferem"
 			end			
 		end
 	end

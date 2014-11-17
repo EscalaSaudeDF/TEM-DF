@@ -10,8 +10,6 @@ class ApplicationController < ActionController::Base
   	end
 
 	def index
-		list_speciality
-		list_work_unit_name
 	end
 
   private
