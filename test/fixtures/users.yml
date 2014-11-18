@@ -1,11 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 roberto:
-  username: Roberto	
+  username: Roberto
   email: roberto@gmail.com
   #password: 1234
   password_hash: $2a$10$mgeAtbsT6u/9hrcGhhipOeNEFxWKCQtboLUNt501upH9NCmf2uW7S
   password_salt: $2a$10$mgeAtbsT6u/9hrcGhhipOe
   account_status: 1
+  password_reset_token: ToLken123
+  password_reset_sent_at: 3014-11-20 13:29:20
+  token_email: "123"
 
 lorena:
   username: Lorena
@@ -14,6 +17,10 @@ lorena:
   password_hash: $2a$10$ZJfyTR7czW1HrxVes8sUe.YnAqNObcuA6wBliCqe3NjbuYtqEdj1u
   password_salt: $2a$10$ZJfyTR7czW1HrxVes8sUe.
   account_status: 0
+  password_reset_token: LorenaSelvagem123
+  password_reset_sent_at: 1514-11-20 13:29:20
+  token_email: "321"
+
 
 admin:
   username: admin

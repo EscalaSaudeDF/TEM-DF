@@ -15,5 +15,14 @@ class TemdfMailer < ActionMailer::Base
 		)
   end
 
+  def confimation_email (id, token_email, email)
+
+    link = 'http://0.0.0.0:3000/confirmation/'+ id.to_s() +'/'+ token_email.to_s()
+
+    mail(
+    to: email,
+    subject: 'Confirme seu cadastro em TEM-DF!',
+    body: "Confirme seu cadatro no link abaixo:\n\n#{link}")
+  end  
 end
 

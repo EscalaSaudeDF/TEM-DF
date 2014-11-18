@@ -1,0 +1,33 @@
+<%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="col-lg-6 col-md-offset-2">
+    <div class="login-panel panel panel-default">
+        <div class="panel-body">
+          <div class="field">
+            <div class="form-group"> 
+              <%= f.label :Nova_senha %>
+              <%= f.password_field :password, :required => true ,class: "form-control" %>
+            </div>  
+          </div>
+          <div class="field">
+            <div class="form-group"> 
+              <%= f.label :Confirmação_de_senha %>
+              <%= f.password_field :password_confirmation, :required => true ,class: "form-control" %>
+            </div>
+          </div>
+          <div align="center">
+            <div class="actions"><%= f.submit "Redefinir Senha",  class: "btn btn-lg btn-primary btn-block" %></div>
+          </div>
+        </div>
+    </div>
+  </div>
+<% end %>

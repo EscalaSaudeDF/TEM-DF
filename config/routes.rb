@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'password_resets/new'
+
   root 'home#index'
   match 'home', controller: 'home', action: 'index', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
   match 'medics/create_relevance', controller: 'medics', action: 'create_relevance', via: 'post'
   get "/medics/profile/:id" => "medics#profile", :as => "profile"
   get "/workunits_graph" => "medics#workunits_graph", :as => "workunits_graph"
-  get "/:id/quantity_medics_by_speciality" => "medics#quantity_medics_by_speciality", :as => "quantity_medics_by_speciality"
+  match '/confirmation/:id/:token_email', controller: 'users', action: 'confirmation_email', via: 'get'
 
   get "/medics/profile/:id/create_relevance" => "medics#create_relevance", :as => "create_relevance"
   get "/medics/profile/:id/to_report" => "medics#to_report", :as => "to_report"
@@ -49,5 +51,6 @@ Rails.application.routes.draw do
   resources :home
   resources :parsers
   resources :contact
+  resources :password_resets
 
 end
