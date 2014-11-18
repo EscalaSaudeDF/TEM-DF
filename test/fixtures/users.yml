@@ -8,6 +8,7 @@ roberto:
   account_status: 1
   password_reset_token: ToLken123
   password_reset_sent_at: 3014-11-20 13:29:20
+  token_email: "123"
 
 lorena:
   username: Lorena
@@ -18,6 +19,7 @@ lorena:
   account_status: 0
   password_reset_token: LorenaSelvagem123
   password_reset_sent_at: 1514-11-20 13:29:20
+  token_email: "321"
 
 
 admin:

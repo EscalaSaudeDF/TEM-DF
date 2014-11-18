@@ -175,6 +175,19 @@ class UsersControllerTest < ActionController::TestCase
         assert_redirected_to root_path
     end
 
+    test "shouldn't confirmation_email" do
+        get :confirmation_email, id: @user.id, token_email: "3456"
+        assert_redirected_to root_path
+        assert_equal assigns(:message), "Link inválido!"
+    end
+
+    test "should confirmation_email" do
+        get :confirmation_email, id: @user.id, token_email: "123"
+        assert_redirected_to root_path
+        assert_equal assigns(:message), "Cadastro Confirmado!"
+        assert_nil assigns(:user).token_email
+        assert assigns(:user).account_status
+    end
 
 end
 

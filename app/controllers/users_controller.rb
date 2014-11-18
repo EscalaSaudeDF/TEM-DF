@@ -137,16 +137,16 @@ class UsersController < ApplicationController
     def confirmation_email
 
         @user = User.find_by_id_and_token_email(params[:id],params[:token_email])
-        msg = ''
+        @message = ''
 
         if @user && @user.token_email
-           @user.update_attribute(:account_status, true)
-           @user.update_attribute(:token_email, nil)
-           msg = "Cadastro Confirmado!"
+          @user.update_attribute(:account_status, true)
+          @user.update_attribute(:token_email, nil)
+          @message = "Cadastro Confirmado!"
         else
-          msg = "Link inválido!"
+          @message = "Link inválido!"
         end
-        redirect_to root_path, notice: msg
+        redirect_to root_path, notice: @message
     end
 
     private
