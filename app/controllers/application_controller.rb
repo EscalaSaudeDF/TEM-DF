@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
   	end
 
 	def index
+		@num_reports = Comment.all.where(report: true).size
+		@num_deactivated_users = User.all.where(account_status: false).size
+		@num_activated_users = User.all.where(account_status: true).size
 	end
 
   private
