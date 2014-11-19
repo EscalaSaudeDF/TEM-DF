@@ -142,7 +142,16 @@
                             <%end%>
                         </li>
                         <li>
-                            <%= link_to "Contato", contact_path %>
+                            <%= link_to contact_path do %>
+                                <i  class="fa fa-envelope-o fa-fw"></i>
+                                Contato
+                            <%end%>
+                        </li>
+                        <li>
+                            <%= link_to about_path do%>
+                                <i  class="fa fa-info fa-fw"></i>
+                                Sobre
+                            <%end%>
                         </li>
                     </ul>
                     <!--<div align="center">-->
