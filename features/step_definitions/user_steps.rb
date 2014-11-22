@@ -149,4 +149,10 @@ Then(/^i click on 'Redefinir Senha' button$/) do
   click_link('Redefinir Senha')
 end
 
+When (/^I click on 'Sobre' link$/) do
+	click_link('Sobre')
+end
 
+Then (/^the about page is loaded$/) do
+	visit 'http://0.0.0.0:3000/about'
+end
