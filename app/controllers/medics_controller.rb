@@ -21,7 +21,7 @@ class MedicsController < ApplicationController
 	end
 
 #graphs methods and actions
-	
+
 	def workunits_graph
 		@medics_size = Array.new
 		@unit_name = Array.new
@@ -49,12 +49,21 @@ class MedicsController < ApplicationController
 		@medic = Medic.all.where(work_unit_id: id_work_unit)
 		@medics_size_speciality = Array.new
 		array_speciality.each do |speciality|
+<<<<<<< HEAD
 			quantity = Medic.all.where(speciality: speciality, work_unit_id: id_work_unit).size
+=======
+			quantity = Medic.all.where(speciality: speciality).size
+>>>>>>> 9c80d109db32c4408074cc5c328305e6e8e4cac7
 			@medics_size_speciality.push(quantity)
 		end
 		return @medics_size_speciality
 	end
 	
+<<<<<<< HEAD
+=======
+#=====================
+
+>>>>>>> 9c80d109db32c4408074cc5c328305e6e8e4cac7
 	def rating
 		medic_id = params[:medic_id]
 		@user = User.find_by_id(session[:remember_token])

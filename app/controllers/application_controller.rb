@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
 	def index
 	end
 
+	def work_unit_link
+		@work_unit_link = WorkUnit.all 
+	end
+
   private
 	def list_speciality
 		@medic= Medic.all
