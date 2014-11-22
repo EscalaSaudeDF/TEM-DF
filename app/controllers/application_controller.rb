@@ -9,13 +9,6 @@ class ApplicationController < ActionController::Base
   		@current_user ||= User.find(session[:user_id]) if session[:user_id]
   	end
 
-	def index
-	end
-
-	def work_unit_link
-		@work_unit_link = WorkUnit.all 
-	end
-
   private
 	def list_speciality
 		@medic= Medic.all
