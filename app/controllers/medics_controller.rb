@@ -146,8 +146,8 @@ class MedicsController < ApplicationController
 		  		sum = 0
 		  		@ratings.each do |r|
 		  			sum += r.grade
-	  			end
-
+	  		end
+	  			medic.update_attributes(:average => sum/(1.0*@ratings.size))
 				return sum/(1.0*@ratings.size)
 	  		end
 	  	end
