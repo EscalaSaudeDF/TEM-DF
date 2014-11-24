@@ -188,6 +188,5 @@ class UsersControllerTest < ActionController::TestCase
         assert_nil assigns(:user).token_email
         assert assigns(:user).account_status
     end
-
 end
 
