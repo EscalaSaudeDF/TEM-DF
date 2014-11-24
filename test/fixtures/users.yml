@@ -26,3 +26,5 @@ admin:
   username: admin
   email: admin@gmail.com
   account_status: 1
+  password_hash: $2a$10$HFCw4DJs.tDFrMNqD0IVe.5aVdZcJHkEsi6M2P30xu6maddY0gbzG
+  password_salt: $2a$10$HFCw4DJs.tDFrMNqD0IVe.

@@ -22,11 +22,26 @@ Then (/^the csv page is loaded$/) do
 	visit('http://0.0.0.0:3000/parsers')
 end
 
-
 And (/^I select a csv file$/) do
 	attach_file(:document, './public/csv/schedules_test.csv')
 end
  	
 And (/^I click on 'Enviar' link$/) do
 	click_button('Enviar')
+end
+
+When(/^I click on 'Denuncias'$/) do
+  find('#DenunciasDetalhes').click
+end
+
+Then(/^the denuncias page is loaded$/) do
+  visit('http://0.0.0.0:3000/comments/reports')
+end
+
+When(/^I click on 'Usuarios Desativados'$/) do
+  find('#DesativadosDetalhes').click
+end
+
+When(/^I click on 'Usuarios Ativados'$/) do
+  find('#AtivadosDetalhes').click
 end
