@@ -49,7 +49,7 @@ class MedicsController < ApplicationController
 		@medic = Medic.all.where(work_unit_id: id_work_unit)
 		@medics_size_speciality = Array.new
 		array_speciality.each do |speciality|
-			quantity = Medic.all.where(speciality: speciality).size
+			quantity = Medic.all.where(speciality: speciality, work_unit_id: id_work_unit).size
 			@medics_size_speciality.push(quantity)
 		end
 		return @medics_size_speciality
@@ -146,8 +146,8 @@ class MedicsController < ApplicationController
 		  		sum = 0
 		  		@ratings.each do |r|
 		  			sum += r.grade
-	  			end
-
+	  		end
+	  			medic.update_attributes(:average => sum/(1.0*@ratings.size))
 				return sum/(1.0*@ratings.size)
 	  		end
 	  	end

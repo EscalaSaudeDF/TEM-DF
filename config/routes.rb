@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
   match 'home', controller: 'home', action: 'index', via: 'get'
+  get "/about" => "home#about", :as => "about" 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   match 'medics/results', controller: 'medics', action: 'results', via: 'get'

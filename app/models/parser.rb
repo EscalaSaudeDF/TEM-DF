@@ -30,6 +30,7 @@ class Parser < ActiveRecord::Base
         	work_unit_record = WorkUnit.find_or_create_by(:name => row[0])
 
 	    	medic_record = work_unit_record.medics.find_or_create_by(:name => row[3],
+	    		average: 0,
 				:registry => row[2],
         		:speciality => row[4],
         		:department => row[1])
