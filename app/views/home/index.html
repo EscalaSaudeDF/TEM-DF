@@ -1,60 +1,55 @@
-<html>
-	<head>
-	</head>
-	<body>
-	   <br>
-	   <br>
-	   <% if current_user && current_user.username == "admin"%>
-		   <div class="col-lg-4 col-md-6">
-		       <div class="panel panel-red">
-		           <div class="panel-heading">
-		               <div class="row">
-		                    <div class="col-xs-3">
-		                        <i class="fa fa-exclamation fa-5x"></i>
-		                    </div>
-		                    <div class="col-xs-9 text-right">
-		                        <div class="huge"><%= Comment.all.where(report: true).size %></div>
-		                        <div>Denúncias</div>
-		                    </div>
-		                </div>
-		            </div>
-		            <%= link_to reported_comments_path, id: "DenunciasDetalhes" do %>
-		                <div class="panel-footer">
-		                    <span class="pull-left">Ver detalhes</span>
-		                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-		                    <div class="clearfix"></div>
-		                </div>
-		            <% end %>
-		        </div>
-		    </div>
-
-		    <div class="col-lg-4 col-md-6">
-		       <div class="panel panel-yellow">
-		           <div class="panel-heading">
-		               <div class="row">
-		                    <div class="col-xs-3">
-		                        <i class="fa fa-ban fa-5x"></i>
-		                    </div>
-		                    <div class="col-xs-9 text-right">
-		                        <div class="huge"><%= User.all.where(account_status: false).size %></div>
-		                        <div>Usuarios Desativados</div>
-		                    </div>
-		                </div>
-		            </div>
-		            <%= link_to users_path, id: "DesativadosDetalhes" do %>
-		                <div class="panel-footer">
-		                    <span class="pull-left">Ver detalhes</span>
-		                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-		                    <div class="clearfix"></div>
-		                </div>
-		            <% end %>
-		        </div>
-		    </div>
+<br>
+    <% if current_user && current_user.username == "admin"%>
+ 	    <div class="col-lg-4 col-md-6">
+	        <div class="panel panel-red">
+	            <div class="panel-heading">
+	                <div class="row">
+	                    <div class="col-xs-3">
+	                        <i class="fa fa-exclamation fa-5x"></i>
+	                    </div>
+	                    <div class="col-xs-9 text-right">
+	                        <div class="huge"><%= Comment.all.where(report: true).size %></div>
+	                        <div>Denúncias</div>
+	                    </div>
+	                </div>
+	            </div>
+	            <%= link_to reported_comments_path, id: "DenunciasDetalhes" do %>
+	                <div class="panel-footer">
+	                    <span class="pull-left">Ver detalhes</span>
+	                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+	                    <div class="clearfix"></div>
+	                </div>
+	            <% end %>
+	        </div>
+	    </div>
 
 	    <div class="col-lg-4 col-md-6">
-	       <div class="panel panel-primary">
-	           <div class="panel-heading">
-	               <div class="row">
+	        <div class="panel panel-yellow">
+	            <div class="panel-heading">
+	                <div class="row">
+	                    <div class="col-xs-3">
+	                        <i class="fa fa-ban fa-5x"></i>
+	                    </div>
+	                    <div class="col-xs-9 text-right">
+	                        <div class="huge"><%= User.all.where(account_status: false).size %></div>
+	                        <div>Usuarios Desativados</div>
+	                    </div>
+	                </div>
+	            </div>
+	            <%= link_to users_path, id: "DesativadosDetalhes" do %>
+	                <div class="panel-footer">
+	                    <span class="pull-left">Ver detalhes</span>
+	                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+	                    <div class="clearfix"></div>
+	                </div>
+	            <% end %>
+	        </div>
+	    </div>
+
+	    <div class="col-lg-4 col-md-6">
+	        <div class="panel panel-primary">
+	            <div class="panel-heading">
+	                <div class="row">
 	                    <div class="col-xs-3">
 	                        <i class="fa fa-users fa-5x"></i>
 	                    </div>
@@ -73,19 +68,40 @@
 	            <% end %>
 	        </div>
 	    </div>
-	<% end %>
+	<% else %>
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		</ol>
 
-	   <div class="row">
-            <div class="col-lg-12">
-                <center><%= image_tag "medic_header.png", class: "img-responsive img-rounded"%></center>
-                <div class="jumbotron">
-	                <h1>Conheça Nosso Projeto</h1>
-	                <p align="justify">O projeto TEM-DF: Transparência de Escalas Médicas do DF, tem como objetivo buscar as escalas dos médicos do Distrito Federal no portal da transparência e apresentar o horário, dia e Unidade de Trabalho de cada um dos médicos. Prevê também um ranking de médicos de acordo com avaliações feitas pelos usuários do sistema que foram atendidos na Rede Pública de saúde, busca tornar fácil a tarefa de encontrar médicos para um usuário que necessite de atendimento de determinada categoria ou local específico..</p>
-	                <p><a href="http://lappis.unb.br/redm/projects/grupo-1-tem-transparencia-das-escalas-dos-medicos-do-df/wiki" class="btn btn-primary btn-lg" role="button">
-	                	Visite nossa Wiki</a>
-	                </p>
-	            </div>
-            </div>
-        </div>
-	</body>
-</html>
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+		    <div class="item active">
+		        <%= image_tag "escalas- grande.png"%>
+		    	<div class="carousel-caption">	
+		    	</div>
+		  	</div>
+		  	<div class="item">
+		    	<%= image_tag "perfil- grande.png"%>
+		    	<div class="carousel-caption">
+		    	</div>
+		  	</div>
+		  	<div class="item">
+		    	<%= image_tag "graficos- grande.png"%>
+		    	<div class="carousel-caption">
+		    	</div>
+		  	</div>
+		</div>
+
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		    <span class="icon-prev" aria-hidden="true"></span>
+		</a>
+		<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		    <span class="icon-next" aria-hidden="true"></span>
+		</a>
+		</div>
+	<% end %>

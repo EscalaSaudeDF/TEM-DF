@@ -6,6 +6,7 @@ class CreateMedics < ActiveRecord::Migration
       t.string :speciality
       t.string :department
       t.references :work_unit
+      t.float :average
       t.timestamps
     end
   end

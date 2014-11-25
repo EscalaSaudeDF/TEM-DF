@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20141114212416) do
     t.string   "speciality"
     t.string   "department"
     t.integer  "work_unit_id"
+    t.float    "average",      limit: 24
     t.datetime "created_at"
     t.datetime "updated_at"
   end
