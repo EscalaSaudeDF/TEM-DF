@@ -149,4 +149,10 @@ Then(/^i click on 'Redefinir Senha' button$/) do
   click_link('Redefinir Senha')
 end
 
-
+When (/^I click on 'Ranking' link/) do
+	click_link('Ranking')
+end
+	
+Then (/^the ranking page is loaded/) do
+	visit 'http://0.0.0.0:3000/ranking'
+end

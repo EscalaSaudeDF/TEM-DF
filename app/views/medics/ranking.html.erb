@@ -1,0 +1,25 @@
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Nota</th>
+				<th>Nome do médico</th>
+				<th>Especialidade</th>
+				<th>Unidade de trabalho</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @cont = 1%>
+			<% @medics.each do |medic| %>
+				<tr>
+					<td><%= @cont %></td>
+					<% @cont = @cont+1 %>
+					<td><%= medic.average %></td>
+					<td><%= link_to medic.name, profile_path(medic)%></td>
+					<td><%= medic.speciality %></td>
+					<td><%= medic.work_unit.name %></td>
+				</tr>
+			<% end %>
+		</tbody>
+</div>

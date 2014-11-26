@@ -6,6 +6,7 @@ class MedicsControllerTest < ActionController::TestCase
 
     def setup
   	    @medic = medics(:one)
+        @medic2 = medics(:two)
   	    @work_unit = work_units(:one)
         @user = users(:roberto)
         @user2 = users(:lorena)
@@ -126,5 +127,13 @@ class MedicsControllerTest < ActionController::TestCase
         get :workunits_graph
         assert_equal 1, assigns(:unit_name).size
         assert_equal 1, assigns(:medics_size).size
+    end
+
+    test "should order medics" do
+        get :ranking
+        medic = Medic.create(average: 5)
+        medic2 = Medic.create(average: 2)
+        all = Medic.all        
+        assert_operator all.index(medic), :<, all.index(medic2)
     end
 end
