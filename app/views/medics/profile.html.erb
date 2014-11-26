@@ -58,8 +58,8 @@
 					                  <tbody>
 					                    <%@medic.schedules.each do |schedule|%>
 					                      <tr>
-					                        <td><%= schedule.in.strftime("%d de %B de %Y as %H:%M") %></td>
-					                        <td><%= schedule.out.strftime("%d de %B de %Y as %H:%M") %></td>
+					                        <td><%= schedule.in.strftime("%d de %B de %Y, as %H:%M") %></td>
+					                        <td><%= schedule.out.strftime("%d de %B de %Y, as %H:%M") %></td>
 					                      </tr>
 					                  <%end%>
 					                  </tbody>

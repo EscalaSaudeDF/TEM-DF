@@ -19,6 +19,13 @@ class SessionsControllerTest < ActionController::TestCase
 		assert_equal dave.id, session[:user_id]
 	end
 
+	test "should login as admin" do
+		admin = users(:admin)
+		post :create, username: admin.username, password: 'admin'
+		assert_equal admin.id, session[:user_id]
+		assert_redirected_to root_path
+	end
+
 	test "should not login" do
 		dave = users(:roberto)
 		post :create, :username => dave.username, :password => '12'

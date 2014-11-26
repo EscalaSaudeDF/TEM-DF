@@ -56,17 +56,17 @@
                             <% if current_user.username == "admin"%>
                                 <li>
                                     <%= link_to users_path do %>
-                                        <i class="fa fa-users"></i> Usuários
+                                        <i class="fa fa-users fa-fw"></i> Usuários
                                     <% end %>
                                 </li>
                                 <li>
                                     <%= link_to index_parser_path do %>
-                                        <i class ="fa fa-cloud-upload"></i> Carregar Dados
+                                        <i class ="fa fa-cloud-upload fa-fw"></i> Carregar Dados
                                     <% end %>
                                 </li>
                                 <li>
                                     <%= link_to reported_comments_path do %>
-                                        <i class="fa fa-exclamation"></i> Denúncias
+                                        <i class="fa fa-exclamation fa-fw"></i> Denúncias
                                     <% end %>
                                 </li>
                             <% end %>
@@ -142,7 +142,16 @@
                             <%end%>
                         </li>
                         <li>
-                            <%= link_to "Contato", contact_path %>
+                            <%= link_to contact_path do %>
+                                <i  class="fa fa-envelope-o fa-fw"></i>
+                                Contato
+                            <%end%>
+                        </li>
+                        <li>
+                            <%= link_to about_path do%>
+                                <i  class="fa fa-info fa-fw"></i>
+                                Sobre
+                            <%end%>
                         </li>
                     </ul>
                     <!--<div align="center">-->
