@@ -433,8 +433,8 @@
         readonly: false,
         rtl: false,
         size: 'md',
-        showClear: true,
-        showCaption: true,
+        showClear: false,
+        showCaption: false,
         defaultCaption: '{rating} Estrelas',
         starCaptions: {
             1: 'Uma Estrela',
