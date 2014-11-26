@@ -123,6 +123,10 @@ class MedicsController < ApplicationController
   		redirect_to action:"profile",id: params[:medic_id]
   	end
 
+  	def ranking
+  		@medics = Medic.order(average: :desc).limit(10)
+  	end
+
   	private 
 
   		def create_rating(user, medic)

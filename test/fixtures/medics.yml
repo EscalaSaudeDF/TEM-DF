@@ -6,8 +6,12 @@ one:
   speciality: 	test
   department: 	test
   work_unit_id: 1
-#two:
-#  name: MyString
-#  registry: 1
-#  speciality: MyString
-#  department: MyString
+  average: 5
+
+two:
+  name: 	test2
+  registry: 	01713913
+  speciality: 	test
+  department: 	test
+  work_unit_id: 1
+  average: 4

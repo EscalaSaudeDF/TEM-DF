@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   post "/upload", controller: 'parsers', action: 'upload'
 
   get "contact" => "contact#new", :as => "contact"
+  get 'ranking', controller: 'medics', action: 'ranking', via: 'get'
 
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
   
