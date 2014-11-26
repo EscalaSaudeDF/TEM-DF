@@ -10,20 +10,26 @@
 </div>
 <div class="panel-body">
     <ul class="list-group">
+    	<% if @reported_comments.size == 0 %>
+    		<li class="list-group-item">
+    			Não há Denuncias
+    		</li>
+    	<% end %>
 		<% @reported_comments.each do |reported_comment|%>
 			<li class="list-group-item">
 		        <div class="row">
 		            <div class="col-xs-10 col-md-11">
-		            	<div class="action">
-		                    <% if reported_comment.comment_status == false %>
-								<%= link_to 'Reativar' , reactivate_comment_path(:comment_id => reported_comment.id) , class: "btn btn-primary activate" %>
-							<% else %>
-								<%= link_to 'Tirar Denúncia' , disable_report_path(:comment_id => reported_comment.id) , class: "btn btn-primary activate" %>
-								<%= link_to 'Desativar' , deactivate_comment_path(:comment_id => reported_comment.id) , class: "btn btn-danger activate",  data: { confirm: 'Você tem certeza?' }%>
-							<% end %>
-						</div>
+		            	
 		                <div class="reported_comment-text">
 		                    <%= reported_comment.content%>
+		                    <div class="btn-group report-btn-group" role="group" aria-label="...">
+			                    <% if reported_comment.comment_status == false %>
+									<%= link_to 'Reativar' , reactivate_comment_path(:comment_id => reported_comment.id) , class: "btn btn-primary activate" %>
+								<% else %>
+									<%= link_to 'Tirar Denúncia' , disable_report_path(:comment_id => reported_comment.id) , class: "btn btn-primary activate" %>
+									<%= link_to 'Desativar' , deactivate_comment_path(:comment_id => reported_comment.id) , class: "btn btn-danger activate",  data: { confirm: 'Você tem certeza?' }%>
+								<% end %>
+							</div>
 		                </div>
 		                <div>
 		                    <div class="mic-info">

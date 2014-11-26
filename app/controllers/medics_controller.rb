@@ -87,7 +87,7 @@ class MedicsController < ApplicationController
 				medic: @medic, user: @user, comment_status: true, report: false)
 
 			@comment.save
-			redirect_to profile_path(@medic)
+			redirect_to :back
 		else
 			redirect_to login_path, :notice => "O Usuário necessita estar logado"
 		end
@@ -118,7 +118,7 @@ class MedicsController < ApplicationController
   		if @comment.report == false
   			@comment.update_attribute(:report, true)
   		end
-  		flash[:alert] = "Comentario reportado."
+  		flash[:alert] = "Comentário reportado."
 		
   		redirect_to action:"profile",id: params[:medic_id]
   	end
