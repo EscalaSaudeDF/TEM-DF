@@ -22,11 +22,13 @@ class UsersController < ApplicationController
             @user.account_status = false
             if @user.save
                 upload params[:user][:document]
-                @user.update_attribute(:token_email, random.seed)
-
-                TemdfMailer.confimation_email(@user.id, @user.token_email, @user.email).deliver
-
-                redirect_to root_path, notice: "Por favor confirme seu cadastro pela mensagem enviada ao seu email!"
+                
+                if params[:user][:document] == nil
+                    @user.update_attribute(:token_email, random.seed)
+                    TemdfMailer.confimation_email(@user.id, @user.token_email, @user.email).deliver
+                    flash[:warning] = "Por favor confirme seu cadastro pela mensagem enviada ao seu email!"
+                end
+                redirect_to root_path
             else
                 render "new"
             end
