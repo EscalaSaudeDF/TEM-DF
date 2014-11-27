@@ -87,16 +87,23 @@
                     <%= @medic.comments.size %></span>
             </div>
             <div class="panel-body">
-                <ul class="list-group">
+                <ul class="list-group ">
                 	<% @medic.comments.each do |comment| %>
                 		<%if comment.comment_status == true%>
 		                    <li class="list-group-item">
 		                        <div class="row">
 		                        	<%= link_to "", to_report_path(:comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-exclamation close report ",  data: { confirm: 'Você tem certeza?' }, :title=> "Denunciar"%>
-		                            <div class="col-xs-10 col-md-11">
+		                            	
+		                            	<div class="col-xs-10 col-md-11">
+		                            	<%if comment.user.medic_type_status == true%>
+		                            	 <div class="comment-text medic-comment">
+		                                    <%= comment.content%>
+		                                </div>
+		                            	<% else %>
 		                                <div class="comment-text">
 		                                    <%= comment.content%>
 		                                </div>
+		                                <%end%>
 		                                <div class="action mic-info ">
 		                                	Feito por: <%= comment.user.username%> on <%= comment.date.strftime("%d de %B de %Y") %>
 		                                	<br>

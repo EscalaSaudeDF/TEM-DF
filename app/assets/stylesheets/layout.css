@@ -40,6 +40,12 @@ padding: 5px 45px;
 .report-btn-group{
   float: right;
 }
+
+.medic-comment{
+  color: #428bca;
+  font-style: oblique;
+  font-weight: bold;
+}
 .body-comments { padding-top:30px; }
 .widget .panel-body { padding:0px; }
 .widget .list-group { margin-bottom: 0; }

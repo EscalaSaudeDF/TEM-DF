@@ -7,6 +7,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_salt
       t.boolean :account_status
       t.string :token_email
+      t.boolean :medic_type_status 
+
 
       t.timestamps
     end
