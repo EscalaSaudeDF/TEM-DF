@@ -1,0 +1,29 @@
+  	def create
+  		@user = User.new(user_params)
+        if @user.account_status == false && !params[:user][:document]
+            flash.now.alert = "Você precisa anexar um documento!"
+            render "new"
+        elsif  @user.password == @user.password_confirmation
+            
+            @user.account_status = false
+
+            if @user.save
+                upload params[:user][:document]
+                
+                if params[:user][:document] == nil
+                    random = Random.new
+                    @user.update_attributes(:token_email => random.seed, :medic_status => false)
+                    #@user.update_attribute(:medic_status, false)
+                    TemdfMailer.confimation_email(@user.id, @user.token_email, @user.email).deliver
+                    flash[:warning] = "Por favor confirme seu cadastro pela mensagem enviada ao seu email!"
+                else
+                    flash[:warning] = "Nossa equipe vai avaliar seu cadastro. Por favor aguarde a nossa aprovação para acessar sua conta!"
+                end
+                redirect_to root_path
+            else
+                render "new"
+            end
+        else
+            render "new"
+        end
+  	end-
