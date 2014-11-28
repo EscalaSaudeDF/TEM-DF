@@ -74,7 +74,7 @@ class MedicsController < ApplicationController
 			end
 			redirect_to action:"profile",id: medic_id, notice: rating_status
 		else
-			redirect_to login_path, :notice => "O Usuário necessita estar logado"
+			redirect_to login_path, :alert => "O Usuário necessita estar logado"
 		end
 	end
 
@@ -89,7 +89,7 @@ class MedicsController < ApplicationController
 			@comment.save
 			redirect_to profile_path(@medic)
 		else
-			redirect_to login_path, :notice => "O Usuário necessita estar logado"
+			redirect_to login_path, :alert => "O Usuário necessita estar logado"
 		end
   	end
 
@@ -100,7 +100,7 @@ class MedicsController < ApplicationController
   		@comment = Comment.find_by_id(params[:comment_id])
 
 		if @user == nil
-			redirect_to login_path, :notice => "O Usuário necessita estar logado"
+			redirect_to login_path, :alert => "O Usuário necessita estar logado"
 		elsif @comment
   			@relevance = Relevance.find_by_user_id_and_comment_id(@user.id, @comment.id)
 
@@ -118,7 +118,7 @@ class MedicsController < ApplicationController
   		if @comment.report == false
   			@comment.update_attribute(:report, true)
   		end
-  		flash[:alert] = "Comentário reportado."
+  		flash[:notice] = "Comentário reportado."
 		
   		redirect_to action:"profile",id: params[:medic_id]
   	end

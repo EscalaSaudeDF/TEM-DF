@@ -93,8 +93,8 @@
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
                                 <% flash.each do |name, msg| %>
-                                  <% if msg.is_a?(String) %>
-                                    <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">
+                                  <% if msg.is_a?(String) && msg != "O Usuário necessita estar logado" && msg != "Usuário ou senha inválidos" && msg != "Você precisa anexar um documento!" %>
+                                    <div class="alert alert-<%= name == 'notice' ? "success" : "danger" %>">
                                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                       <%= content_tag :div, msg, :id => "flash_#{name}" %>
                                     </div>

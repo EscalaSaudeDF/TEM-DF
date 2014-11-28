@@ -8,7 +8,7 @@ class PasswordResetsController < ApplicationController
 			user.send_password_reset 
 			redirect_to root_path, :notice => "Um e-mail foi enviado com as instruções para #{:email}."
 		else
-			render 'new', :notice => "Email ou nome de usuário inválidos"
+			render 'new', :alert => "Email ou nome de usuário inválidos"
 		end
 	end
 
@@ -33,7 +33,7 @@ class PasswordResetsController < ApplicationController
 				@user.update_attribute(:password_reset_token, nil)
 				redirect_to root_url, :notice => "Senha Redefinida!"			
 			else
-				redirect_to edit_password_reset_path, :notice => "Senha e Confirmação não conferem"
+				redirect_to edit_password_reset_path, :alert => "Senha e Confirmação não conferem"
 			end			
 		end
 	end

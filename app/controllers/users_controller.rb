@@ -28,10 +28,10 @@ class UsersController < ApplicationController
                     @user.update_attribute(:token_email, random.seed)
                      @user.update_attribute(:medic_type_status, false)
                     TemdfMailer.confimation_email(@user.id, @user.token_email, @user.email).deliver
-                    flash[:warning] = "Por favor confirme seu cadastro pela mensagem enviada ao seu email!"
+                    flash[:notice] = "Por favor confirme seu cadastro pela mensagem enviada ao seu email!"
                 else
                     @user.update_attribute(:medic_type_status, true)
-                    flash[:warning] = "Nossa equipe vai avaliar seu cadastro. Por favor aguarde a nossa aprovação para acessar sua conta!"
+                    flash[:notice] = "Nossa equipe vai avaliar seu cadastro. Por favor aguarde a nossa aprovação para acessar sua conta!"
                 end
                 redirect_to root_path
             else
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
             user_from_email = User.find_by_email(email)
 
             if user_from_email && @user != user_from_email
-                flash[:warning] = "Email já existente"
+                flash[:alert] = "Email já existente"
                 render "edit" 
             else 
                 @user.update_attribute(:email , email)
@@ -79,10 +79,10 @@ class UsersController < ApplicationController
             user_from_email = User.find_by_email(email)
 
             if user_from_username && @user != user_from_username
-                flash[:warning] = "Nome já existente"
+                flash[:alert] = "Nome já existente"
                 render "edit"
             elsif user_from_email && @user != user_from_email
-                flash[:warning] = "Email já existente"
+                flash[:alert] = "Email já existente"
                 render "edit" 
             else 
                 @user.update_attribute(:username , username)
@@ -106,7 +106,7 @@ class UsersController < ApplicationController
               @user.update_attribute(:password, new_password)
               redirect_to root_path, notice: 'Alteração feita com sucesso'
             else
-              redirect_to edit_password_path, notice: 'Confirmação nao confere ou campo vazio'
+              redirect_to edit_password_path, alert: 'Confirmação nao confere ou campo vazio'
             end
         else
           redirect_to edit_password_path
