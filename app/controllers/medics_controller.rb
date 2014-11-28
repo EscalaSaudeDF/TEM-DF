@@ -87,7 +87,7 @@ class MedicsController < ApplicationController
 				medic: @medic, user: @user, comment_status: true, report: false)
 
 			@comment.save
-			redirect_to :back
+			redirect_to profile_path(@medic)
 		else
 			redirect_to login_path, :notice => "O Usuário necessita estar logado"
 		end

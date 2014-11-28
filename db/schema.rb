@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20141114212416) do
     t.string   "password_salt"
     t.boolean  "account_status"
     t.string   "token_email"
+    t.boolean  "medic_type_status"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_reset_token"

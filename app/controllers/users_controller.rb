@@ -18,15 +18,20 @@ class UsersController < ApplicationController
             flash.now.alert = "Você precisa anexar um documento!"
             render "new"
         elsif  @user.password == @user.password_confirmation
-            random = Random.new
+            
             @user.account_status = false
             if @user.save
                 upload params[:user][:document]
                 
                 if params[:user][:document] == nil
+                    random = Random.new
                     @user.update_attribute(:token_email, random.seed)
+                     @user.update_attribute(:medic_type_status, false)
                     TemdfMailer.confimation_email(@user.id, @user.token_email, @user.email).deliver
                     flash[:warning] = "Por favor confirme seu cadastro pela mensagem enviada ao seu email!"
+                else
+                    @user.update_attribute(:medic_type_status, true)
+                    flash[:warning] = "Nossa equipe vai avaliar seu cadastro. Por favor aguarde a nossa aprovação para acessar sua conta!"
                 end
                 redirect_to root_path
             else

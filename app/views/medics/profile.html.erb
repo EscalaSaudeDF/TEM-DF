@@ -37,7 +37,7 @@
 				</div>
 				<div class="col-lg-1 col-lg-offset-3">
 					<!-- Button trigger modal -->
-					<button class="btn btn-default btn-lg button-schedule" data-toggle="modal" data-target="#myModal" title="Escala">
+					<button class="btn btn-primary btn-lg button-schedule" data-toggle="modal" data-target="#myModal" title="Escala">
 				    <i class="fa fa-table"></i>
 				  </button>
 				    <!-- Modal -->
@@ -87,16 +87,41 @@
                     <%= @medic.comments.size %></span>
             </div>
             <div class="panel-body">
+            	<%= form_tag("/medics/create_comment", method: "post") do %> 
+					<%if current_user%>
+						<%= hidden_field_tag  :medic_id, @medic.id %>
+						<div class="input-group">
+							<%= text_field_tag :content, "", class: "form-control", maxlength: 300, placeholder: 'Escreva seu cometário aqui'%>
+							<span class="input-group-btn">
+								<%= submit_tag 'Enviar', class: "btn btn-primary" %>
+							</span>
+						</div>
+					<%else%>
+						<div class="input-group">
+							<%= text_field_tag :content, "", class: "form-control", disabled: true, placeholder: 'Acesse sua conta para comentar.'%>
+							<span class="input-group-btn">
+								<%= submit_tag 'Enviar', class: "btn btn-primary", disabled: true %>
+							</span>
+						</div>
+					<%end%>
+				<%end%>
                 <ul class="list-group">
-                	<% @medic.comments.each do |comment| %>
+                	<% @medic.comments.reverse_each do |comment| %>
                 		<%if comment.comment_status == true%>
 		                    <li class="list-group-item">
 		                        <div class="row">
 		                        	<%= link_to "", to_report_path(:comment_id => comment.id, :medic_id => @medic.id) , class: "fa fa-exclamation close report ",  data: { confirm: 'Você tem certeza?' }, :title=> "Denunciar"%>
-		                            <div class="col-xs-10 col-md-11">
+		                            	
+		                            	<div class="col-xs-10 col-md-11">
+		                            	<%if comment.user.medic_type_status == true%>
+		                            	 <div class="comment-text medic-comment">
+		                                    <%= comment.content%>
+		                                </div>
+		                            	<% else %>
 		                                <div class="comment-text">
 		                                    <%= comment.content%>
 		                                </div>
+		                                <%end%>
 		                                <div class="action mic-info ">
 		                                	Feito por: <%= comment.user.username%> on <%= comment.date.strftime("%d de %B de %Y") %>
 		                                	<br>
@@ -117,24 +142,7 @@
                     	</li>
                     <% end %>
                 </ul>
-                <%= form_tag("/medics/create_comment", method: "post") do %> 
-					<%if current_user%>
-						<%= hidden_field_tag  :medic_id, @medic.id %>
-						<div class="input-group">
-							<%= text_field_tag :content, "", class: "form-control", maxlength: 300, placeholder: 'Escreva seu cometário aqui'%>
-							<span class="input-group-btn">
-								<%= submit_tag 'Enviar', class: "btn btn-primary" %>
-							</span>
-						</div>
-					<%else%>
-						<div class="input-group">
-							<%= text_field_tag :content, "", class: "form-control", disabled: true, placeholder: 'Acesse sua conta para comentar.'%>
-							<span class="input-group-btn">
-								<%= submit_tag 'Enviar', class: "btn btn-primary", disabled: true %>
-							</span>
-						</div>
-					<%end%>
-				<%end%>
+                
             </div>
         </div>
 
