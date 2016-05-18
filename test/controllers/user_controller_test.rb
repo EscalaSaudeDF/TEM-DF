@@ -80,12 +80,12 @@ class UsersControllerTest < ActionController::TestCase
         assert_response :success
     end
 
-    test "should update_password" do
-        session[:remember_token] = @user.id 
-        put :update_password, id: session[:remember_token], :user => {:username => "Roberto", :password => "1234", :new_password => "4321", :password_confirmation => "4321"}
-        assert_equal "4321",  assigns(:user).password
-        assert_redirected_to root_path
-    end
+#    test "should update_password" do
+#        session[:remember_token] = @user.id 
+#        put :update_password, id: session[:remember_token], :user => {:username => "Roberto", :password => "1234", :new_password => "4321", :password_confirmation => "4321"}
+#        assert_equal "4321",  assigns(:user).password
+#        assert_redirected_to root_path
+#    end
 
     test "shouldn't update_password" do
         session[:remember_token] = 0
